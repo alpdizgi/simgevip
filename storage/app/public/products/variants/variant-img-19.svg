@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+    <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#4a5568;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#1e293b;stop-opacity:0.25" />
+        </linearGradient>
+    </defs>
+    <rect width="800" height="1000" fill="url(#grad)" />
+    <rect x="40" y="40" width="720" height="920" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.4"/>
+    
+    <g transform="translate(400, 470)" text-anchor="middle">
+        <text y="-50" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="20" font-weight="500" letter-spacing="6" fill="rgba(255,255,255,0.7)">SimgeVIP Koleksiyonu</text>
+        <text y="10" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="34" font-weight="700" letter-spacing="1" fill="#ffffff">Renk Seçeneği</text>
+        <line x1="-60" y1="40" x2="60" y2="40" stroke="rgba(255,255,255,0.7)" stroke-width="2" opacity="0.8"/>
+        <text y="70" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="16" font-weight="400" letter-spacing="2" fill="rgba(255,255,255,0.7)">KADIN GİYİM &amp; BUTİK</text>
+    </g>
+</svg>

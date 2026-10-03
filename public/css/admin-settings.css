@@ -1,0 +1,85 @@
+/* Shared by the settings create and edit forms. */
+.filament-resources-settings .filament-forms-section-component {
+    overflow: visible;
+    border-radius: 12px;
+}
+
+.filament-resources-settings .filament-forms-section-header {
+    border-radius: 12px 12px 0 0;
+}
+
+.filament-resources-settings .filament-forms-repeater-component-item > header > p {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.filament-resources-settings .filament-forms-repeater-component-item > header > ul {
+    flex-shrink: 0;
+}
+
+.filament-resources-settings .filepond--drop-label {
+    min-height: 8rem;
+}
+
+.filament-resources-settings .filepond--root {
+    border: 1px dashed var(--sv-line);
+    border-radius: 12px;
+}
+
+.filament-resources-settings .filepond--label-action {
+    text-underline-offset: 3px;
+}
+
+.filament-resources-settings .choices__list--dropdown,
+.filament-resources-settings .choices__list[aria-expanded] {
+    z-index: 40;
+}
+
+.filament-resources-settings .filament-forms-field-wrapper-helper-text {
+    overflow-wrap: anywhere;
+    line-height: 1.6;
+}
+
+html.dark .filament-resources-settings .filament-forms-section-component,
+html.dark .filament-resources-settings .filament-forms-repeater-component-item {
+    background: #18181b;
+    border-color: #3f3f46;
+}
+
+html.dark .filament-resources-settings .filament-forms-section-header-wrapper,
+html.dark .filament-resources-settings .filament-forms-repeater-component-item > header {
+    background: #242427;
+}
+
+html.dark .filament-resources-settings .filament-forms-section-header-description,
+html.dark .filament-resources-settings .filament-forms-field-wrapper-helper-text {
+    color: #a1a1aa !important;
+}
+
+html.dark .filament-resources-settings .filament-forms-repeater-component .filament-button {
+    color: #e4e4e7 !important;
+    border-color: #52525b !important;
+    background: #27272a !important;
+}
+
+html.dark .filament-resources-settings .filepond--root {
+    border-color: #52525b;
+}
+
+@media (max-width: 639px) {
+    .filament-resources-settings .filament-forms-section-content,
+    .filament-resources-settings .filament-forms-repeater-component-item > .p-6 {
+        padding: 1rem;
+    }
+
+    .filament-resources-settings input:not([type='file']),
+    .filament-resources-settings textarea,
+    .filament-resources-settings .choices__inner {
+        font-size: 16px !important;
+    }
+
+    .filament-resources-settings .filament-button {
+        min-height: 44px !important;
+        white-space: normal;
+    }
+}

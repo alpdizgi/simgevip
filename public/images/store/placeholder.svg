@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" fill="none">
+  <rect width="800" height="1000" fill="#E8E8E6"/>
+  <path d="M280 320h240v420H280z" stroke="#BDBDBA" stroke-width="2" fill="none"/>
+  <path d="M340 320c0-40 40-70 60-70s60 30 60 70" stroke="#BDBDBA" stroke-width="2" fill="none"/>
+  <text x="400" y="820" text-anchor="middle" fill="#8A8A86" font-family="Georgia, serif" font-size="28" letter-spacing="4">SIMGEVIP</text>
+</svg>

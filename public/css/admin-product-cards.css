@@ -1,0 +1,128 @@
+.filament-resources-products .sv-product-card-record {
+    height: auto !important;
+    align-self: start;
+    min-width: 0;
+    padding: .7rem !important;
+    overflow: hidden;
+    border-color: #e2e8f0;
+    background: #fff;
+}
+
+.filament-resources-products .sv-product-card-record > div { min-width: 0; }
+.filament-resources-products .sv-product-card-record > div > .py-3 { padding-top: 0 !important; padding-bottom: 0 !important; }
+
+.filament-resources-products .sv-product-card-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: .7rem;
+    min-width: 0;
+}
+
+.filament-resources-products .sv-product-card-layout > div:first-child { flex: 0 0 92px; width: 92px; }
+.filament-resources-products .sv-product-card-layout > div:last-child { flex: 1 1 0; width: auto; min-width: 0; }
+
+.filament-resources-products .sv-product-card-image { width: 92px; padding: 0 !important; }
+.filament-resources-products .sv-product-card-image > div,
+.filament-resources-products .sv-product-card-image-element { width: 92px !important; height: 124px !important; }
+.filament-resources-products .sv-product-card-image-element {
+    display: block;
+    object-fit: cover;
+    border-radius: .4rem;
+    background: #f1f5f9;
+}
+
+.filament-resources-products .sv-product-card-details { align-items: stretch; min-width: 0; gap: .2rem; }
+.filament-resources-products .sv-product-card-details > div { flex: 0 0 auto; min-width: 0; }
+.filament-resources-products .sv-product-card-details .filament-tables-text-column,
+.filament-resources-products .sv-product-card-badges .filament-tables-badge-column { padding: 0 !important; }
+.filament-resources-products .sv-product-card-details .filament-tables-text-column { overflow-wrap: anywhere; line-height: 1.3; }
+.filament-resources-products .sv-product-card-details .filament-tables-text-column > .inline-flex { display: block; }
+.filament-resources-products .sv-product-card-name { font-size: .9rem; line-height: 1.25; }
+.filament-resources-products .sv-product-card-name > div:first-child { margin-bottom: .15rem; }
+.filament-resources-products .sv-product-card-sku { margin-top: .4rem; font-size: .73rem; }
+.filament-resources-products .sv-product-card-price { margin-top: .4rem; font-size: .95rem; font-weight: 700; }
+.filament-resources-products .sv-product-card-badges { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem; margin-top: .25rem; }
+.sv-products-list .sv-product-badge {
+    display: inline-flex;
+    max-width: 100%;
+    padding: .15rem .4rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: .65rem;
+    font-weight: 600;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+.sv-products-list .sv-product-badge--season { background: #ecfdf5; color: #047857; border-color: #d1fae5; }
+.sv-products-list .sv-product-badge--featured { background: #fffbeb; color: #92400e; border-color: #fef3c7; }
+.sv-products-list .sv-product-badge--campaign { background: #fff1f2; color: #be123c; border-color: #ffe4e6; }
+
+.filament-resources-products .sv-product-card-record .filament-tables-actions-container {
+    justify-content: flex-end !important;
+    width: 100%;
+    margin: .55rem 0 0 !important;
+    padding: .5rem 0 0;
+    border-top: 1px solid #e5e7eb;
+}
+.filament-resources-products .sv-product-card-record .filament-tables-icon-button-action { margin: 0; }
+
+@media (max-width: 480px) {
+    .filament-resources-products .sv-product-card-record { padding: .6rem !important; }
+    .filament-resources-products .sv-product-card-layout { gap: .6rem; }
+    .filament-resources-products .sv-product-card-layout > div:first-child,
+    .filament-resources-products .sv-product-card-image { flex-basis: 78px; width: 78px; }
+    .filament-resources-products .sv-product-card-image > div,
+    .filament-resources-products .sv-product-card-image-element { width: 78px !important; height: 108px !important; }
+}
+
+html.dark .filament-resources-products .sv-product-card-record { border-color: #374151; background: #1f2937; }
+html.dark .filament-resources-products .sv-product-card-record .filament-tables-actions-container { border-top-color: #374151; }
+
+/* Keep the products toolbar in a single, clearly labelled control area. */
+.sv-products-list .filament-tables-header-container {
+    padding: 0 !important;
+    border-bottom: 0 !important;
+}
+.sv-products-list .filament-tables-header-toolbar {
+    height: auto;
+    min-height: 4rem;
+    flex-wrap: wrap;
+    gap: .65rem;
+    padding: .85rem 1rem !important;
+    border-bottom: 0 !important;
+}
+.sv-products-list .filament-tables-header-toolbar > div:last-child {
+    flex: 1 1 32rem;
+    max-width: none;
+    flex-wrap: wrap;
+    gap: .65rem;
+}
+.sv-products-list .filament-tables-search-container {
+    justify-content: flex-start;
+    min-width: 12rem;
+}
+.sv-products-list .sv-products-sort { display: flex; align-items: center; gap: .5rem; font-size: .75rem; color: var(--sv-ink, #334155); }
+.sv-products-list .sv-products-sort select,
+.sv-products-list .sv-products-control {
+    min-height: 2.25rem;
+    border: 1px solid var(--sv-line, #cbd5e1);
+    border-radius: 6px;
+    background-color: var(--sv-surface, #fff);
+    color: var(--sv-ink, #334155);
+    font-size: .8rem;
+}
+.sv-products-list .sv-products-sort select { max-width: 13rem; padding: .4rem 2rem .4rem .65rem; }
+.sv-products-list .sv-products-control { display: inline-flex; align-items: center; gap: .4rem; padding: .4rem .7rem; font-weight: 600; }
+.sv-products-list .sv-products-control:hover { background-color: var(--sv-line-soft, #f1f5f9); }
+.sv-products-list .sv-products-control:focus-visible,
+.sv-products-list .sv-products-sort select:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
+.sv-products-list .filament-tables-table-container > .flex.items-center { min-height: 2.5rem; }
+html.dark .sv-products-list .sv-product-badge--season { background: #064e3b; color: #a7f3d0; border-color: #065f46; }
+html.dark .sv-products-list .sv-product-badge--featured { background: #451a03; color: #fde68a; border-color: #78350f; }
+html.dark .sv-products-list .sv-product-badge--campaign { background: #4c0519; color: #fecdd3; border-color: #881337; }
+@media (max-width: 640px) {
+    .sv-products-list .filament-tables-search-container { flex-basis: 100%; }
+    .sv-products-list .sv-products-sort { flex: 1; }
+    .sv-products-list .sv-products-sort select { width: 100%; max-width: none; }
+}

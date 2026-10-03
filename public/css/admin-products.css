@@ -1,0 +1,820 @@
+/* =========================================================
+   SimgeVIP — Kurumsal Yönetim Paneli
+   Ürün Yönetimi (Products List & Create/Edit) Özel Stilleri
+   Dosya: public/css/admin-products.css
+   Tasarım Standardı: High-End SaaS (Clean Shopify / Stripe Admin)
+   ========================================================= */
+
+/* --- 1. ÜRÜNLER GENEL SAYFA BAŞLIĞI & AKSİYON BUTONLARI --- */
+.filament-resources-products .filament-header {
+    background: transparent !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    padding-bottom: 1.25rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.filament-resources-products .filament-header-heading {
+    font-size: 1.5rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.025em !important;
+    color: #0f172a !important;
+}
+
+.filament-resources-products .filament-header-subheading {
+    font-size: 0.875rem !important;
+    color: #64748b !important;
+    margin-top: 0.25rem !important;
+}
+
+/* Header Butonları */
+.filament-resources-products .filament-header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.65rem !important;
+}
+
+/* "Kategori Ekle" Butonu */
+.filament-resources-products .filament-header a[href*="categories"] {
+    background: #ffffff !important;
+    color: #334155 !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    padding: 0.55rem 1rem !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+    text-decoration: none !important;
+    transition: all 0.15s ease !important;
+}
+
+.filament-resources-products .filament-header a[href*="categories"]:hover {
+    background: #f8fafc !important;
+    border-color: #94a3b8 !important;
+    color: #0f172a !important;
+}
+
+/* "Ürün Oluştur" Butonu */
+.filament-resources-products .filament-header a[href*="products/create"] {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    font-weight: 650 !important;
+    font-size: 0.875rem !important;
+    padding: 0.55rem 1.15rem !important;
+    border-radius: 8px !important;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.3) !important;
+    border: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+    text-decoration: none !important;
+    transition: all 0.15s ease !important;
+}
+
+.filament-resources-products .filament-header a[href*="products/create"]:hover {
+    background: #1d4ed8 !important;
+    box-shadow: 0 3px 8px rgba(37, 99, 235, 0.4) !important;
+}
+
+/* --- 2. ÜRÜNLER LİSTE TABLOSU (CLEAN SAAS CATALOG) --- */
+.filament-resources-products .filament-tables-table-container,
+.filament-resources-products .filament-tables-container {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    overflow: hidden !important;
+}
+
+/* Toolbar & Arama */
+.filament-resources-products .filament-tables-header-toolbar {
+    background: #ffffff !important;
+    padding: 0.85rem 1.25rem !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.filament-resources-products .filament-tables-search-field input {
+    height: 2.35rem !important;
+    padding: 0.4rem 0.85rem !important;
+    border-radius: 8px !important;
+    border: 1px solid #cbd5e1 !important;
+    background: #f8fafc !important;
+    font-size: 0.85rem !important;
+    color: #0f172a !important;
+}
+
+.filament-resources-products .filament-tables-search-field input:focus {
+    background: #ffffff !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12) !important;
+}
+
+/* Tablo Başlıkları (TH) */
+.filament-resources-products table.filament-tables-table thead th {
+    background: #f8fafc !important;
+    padding: 0.65rem 0.85rem !important;
+    font-size: 0.725rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    color: #64748b !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    white-space: nowrap !important;
+}
+
+.filament-resources-products table.filament-tables-table thead th button {
+    font-size: 0.725rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    color: #64748b !important;
+}
+
+/* Tablo Satırları (TR) & Hücreleri (TD) */
+.filament-resources-products table.filament-tables-table tbody tr {
+    border-bottom: 1px solid #f1f5f9 !important;
+    transition: background 0.15s ease !important;
+}
+
+.filament-resources-products table.filament-tables-table tbody tr:hover {
+    background: #f8fafc !important;
+}
+
+.filament-resources-products table.filament-tables-table tbody td {
+    padding: 0.75rem 0.85rem !important;
+    vertical-align: middle !important;
+    color: #0f172a !important;
+    font-size: 0.85rem !important;
+}
+
+/* 1. Stok Kodu (SKU) */
+.filament-resources-products td.filament-tables-cell-sku {
+    white-space: nowrap !important;
+}
+
+.filament-resources-products td.filament-tables-cell-sku span {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+    font-size: 0.775rem !important;
+    font-weight: 600 !important;
+    color: #475569 !important;
+    background: #f1f5f9 !important;
+    border: 1px solid #e2e8f0 !important;
+    padding: 0.15rem 0.45rem !important;
+    border-radius: 4px !important;
+    display: inline-block !important;
+}
+
+/* 2. Ürün Görseli (Portrait Moda Formatı) */
+.filament-resources-products td.filament-tables-cell-image {
+    width: 50px !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+}
+
+.filament-resources-products td.filament-tables-cell-image img {
+    height: 46px !important;
+    width: 34px !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    border-radius: 6px !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.filament-resources-products td.filament-tables-cell-image img:hover {
+    transform: scale(1.3) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18) !important;
+    z-index: 30 !important;
+    position: relative !important;
+}
+
+/* 3. Ürün Adı (Temiz, Balonsuz, Düzgün Metin) */
+.filament-resources-products td.filament-tables-cell-name {
+    font-weight: 600 !important;
+    color: #0f172a !important;
+    font-size: 0.85rem !important;
+    line-height: 1.35 !important;
+    min-width: 180px !important;
+}
+
+.filament-resources-products td.filament-tables-cell-name span,
+.filament-resources-products td.filament-tables-cell-name a {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    color: #0f172a !important;
+    font-weight: 600 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    display: inline !important;
+}
+
+/* 4. Kategori (Hafif ve Kompakt Rozet — BALON OLMAYAN DÜZELTME) */
+.filament-resources-products td.filament-tables-cell-category-path a,
+.filament-resources-products td[class*="cell-category"] a {
+    display: inline-flex !important;
+    align-items: center !important;
+    height: auto !important;
+    width: auto !important;
+    text-decoration: none !important;
+}
+
+.filament-resources-products td.filament-tables-cell-category-path span,
+.filament-resources-products td[class*="cell-category"] span {
+    display: inline-flex !important;
+    align-items: center !important;
+    height: auto !important;
+    max-height: 22px !important;
+    padding: 0.15rem 0.55rem !important;
+    border-radius: 9999px !important;
+    background: #f0fdf4 !important;
+    color: #15803d !important;
+    border: 1px solid #bbf7d0 !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+}
+
+/* 5. Fiyat Kolonu */
+.filament-resources-products td.filament-tables-cell-price {
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    font-size: 0.875rem !important;
+    font-variant-numeric: tabular-nums !important;
+    white-space: nowrap !important;
+}
+
+.filament-resources-products td.filament-tables-cell-price span {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    color: #0f172a !important;
+    font-weight: 700 !important;
+}
+
+/* 6. Toplam Stok */
+.filament-resources-products td.filament-tables-cell-total-stock {
+    font-weight: 600 !important;
+    color: #475569 !important;
+    font-size: 0.85rem !important;
+    font-variant-numeric: tabular-nums !important;
+    white-space: nowrap !important;
+}
+
+.filament-resources-products td.filament-tables-cell-total-stock span {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    color: #475569 !important;
+}
+
+/* 7. Kampanya Kolonu */
+.filament-resources-products td.filament-tables-cell-campaign-label {
+    white-space: nowrap !important;
+}
+
+.filament-resources-products td.filament-tables-cell-campaign-label span:not(:empty) {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 0.15rem 0.5rem !important;
+    border-radius: 4px !important;
+    background: #fef2f2 !important;
+    color: #dc2626 !important;
+    border: 1px solid #fee2e2 !important;
+    font-weight: 600 !important;
+    font-size: 0.75rem !important;
+}
+
+/* 8. En Çok Satan & Yeni Sezon Durum İkonları */
+.filament-resources-products td.filament-tables-cell-is-featured svg,
+.filament-resources-products td.filament-tables-cell-is-new-season svg {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+.filament-resources-products .text-success-500 {
+    color: #10b981 !important;
+}
+
+.filament-resources-products .text-danger-500 {
+    color: #cbd5e1 !important;
+}
+
+/* 9. İşlemler (Düzenle Butonu) */
+.filament-resources-products td.filament-tables-actions-cell {
+    white-space: nowrap !important;
+    text-align: right !important;
+}
+
+.filament-resources-products td.filament-tables-actions-cell a.filament-tables-link-action {
+    background: #eff6ff !important;
+    color: #2563eb !important;
+    border: 1px solid #dbeafe !important;
+    padding: 0.35rem 0.75rem !important;
+    border-radius: 6px !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    transition: all 0.15s ease !important;
+}
+
+.filament-resources-products td.filament-tables-actions-cell a.filament-tables-link-action:hover {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+}
+
+.filament-resources-products td.filament-tables-actions-cell a.filament-tables-link-action:hover svg {
+    color: #ffffff !important;
+}
+
+/* Sayfalama (Pagination) */
+.filament-resources-products .filament-tables-pagination-container {
+    background: #fafbfc !important;
+    border-top: 1px solid #e2e8f0 !important;
+    padding: 0.75rem 1.25rem !important;
+    font-size: 0.85rem !important;
+}
+
+/* --- 3. ÜRÜN CREATE / EDIT FORM SAYFASI (CLEAN INTEGRATED TABS) --- */
+
+/* Tek Bütünleşik Form Kartı */
+.filament-resources-products .filament-forms-tabs-component {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Tabs Üst Barı — Kartın Üstüne Sıfır Hizalı */
+.filament-resources-products .filament-forms-tabs-component-header,
+.filament-resources-products .filament-forms-tabs-component > nav,
+.filament-resources-products .filament-forms-tabs-component nav[role="tablist"] {
+    background: #f8fafc !important;
+    border: none !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    border-radius: 0 !important;
+    padding: 0 1rem !important;
+    margin: 0 !important;
+    display: flex !important;
+    gap: 0.25rem !important;
+    height: 3rem !important;
+    align-items: flex-end !important;
+}
+
+/* Tab Butonları */
+.filament-resources-products .filament-forms-tabs-component-button,
+.filament-resources-products .filament-forms-tabs-component button[role="tab"] {
+    border: none !important;
+    border-bottom: 2px solid transparent !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: #64748b !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    padding: 0 1.15rem !important;
+    height: 3rem !important;
+    transition: all 0.15s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+    box-shadow: none !important;
+    margin-bottom: -1px !important;
+}
+
+.filament-resources-products .filament-forms-tabs-component-button:hover,
+.filament-resources-products .filament-forms-tabs-component button[role="tab"]:hover {
+    color: #0f172a !important;
+    border-bottom-color: #cbd5e1 !important;
+}
+
+/* Aktif Tab */
+.filament-resources-products .filament-forms-tabs-component-button-active,
+.filament-resources-products .filament-forms-tabs-component button[aria-selected="true"],
+.filament-resources-products .filament-forms-tabs-component button.filament-forms-tabs-component-button-active {
+    background: #ffffff !important;
+    color: #2563eb !important;
+    font-weight: 700 !important;
+    border-bottom: 2px solid #2563eb !important;
+    box-shadow: none !important;
+}
+
+/* Gizli (Aktif Olmayan) Sekmeleri Tamamen Sıfırla (Boşluk Yaratmasını Engelle) */
+.filament-resources-products .filament-forms-tabs-component-tab.invisible,
+.filament-resources-products .filament-forms-tabs-component-tab.h-0,
+.filament-resources-products .filament-forms-tabs-component [role="tabpanel"].invisible,
+.filament-resources-products .filament-forms-tabs-component [role="tabpanel"].h-0,
+.filament-resources-products .filament-forms-tabs-component [role="tabpanel"][style*="display: none"],
+.filament-resources-products .filament-forms-tabs-component-tab[style*="display: none"] {
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Yalnızca Aktif Olan Sekme İçeriği */
+.filament-resources-products .filament-forms-tabs-component-tab:not(.invisible):not(.h-0),
+.filament-resources-products .filament-forms-tabs-component [role="tabpanel"]:not(.invisible):not(.h-0) {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 1.25rem 1.5rem !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    display: block !important;
+}
+
+/* Form Alan Başlıkları (Labels) */
+.filament-resources-products .filament-forms-field-wrapper-label label {
+    font-size: 0.85rem !important;
+    font-weight: 650 !important;
+    color: #1e293b !important;
+    margin-bottom: 0.35rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.25rem !important;
+}
+
+/* Zorunlu Alan Yıldızı */
+.filament-resources-products .filament-forms-field-wrapper-label span.text-danger-600,
+.filament-resources-products .filament-forms-field-wrapper-label label sup {
+    color: #ef4444 !important;
+    font-weight: 700 !important;
+}
+
+/* Açıklama / Yardım Metinleri (Helper Text — ŞİŞKİNLİĞİ GİDERİLDİ) */
+.filament-resources-products .filament-forms-field-wrapper-helper-text {
+    font-size: 0.775rem !important;
+    color: #64748b !important;
+    margin-top: 0.35rem !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    line-height: 1.4 !important;
+}
+
+/* Form İnputları */
+.filament-resources-products input[type="text"],
+.filament-resources-products input[type="number"],
+.filament-resources-products select,
+.filament-resources-products textarea {
+    min-height: 2.5rem !important;
+    padding: 0.5rem 0.85rem !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 0.9rem !important;
+    transition: all 0.15s ease !important;
+}
+
+.filament-resources-products textarea {
+    min-height: 110px !important;
+    line-height: 1.5 !important;
+}
+
+.filament-resources-products input:focus,
+.filament-resources-products select:focus,
+.filament-resources-products textarea:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12) !important;
+}
+
+/* Toggle Switch'ler */
+.filament-resources-products .filament-forms-toggle-component button {
+    width: 2.85rem !important;
+    height: 1.6rem !important;
+    border-radius: 9999px !important;
+}
+
+.filament-resources-products .filament-forms-toggle-component button[aria-checked="true"] {
+    background-color: #10b981 !important;
+}
+
+.filament-resources-products .filament-forms-toggle-component button[aria-checked="false"] {
+    background-color: #cbd5e1 !important;
+}
+
+/* FilePond Dropzone (Sade & Modern) */
+.filament-resources-products .filepond--panel-root {
+    background: #f8fafc !important;
+    border: 1.5px dashed #93c5fd !important;
+    border-radius: 10px !important;
+}
+
+.filament-resources-products .filepond--root:hover .filepond--panel-root {
+    background: #eff6ff !important;
+    border-color: #2563eb !important;
+}
+
+.filament-resources-products .filepond--drop-label {
+    min-height: 6.5rem !important;
+}
+
+.filament-resources-products .filepond--drop-label label {
+    font-size: 0.875rem !important;
+    color: #334155 !important;
+    font-weight: 500 !important;
+}
+
+.filament-resources-products .filepond--label-action {
+    color: #2563eb !important;
+    font-weight: 600 !important;
+}
+
+/* --- 4. RENK & BEDEN REPEATER ÖZEL ALANI --- */
+.filament-resources-products .filament-forms-repeater-component > ul > li {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Repeater İçi İkon Butonları (Daralt / Sil) */
+.filament-resources-products .filament-forms-repeater-component ul button {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 4px 6px !important;
+    border-radius: 6px !important;
+    color: #94a3b8 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+.filament-resources-products .filament-forms-repeater-component ul button:hover {
+    background: #f1f5f9 !important;
+    color: #475569 !important;
+}
+
+.filament-resources-products .filament-forms-repeater-component ul button.text-danger-600,
+.filament-resources-products .filament-forms-repeater-component ul button[wire\:click*="delete"] {
+    color: #ef4444 !important;
+}
+
+.filament-resources-products .filament-forms-repeater-component ul button.text-danger-600:hover,
+.filament-resources-products .filament-forms-repeater-component ul button[wire\:click*="delete"]:hover {
+    background: #fef2f2 !important;
+    color: #dc2626 !important;
+}
+
+/* "Renk Ekle" Butonu (Sadece alttaki oluşturma butonu) */
+.filament-resources-products .filament-forms-repeater-component > div:last-child button,
+.filament-resources-products div.filament-forms-repeater-component-create-button-container button,
+.filament-resources-products button[wire\:click*="createRepeaterItem"] {
+    background: #eff6ff !important;
+    color: #2563eb !important;
+    border: 1.5px dashed #93c5fd !important;
+    border-radius: 8px !important;
+    padding: 0.55rem 1.35rem !important;
+    font-weight: 650 !important;
+    font-size: 0.875rem !important;
+    transition: all 0.15s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+    margin-top: 0.75rem !important;
+    box-shadow: none !important;
+}
+
+.filament-resources-products .filament-forms-repeater-component > div:last-child button:hover,
+.filament-resources-products div.filament-forms-repeater-component-create-button-container button:hover,
+.filament-resources-products button[wire\:click*="createRepeaterItem"]:hover {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+}
+
+/* --- 5. FORM AKSİYON BUTONLARI --- */
+.filament-resources-products .filament-form-actions {
+    margin-top: 1.75rem !important;
+    padding-top: 1.25rem !important;
+    border-top: 1px solid #e2e8f0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+}
+
+/* Oluştur (Primary) Butonu */
+.filament-resources-products .filament-form-actions button.bg-primary-600,
+.filament-resources-products .filament-form-actions button[type="submit"] {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    padding: 0.65rem 1.4rem !important;
+    border-radius: 8px !important;
+    font-weight: 650 !important;
+    font-size: 0.875rem !important;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.3) !important;
+    border: none !important;
+    transition: all 0.15s ease !important;
+}
+
+.filament-resources-products .filament-form-actions button.bg-primary-600:hover,
+.filament-resources-products .filament-form-actions button[type="submit"]:hover {
+    background: #1d4ed8 !important;
+}
+
+/* İkinci Buton ("Oluştur & yeni oluştur") */
+.filament-resources-products .filament-form-actions button:not([type="submit"]):not(.text-gray-700) {
+    background: #ffffff !important;
+    color: #1e293b !important;
+    padding: 0.65rem 1.25rem !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.15s ease !important;
+}
+
+.filament-resources-products .filament-form-actions button:not([type="submit"]):not(.text-gray-700):hover {
+    background: #f8fafc !important;
+    border-color: #94a3b8 !important;
+}
+
+/* İptal Butonu */
+.filament-resources-products .filament-form-actions a,
+.filament-resources-products .filament-form-actions button.text-gray-700 {
+    background: #f1f5f9 !important;
+    color: #475569 !important;
+    padding: 0.65rem 1.15rem !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    border: 1px solid #e2e8f0 !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    transition: all 0.15s ease !important;
+}
+
+.filament-resources-products .filament-form-actions a:hover,
+.filament-resources-products .filament-form-actions button.text-gray-700:hover {
+    background: #e2e8f0 !important;
+    color: #0f172a !important;
+}
+
+/* --- 6. KARANLIK MOD (DARK MODE) --- */
+html.dark .filament-resources-products .filament-header-heading {
+    color: #f8fafc !important;
+}
+
+html.dark .filament-resources-products .filament-tables-table-container,
+html.dark .filament-resources-products .filament-tables-container,
+html.dark .filament-resources-products .filament-forms-card-component,
+html.dark .filament-resources-products .filament-forms-tabs-component,
+html.dark .filament-resources-products .filament-forms-tabs-component-tab:not(.invisible):not(.h-0),
+html.dark .filament-resources-products .filament-forms-tabs-component [role="tabpanel"]:not(.invisible):not(.h-0) {
+    background: #0f172a !important;
+    border-color: #1e293b !important;
+    color: #f8fafc !important;
+}
+
+html.dark .filament-resources-products .filament-tables-header-toolbar {
+    background: #0f172a !important;
+    border-bottom-color: #1e293b !important;
+}
+
+html.dark .filament-resources-products .filament-tables-search-field input {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f1f5f9 !important;
+}
+
+html.dark .filament-resources-products table.filament-tables-table thead th {
+    background: #111c2e !important;
+    border-bottom-color: #1e293b !important;
+    color: #94a3b8 !important;
+}
+
+html.dark .filament-resources-products table.filament-tables-table thead th button {
+    color: #94a3b8 !important;
+}
+
+html.dark .filament-resources-products table.filament-tables-table tbody tr {
+    border-bottom-color: #1a273b !important;
+}
+
+html.dark .filament-resources-products table.filament-tables-table tbody tr:hover {
+    background: #152238 !important;
+}
+
+html.dark .filament-resources-products td.filament-tables-cell-sku span {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #cbd5e1 !important;
+}
+
+html.dark .filament-resources-products td.filament-tables-cell-name,
+html.dark .filament-resources-products td.filament-tables-cell-name span,
+html.dark .filament-resources-products td.filament-tables-cell-name a {
+    color: #f8fafc !important;
+}
+
+html.dark .filament-resources-products td.filament-tables-cell-price,
+html.dark .filament-resources-products td.filament-tables-cell-price span {
+    color: #f8fafc !important;
+}
+
+html.dark .filament-resources-products td.filament-tables-cell-total-stock,
+html.dark .filament-resources-products td.filament-tables-cell-total-stock span {
+    color: #cbd5e1 !important;
+}
+
+html.dark .filament-resources-products td.filament-tables-actions-cell a.filament-tables-link-action {
+    background: rgba(37, 99, 235, 0.15) !important;
+    color: #60a5fa !important;
+    border-color: rgba(37, 99, 235, 0.3) !important;
+}
+
+html.dark .filament-resources-products td.filament-tables-actions-cell a.filament-tables-link-action:hover {
+    background: #2563eb !important;
+    color: #ffffff !important;
+}
+
+html.dark .filament-resources-products .filament-forms-tabs-component-header,
+html.dark .filament-resources-products .filament-forms-tabs-component > nav,
+html.dark .filament-resources-products .filament-forms-tabs-component nav[role="tablist"] {
+    background: #111c2e !important;
+    border-bottom-color: #1e293b !important;
+}
+
+html.dark .filament-resources-products .filament-forms-tabs-component-button,
+html.dark .filament-resources-products .filament-forms-tabs-component button[role="tab"] {
+    color: #94a3b8 !important;
+    background: transparent !important;
+}
+
+html.dark .filament-resources-products .filament-forms-tabs-component-button:hover,
+html.dark .filament-resources-products .filament-forms-tabs-component button[role="tab"]:hover {
+    color: #f8fafc !important;
+    border-bottom-color: #334155 !important;
+}
+
+html.dark .filament-resources-products .filament-forms-tabs-component-button-active,
+html.dark .filament-resources-products .filament-forms-tabs-component button[aria-selected="true"],
+html.dark .filament-resources-products .filament-forms-tabs-component button.filament-forms-tabs-component-button-active {
+    background: #0f172a !important;
+    color: #60a5fa !important;
+    border-bottom: 2px solid #3b82f6 !important;
+}
+
+html.dark .filament-resources-products .filament-forms-field-wrapper-label label {
+    color: #f1f5f9 !important;
+}
+
+html.dark .filament-resources-products .filament-forms-field-wrapper-helper-text {
+    color: #94a3b8 !important;
+}
+
+html.dark .filament-resources-products input[type="text"],
+html.dark .filament-resources-products input[type="number"],
+html.dark .filament-resources-products select,
+html.dark .filament-resources-products textarea {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+}
+
+html.dark .filament-resources-products .filament-forms-repeater-component > ul > li {
+    background: #111c2e !important;
+    border-color: #1e293b !important;
+}
+
+html.dark .filament-resources-products .filepond--panel-root {
+    background: #111c2e !important;
+    border-color: #3b82f6 !important;
+}
+
+html.dark .filament-resources-products .filament-form-actions {
+    border-top-color: #1e293b !important;
+}
+
+html.dark .filament-resources-products .filament-form-actions button:not([type="submit"]):not(.text-gray-700) {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+
+html.dark .filament-resources-products .filament-form-actions a,
+html.dark .filament-resources-products .filament-form-actions button.text-gray-700 {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #cbd5e1 !important;
+}

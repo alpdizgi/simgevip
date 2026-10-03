@@ -1,0 +1,87 @@
+/* Shared icon helpers */
+.icon {
+    display: inline-block;
+    flex-shrink: 0;
+    vertical-align: -0.15em;
+}
+
+.btn .icon,
+.btn--sm .icon,
+.btn--icon-only .icon {
+    margin-right: 0;
+}
+
+.topbar-msg {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.topbar-msg .icon {
+    opacity: 0.9;
+}
+
+.nav-dropdown__item--all {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.nav-dropdown__item--all .icon {
+    opacity: 0.7;
+}
+
+.cart-drawer__close,
+.hold-modal__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+}
+
+.cart-line__qty button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-line__qty button .icon {
+    width: 12px;
+    height: 12px;
+}
+
+.product-accordion summary::after {
+    content: '' !important;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-right: 1.75px solid currentColor;
+    border-bottom: 1.75px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.product-accordion[open] summary::after {
+    content: '' !important;
+    transform: rotate(225deg);
+    margin-top: 0.25rem;
+}
+
+.product-accordion summary {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.badge-pill .icon {
+    width: 12px;
+    height: 12px;
+}
+
+.badge-pill--featured .icon {
+    color: inherit;
+}

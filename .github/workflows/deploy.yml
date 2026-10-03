@@ -1,0 +1,21 @@
+name: Canliya al
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  web-deploy:
+    name: 🎉 Sitemi Sunucuya Gonder
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 En guncel kodlari al
+      uses: actions/checkout@v4
+
+    - name: 📂 FTP ile dosyalari yukle
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}

@@ -1,0 +1,856 @@
+/* =========================================================
+   SimgeVIP — Kurumsal Yönetim Paneli
+   Dashboard (Ana Panel) Sayfası Özel Stilleri
+   Dosya: public/css/admin-dashboard.css
+========================================================= */
+
+/* Filament tanıtım ve varsayılan hesap widget'ını gizle (özel hero banner devreye girer) */
+.filament-dashboard-page .filament-header,
+.filament-info-widget,
+.filament-account-widget,
+.filament-dashboard-page .filament-widgets,
+.filament-dashboard-page .filament-widget {
+    display: none !important;
+}
+
+.sv-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* 1. HERO BANNER */
+.sv-dash-hero {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.75rem;
+    padding: 1.75rem 2rem;
+    background: #111113;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 16px 40px -24px rgba(0, 0, 0, 0.45);
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.sv-dash-hero::after {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -6%;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 68%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.sv-dash-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+}
+
+.sv-dash-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 0.85rem;
+    backdrop-filter: blur(8px);
+}
+
+.sv-dash-pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.35);
+    animation: sv-pulse 2s infinite;
+}
+
+@keyframes sv-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+    70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.sv-dash-badge-text {
+    letter-spacing: 0.02em;
+}
+
+.sv-dash-hero-divider {
+    opacity: 0.5;
+}
+
+.sv-dash-hero-date {
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.sv-dash-hero-title {
+    margin: 0 0 0.45rem 0;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(2rem, 2.4vw, 2.65rem);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: #ffffff;
+    line-height: 1.05;
+}
+
+.sv-dash-hero-desc {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.55;
+}
+
+.sv-dash-hero-actions {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.sv-dash-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 650;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.sv-dash-btn-primary {
+    background: #ffffff;
+    color: #111113 !important;
+    box-shadow: none;
+    border: 1px solid #ffffff;
+}
+
+.sv-dash-btn-primary:hover {
+    background: #f4f4f5;
+    transform: translateY(-1px);
+}
+
+.sv-dash-btn-secondary {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(8px);
+}
+
+.sv-dash-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* 2. KPI GRID */
+.sv-dash-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.9rem;
+}
+
+@media (max-width: 1480px) {
+    .sv-dash-kpi-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 860px) {
+    .sv-dash-kpi-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .sv-dash-kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.sv-kpi-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 1.15rem 1.15rem 1rem;
+    background: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 14px;
+    text-decoration: none !important;
+    box-shadow: none;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.sv-kpi-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #18181b;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.sv-kpi-card:hover {
+    transform: translateY(-2px);
+    border-color: #18181b;
+}
+
+.sv-kpi-card:hover::before {
+    opacity: 1;
+}
+
+.sv-kpi-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.95rem;
+}
+
+.sv-kpi-icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    transition: transform 0.2s ease;
+}
+
+.sv-kpi-card:hover .sv-kpi-icon-wrap {
+    transform: scale(1.06);
+}
+
+.sv-kpi-blue .sv-kpi-icon-wrap,
+.sv-kpi-amber .sv-kpi-icon-wrap,
+.sv-kpi-emerald .sv-kpi-icon-wrap,
+.sv-kpi-purple .sv-kpi-icon-wrap,
+.sv-kpi-ink .sv-kpi-icon-wrap {
+    background: #f4f4f5;
+    color: #18181b;
+}
+
+.sv-kpi-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.sv-kpi-tag-blue,
+.sv-kpi-tag-amber,
+.sv-kpi-tag-emerald,
+.sv-kpi-tag-purple,
+.sv-kpi-tag-ink {
+    background: #f4f4f5;
+    color: #18181b;
+}
+
+.sv-kpi-body {
+    margin-bottom: 0.85rem;
+}
+
+.sv-kpi-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--sv-ink, #0f172a);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.sv-kpi-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--sv-muted, #64748b);
+    margin-top: 0.35rem;
+}
+
+.sv-kpi-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--sv-line-soft, #f1f5f9);
+    font-size: 0.8rem;
+    color: var(--sv-ink-soft, #475569);
+    margin-top: auto;
+}
+
+.sv-kpi-footer strong {
+    color: var(--sv-ink, #0f172a);
+}
+
+.sv-kpi-arrow {
+    color: var(--sv-muted, #64748b);
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.sv-kpi-card:hover .sv-kpi-arrow {
+    transform: translateX(3px);
+    color: #18181b;
+}
+
+/* 3. ORTA ALAN: 2 KOLON GRID */
+.sv-dash-grid-2 {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(320px, 0.95fr);
+    gap: 1rem;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .sv-dash-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+.sv-dash-side {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 0;
+}
+
+.sv-dash-panel {
+    background: var(--sv-surface, #ffffff);
+    border: 1px solid var(--sv-line, #e2e8f0);
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sv-dash-panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.15rem 1.45rem;
+    border-bottom: 1px solid var(--sv-line, #e2e8f0);
+    background: #fafbfc;
+}
+
+.sv-dash-panel-title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--sv-ink, #0f172a);
+    line-height: 1.3;
+}
+
+.sv-dash-panel-sub {
+    font-size: 0.8rem;
+    color: var(--sv-muted, #64748b);
+    margin-top: 0.15rem;
+    display: block;
+}
+
+.sv-dash-panel-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    font-weight: 650;
+    color: #18181b !important;
+    text-decoration: none !important;
+    padding: 0.35rem 0.65rem;
+    border-radius: 6px;
+    background: #f4f4f5;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.sv-dash-panel-link:hover {
+    background: #18181b;
+    color: #ffffff !important;
+}
+
+.sv-dash-table-wrap {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.sv-dash-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    text-align: left;
+}
+
+.sv-dash-table thead th {
+    background: #f8fafc;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--sv-muted, #64748b);
+    border-bottom: 1px solid var(--sv-line, #e2e8f0);
+    white-space: nowrap;
+}
+
+.sv-dash-table tbody td {
+    padding: 0.85rem 1.25rem;
+    border-bottom: 1px solid var(--sv-line-soft, #f1f5f9);
+    vertical-align: middle;
+    color: var(--sv-ink, #0f172a);
+}
+
+.sv-dash-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.sv-dash-table tbody tr:hover td {
+    background: #f8fafc;
+}
+
+.sv-table-product-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.sv-table-product-thumb {
+    width: 38px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--sv-line, #e2e8f0);
+    background: #f1f5f9;
+    flex-shrink: 0;
+}
+
+.sv-table-product-thumb-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sv-muted, #64748b);
+}
+
+.sv-table-product-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.sv-table-product-name {
+    font-weight: 650;
+    color: var(--sv-ink, #0f172a);
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sv-table-product-sku {
+    font-size: 0.75rem;
+    color: var(--sv-muted, #64748b);
+    margin-top: 0.15rem;
+}
+
+.sv-dash-cat-badge {
+    display: inline-flex;
+    padding: 0.2rem 0.55rem;
+    background: #f1f5f9;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--sv-ink-soft, #475569);
+}
+
+.sv-table-price {
+    font-weight: 700;
+    color: var(--sv-ink, #0f172a);
+}
+
+.sv-status-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.sv-status-featured { background: #fef3c7; color: #b45309; }
+.sv-status-new { background: #dbeafe; color: #1d4ed8; }
+.sv-status-normal { background: #f1f5f9; color: #475569; }
+.sv-status-success { background: #d1fae5; color: #047857; }
+.sv-status-warning { background: #fef3c7; color: #b45309; }
+.sv-status-danger { background: #fee2e2; color: #b91c1c; }
+
+.sv-table-action-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.75rem;
+    background: #f1f5f9;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 650;
+    color: #1e293b !important;
+    text-decoration: none !important;
+    transition: all 0.15s ease;
+}
+
+.sv-table-action-btn:hover {
+    background: #18181b;
+    color: #ffffff !important;
+}
+
+.sv-table-empty {
+    text-align: center;
+    padding: 2.5rem 1rem !important;
+    color: var(--sv-muted, #64748b);
+    font-size: 0.9rem;
+}
+
+/* Empty State */
+.sv-dash-empty-state {
+    padding: 3rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sv-dash-empty-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: #f8fafc;
+    border: 1px solid var(--sv-line, #e2e8f0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    margin-bottom: 1rem;
+}
+
+.sv-dash-empty-title {
+    margin: 0 0 0.4rem 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--sv-ink, #121212);
+}
+
+.sv-dash-empty-desc {
+    margin: 0;
+    max-width: 360px;
+    font-size: 0.85rem;
+    color: var(--sv-muted, #71717a);
+    line-height: 1.5;
+}
+
+.sv-dash-empty-state .sv-dash-btn-secondary {
+    background: #18181b;
+    color: #ffffff !important;
+    border-color: #18181b;
+}
+
+.sv-msg-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.sv-msg-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.85rem 1.2rem;
+    border-bottom: 1px solid #f4f4f5;
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.sv-msg-row:last-child {
+    border-bottom: none;
+}
+
+.sv-msg-row:hover {
+    background: #fafafa;
+}
+
+.sv-msg-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #d4d4d8;
+}
+
+.sv-msg-dot.is-unread {
+    background: #18181b;
+}
+
+.sv-msg-body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.sv-msg-name {
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: #18181b;
+}
+
+.sv-msg-subject {
+    font-size: 0.78rem;
+    color: #71717a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sv-msg-time {
+    font-size: 0.75rem;
+    color: #a1a1aa;
+    white-space: nowrap;
+}
+
+html.dark .sv-msg-row {
+    border-bottom-color: #27272a;
+}
+
+html.dark .sv-msg-row:hover {
+    background: #27272a;
+}
+
+html.dark .sv-msg-name {
+    color: #fafafa;
+}
+
+html.dark .sv-msg-dot.is-unread {
+    background: #fafafa;
+}
+
+/* 4. HIZLI ERİŞİM KISAYOLLARI */
+.sv-dash-shortcuts-card {
+    background: var(--sv-surface, #ffffff);
+    border: 1px solid var(--sv-line, #e2e8f0);
+    border-radius: 12px;
+    padding: 1.45rem 1.65rem;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.sv-dash-shortcuts-head {
+    margin-bottom: 1.25rem;
+}
+
+.sv-dash-shortcuts-title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--sv-ink, #0f172a);
+}
+
+.sv-dash-shortcuts-sub {
+    margin: 0.2rem 0 0 0;
+    font-size: 0.8rem;
+    color: var(--sv-muted, #64748b);
+}
+
+.sv-dash-shortcuts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+    .sv-dash-shortcuts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .sv-dash-shortcuts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.sv-shortcut-item {
+    display: flex;
+    align-items: center;
+    gap: 0.95rem;
+    padding: 1rem 1.15rem;
+    border-radius: 10px;
+    border: 1px solid var(--sv-line, #e2e8f0);
+    background: #fafbfc;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+}
+
+.sv-shortcut-item:hover {
+    transform: translateY(-2px);
+    background: #ffffff;
+    border-color: #cbd5e1;
+    box-shadow: 0 6px 16px -3px rgba(15, 23, 42, 0.08);
+}
+
+.sv-shortcut-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.sv-shortcut-purple,
+.sv-shortcut-blue,
+.sv-shortcut-amber,
+.sv-shortcut-emerald { background: #f4f4f5; color: #18181b; }
+
+.sv-shortcut-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.sv-shortcut-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--sv-ink, #0f172a);
+    line-height: 1.25;
+}
+
+.sv-shortcut-meta {
+    font-size: 0.78rem;
+    color: var(--sv-muted, #64748b);
+    margin-top: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ==================== KARANLIK MOD ==================== */
+html.dark .sv-dash-hero {
+    background: #09090b !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark .sv-kpi-card,
+html.dark .sv-dash-panel,
+html.dark .sv-dash-shortcuts-card {
+    background: #18181b !important;
+    border-color: #27272a !important;
+    box-shadow: none !important;
+}
+
+html.dark .sv-dash-panel-head {
+    background: #111113 !important;
+    border-bottom-color: #27272a !important;
+}
+
+html.dark .sv-dash-panel-title,
+html.dark .sv-kpi-value,
+html.dark .sv-kpi-footer,
+html.dark .sv-kpi-footer strong,
+html.dark .sv-kpi-label,
+html.dark .sv-table-product-name,
+html.dark .sv-table-price,
+html.dark .sv-dash-shortcuts-title,
+html.dark .sv-shortcut-title,
+html.dark .sv-dash-empty-title {
+    color: #fafafa !important;
+}
+
+html.dark .sv-dash-table thead th {
+    background: #111113 !important;
+    border-bottom-color: #27272a !important;
+    color: #a1a1aa !important;
+}
+
+html.dark .sv-dash-table tbody td {
+    border-bottom-color: #27272a !important;
+    color: #e4e4e7 !important;
+}
+
+html.dark .sv-dash-table tbody tr:hover td,
+html.dark .sv-shortcut-item:hover {
+    background: #27272a !important;
+}
+
+html.dark .sv-dash-cat-badge,
+html.dark .sv-table-action-btn,
+html.dark .sv-kpi-blue .sv-kpi-icon-wrap,
+html.dark .sv-kpi-amber .sv-kpi-icon-wrap,
+html.dark .sv-kpi-emerald .sv-kpi-icon-wrap,
+html.dark .sv-kpi-purple .sv-kpi-icon-wrap,
+html.dark .sv-kpi-ink .sv-kpi-icon-wrap,
+html.dark .sv-kpi-tag-blue,
+html.dark .sv-kpi-tag-amber,
+html.dark .sv-kpi-tag-emerald,
+html.dark .sv-kpi-tag-purple,
+html.dark .sv-kpi-tag-ink {
+    background: #27272a !important;
+    color: #f4f4f5 !important;
+}
+
+html.dark .sv-table-action-btn:hover,
+html.dark .sv-dash-panel-link:hover {
+    background: #fafafa !important;
+    color: #111113 !important;
+}
+
+html.dark .sv-shortcut-item {
+    background: #111113 !important;
+    border-color: #27272a !important;
+}
+
+html.dark .sv-kpi-label,
+html.dark .sv-kpi-arrow,
+html.dark .sv-kpi-footer {
+    color: #a1a1aa !important;
+}
+
+html.dark .sv-kpi-footer strong {
+    color: #fafafa !important;
+}
+
+html.dark .sv-kpi-card:hover {
+    border-color: #d4d4d8 !important;
+}
+
+html.dark .sv-kpi-card::before {
+    background: #fafafa;
+}
+
+html.dark .sv-kpi-card:hover .sv-kpi-arrow {
+    color: #fafafa !important;
+}
+
+html.dark .sv-dash-empty-icon {
+    background: #111113 !important;
+    border-color: #27272a !important;
+    color: #a1a1aa !important;
+}

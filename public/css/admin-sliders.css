@@ -1,0 +1,580 @@
+/* =========================================================
+   SimgeVIP — Kurumsal Yönetim Paneli
+   Slider Yönetimi (Sliders List & Create/Edit) Özel Stilleri
+   Dosya: public/css/admin-sliders.css
+   ========================================================= */
+
+/* --- 1. SLIDER GENEL SAYFA BAŞLIĞI & AKSİYON BUTONLARI --- */
+.filament-resources-sliders .filament-header {
+    background: transparent !important;
+    border-bottom: 1px solid var(--sv-line, #e2e8f0) !important;
+    padding-bottom: 1.25rem !important;
+    margin-bottom: 1.75rem !important;
+}
+
+.filament-resources-sliders .filament-header-heading {
+    font-size: 1.625rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.025em !important;
+    color: var(--sv-ink, #0f172a) !important;
+}
+
+.filament-resources-sliders .filament-header-subheading {
+    font-size: 0.875rem !important;
+    color: var(--sv-muted, #64748b) !important;
+    margin-top: 0.35rem !important;
+    max-width: 700px !important;
+    line-height: 1.55 !important;
+}
+
+/* Header Butonu ("Yeni slider") */
+.filament-resources-sliders .filament-header .filament-button,
+.filament-resources-sliders .filament-header a.filament-button {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 0.875rem !important;
+    padding: 0.65rem 1.35rem !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28) !important;
+    border: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.filament-resources-sliders .filament-header .filament-button:hover,
+.filament-resources-sliders .filament-header a.filament-button:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.38) !important;
+}
+
+/* Breadcrumb İyileştirmesi */
+.filament-resources-sliders .filament-breadcrumbs {
+    margin-bottom: 0.75rem !important;
+}
+
+.filament-resources-sliders .filament-breadcrumbs a,
+.filament-resources-sliders .filament-breadcrumbs span {
+    font-size: 0.8125rem !important;
+    font-weight: 500 !important;
+    color: #64748b !important;
+}
+
+.filament-resources-sliders .filament-breadcrumbs a:hover {
+    color: #2563eb !important;
+}
+
+/* --- 2. SLIDER LİSTE TABLOSU KAPSAYICISI --- */
+.filament-resources-sliders .filament-tables-container {
+    background: #ffffff !important;
+    border: 1px solid var(--sv-line, #e2e8f0) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05) !important;
+    overflow: hidden !important;
+}
+
+/* Toolbar & Arama Çubuğu */
+.filament-resources-sliders .filament-tables-header-toolbar {
+    background: #ffffff !important;
+    padding: 1rem 1.35rem !important;
+    border-bottom: 1px solid var(--sv-line, #e2e8f0) !important;
+}
+
+.filament-resources-sliders .filament-tables-search-field input {
+    min-height: 2.6rem !important;
+    padding: 0.5rem 0.95rem !important;
+    border-radius: 10px !important;
+    border: 1px solid #cbd5e1 !important;
+    background: #f8fafc !important;
+    font-size: 0.875rem !important;
+    color: #0f172a !important;
+    transition: all 0.2s ease !important;
+}
+
+.filament-resources-sliders .filament-tables-search-field input:focus {
+    background: #ffffff !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+/* Tablo Başlıkları (TH) */
+.filament-resources-sliders table.filament-tables-table thead th {
+    background: #f8fafc !important;
+    padding: 0.9rem 1.25rem !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    color: #64748b !important;
+    border-bottom: 1px solid var(--sv-line, #e2e8f0) !important;
+}
+
+/* Tablo Hücreleri (TD) */
+.filament-resources-sliders table.filament-tables-table tbody td {
+    padding: 1rem 1.25rem !important;
+    border-bottom: 1px solid var(--sv-line-soft, #f1f5f9) !important;
+    vertical-align: middle !important;
+    color: var(--sv-ink, #0f172a) !important;
+    font-size: 0.875rem !important;
+    transition: background 0.15s ease !important;
+}
+
+.filament-resources-sliders table.filament-tables-table tbody tr:hover td {
+    background: #f8fafc !important;
+}
+
+/* Slider Görsel Önizleme Thumbnail */
+.filament-resources-sliders table.filament-tables-table tbody td img {
+    height: 52px !important;
+    width: 104px !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--sv-line, #cbd5e1) !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease !important;
+}
+
+.filament-resources-sliders table.filament-tables-table tbody td img:hover {
+    transform: scale(1.08) !important;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.16) !important;
+    cursor: zoom-in !important;
+}
+
+/* Link Kolonu: Şık rozet / bağlantı */
+.filament-resources-sliders table.filament-tables-table tbody td .filament-tables-text-column {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    color: var(--sv-ink-soft, #475569) !important;
+}
+
+/* Sıra Numarası Rozeti */
+.filament-resources-sliders table.filament-tables-table tbody td:nth-child(5) .filament-tables-text-column,
+.filament-resources-sliders table.filament-tables-table tbody td:nth-child(5) span {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 28px !important;
+    height: 28px !important;
+    border-radius: 9999px !important;
+    background: #f1f5f9 !important;
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    font-size: 0.8rem !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+/* Aktiflik Sütunu (BooleanColumn) */
+.filament-resources-sliders .filament-tables-boolean-column svg {
+    width: 22px !important;
+    height: 22px !important;
+}
+
+.filament-resources-sliders .filament-tables-boolean-column .text-success-500 {
+    color: #10b981 !important;
+    filter: drop-shadow(0 2px 5px rgba(16, 185, 129, 0.3)) !important;
+}
+
+/* Aksiyon Butonları (Düzenle & Sil) — Buton Rozet Görünümü */
+.filament-resources-sliders td.filament-tables-actions-cell {
+    white-space: nowrap !important;
+}
+
+.filament-resources-sliders td.filament-tables-actions-cell > div {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 0.5rem !important;
+}
+
+.filament-resources-sliders .filament-tables-actions-cell a.filament-tables-link-action,
+.filament-resources-sliders .filament-tables-actions-cell button.filament-tables-link-action {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    padding: 0.4rem 0.85rem !important;
+    border-radius: 8px !important;
+    font-size: 0.8125rem !important;
+    font-weight: 650 !important;
+    text-decoration: none !important;
+    line-height: 1.25 !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Düzenle Butonu */
+.filament-resources-sliders .filament-tables-actions-cell a.text-primary-600,
+.filament-resources-sliders .filament-tables-actions-cell a[href*="edit"] {
+    background: #eff6ff !important;
+    color: #2563eb !important;
+    border: 1px solid #bfdbfe !important;
+}
+
+.filament-resources-sliders .filament-tables-actions-cell a.text-primary-600:hover,
+.filament-resources-sliders .filament-tables-actions-cell a[href*="edit"]:hover {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25) !important;
+}
+
+.filament-resources-sliders .filament-tables-actions-cell a.text-primary-600:hover svg {
+    color: #ffffff !important;
+}
+
+/* Sil Butonu */
+.filament-resources-sliders .filament-tables-actions-cell button.text-danger-600,
+.filament-resources-sliders .filament-tables-actions-cell button[wire\:click*="Delete"] {
+    background: #fef2f2 !important;
+    color: #dc2626 !important;
+    border: 1px solid #fecaca !important;
+}
+
+.filament-resources-sliders .filament-tables-actions-cell button.text-danger-600:hover,
+.filament-resources-sliders .filament-tables-actions-cell button[wire\:click*="Delete"]:hover {
+    background: #dc2626 !important;
+    color: #ffffff !important;
+    border-color: #dc2626 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25) !important;
+}
+
+.filament-resources-sliders .filament-tables-actions-cell button.text-danger-600:hover svg {
+    color: #ffffff !important;
+}
+
+/* Checkbox Modernizasyonu */
+.filament-resources-sliders input[type="checkbox"] {
+    width: 17px !important;
+    height: 17px !important;
+    border-radius: 5px !important;
+    border: 1.5px solid #cbd5e1 !important;
+    color: #2563eb !important;
+    cursor: pointer !important;
+}
+
+/* Pagination / Sayfalama Barı */
+.filament-resources-sliders .filament-tables-pagination-container {
+    background: #fafbfc !important;
+    border-top: 1px solid var(--sv-line, #e2e8f0) !important;
+    padding: 0.9rem 1.35rem !important;
+}
+
+/* --- 3. SLIDER CREATE / EDIT FORM SAYFASI --- */
+.filament-resources-sliders .filament-forms-card-component {
+    background: #ffffff !important;
+    border: 1px solid var(--sv-line, #e2e8f0) !important;
+    border-radius: 16px !important;
+    padding: 2.25rem 2.5rem !important;
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05) !important;
+}
+
+/* Form Alan Başlıkları (Label) */
+.filament-resources-sliders .filament-forms-field-wrapper-label label {
+    font-size: 0.875rem !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin-bottom: 0.5rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+}
+
+/* Zorunlu Alan Yıldızı */
+.filament-resources-sliders .filament-forms-field-wrapper-label label sup,
+.filament-resources-sliders .filament-forms-field-wrapper-label span.text-danger-600 {
+    color: #ef4444 !important;
+    font-weight: 800 !important;
+    font-size: 0.9rem !important;
+}
+
+/* Helper Text (Açıklama Kutusu Görünümü) */
+.filament-resources-sliders .filament-forms-field-wrapper-helper-text {
+    margin-top: 0.55rem !important;
+    padding: 0.65rem 1rem !important;
+    background: #eff6ff !important;
+    border: 1px solid #dbeafe !important;
+    border-left: 3.5px solid #2563eb !important;
+    border-radius: 8px !important;
+    font-size: 0.8125rem !important;
+    color: #1e40af !important;
+    line-height: 1.5 !important;
+}
+
+/* FilePond Görsel Yükleyici Dropzone */
+.filament-resources-sliders .filepond--panel-root {
+    background: #f8fafc !important;
+    border: 2px dashed #93c5fd !important;
+    border-radius: 14px !important;
+    transition: all 0.25s ease !important;
+}
+
+.filament-resources-sliders .filepond--root:hover .filepond--panel-root {
+    background: #eff6ff !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.1) !important;
+}
+
+.filament-resources-sliders .filepond--drop-label {
+    min-height: 8rem !important;
+    color: #1e293b !important;
+    font-weight: 600 !important;
+}
+
+.filament-resources-sliders .filepond--drop-label label {
+    font-size: 0.95rem !important;
+    color: #334155 !important;
+    font-weight: 600 !important;
+}
+
+.filament-resources-sliders .filepond--label-action {
+    color: #2563eb !important;
+    text-decoration: underline !important;
+    font-weight: 700 !important;
+}
+
+/* Metin Inputları */
+.filament-resources-sliders .filament-forms-input-wrapper input,
+.filament-resources-sliders .filament-forms-input input,
+.filament-resources-sliders input.filament-forms-input,
+.filament-resources-sliders select {
+    min-height: 2.75rem !important;
+    padding: 0.65rem 1rem !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 10px !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 0.925rem !important;
+    transition: all 0.2s ease !important;
+}
+
+.filament-resources-sliders .filament-forms-input-wrapper input:focus,
+.filament-resources-sliders .filament-forms-input input:focus,
+.filament-resources-sliders input.filament-forms-input:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+    background: #ffffff !important;
+}
+
+/* Toggle Switch (Aktif/Pasif) */
+.filament-resources-sliders .filament-forms-toggle-component button {
+    width: 3.25rem !important;
+    height: 1.85rem !important;
+    border-radius: 9999px !important;
+    transition: background-color 0.25s ease !important;
+}
+
+.filament-resources-sliders .filament-forms-toggle-component button[aria-checked="true"] {
+    background-color: #10b981 !important;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3) !important;
+}
+
+.filament-resources-sliders .filament-forms-toggle-component button[aria-checked="false"] {
+    background-color: #cbd5e1 !important;
+}
+
+/* Form Aksiyon Butonları (Oluştur, Oluştur & Yeni, İptal) */
+.filament-resources-sliders .filament-form-actions {
+    margin-top: 2rem !important;
+    padding-top: 1.5rem !important;
+    border-top: 1px solid var(--sv-line, #e2e8f0) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.85rem !important;
+}
+
+/* Oluştur (Primary) Butonu */
+.filament-resources-sliders .filament-form-actions button.bg-primary-600,
+.filament-resources-sliders .filament-form-actions button[type="submit"] {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+    color: #ffffff !important;
+    padding: 0.75rem 1.65rem !important;
+    border-radius: 10px !important;
+    font-weight: 700 !important;
+    font-size: 0.9rem !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3) !important;
+    border: none !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.filament-resources-sliders .filament-form-actions button.bg-primary-600:hover,
+.filament-resources-sliders .filament-form-actions button[type="submit"]:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4) !important;
+}
+
+/* İkinci Buton ("Oluştur & yeni oluştur") */
+.filament-resources-sliders .filament-form-actions button.bg-secondary-600,
+.filament-resources-sliders .filament-form-actions button:not([type="submit"]):not(.text-gray-700) {
+    background: #ffffff !important;
+    color: #1e293b !important;
+    padding: 0.75rem 1.45rem !important;
+    border-radius: 10px !important;
+    font-weight: 650 !important;
+    font-size: 0.9rem !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.15s ease !important;
+}
+
+.filament-resources-sliders .filament-form-actions button:not([type="submit"]):not(.text-gray-700):hover {
+    background: #f8fafc !important;
+    border-color: #94a3b8 !important;
+    transform: translateY(-1px) !important;
+}
+
+/* İptal Butonu */
+.filament-resources-sliders .filament-form-actions a,
+.filament-resources-sliders .filament-form-actions button.text-gray-700 {
+    background: #f1f5f9 !important;
+    color: #475569 !important;
+    padding: 0.75rem 1.35rem !important;
+    border-radius: 10px !important;
+    font-weight: 650 !important;
+    font-size: 0.9rem !important;
+    border: 1px solid #e2e8f0 !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    transition: all 0.15s ease !important;
+}
+
+.filament-resources-sliders .filament-form-actions a:hover,
+.filament-resources-sliders .filament-form-actions button.text-gray-700:hover {
+    background: #e2e8f0 !important;
+    color: #0f172a !important;
+    transform: translateY(-1px) !important;
+}
+
+/* --- 4. KARANLIK MOD (DARK MODE) --- */
+html.dark .filament-resources-sliders .filament-header-heading {
+    color: #f8fafc !important;
+}
+
+html.dark .filament-resources-sliders .filament-header-subheading {
+    color: #94a3b8 !important;
+}
+
+html.dark .filament-resources-sliders .filament-tables-container,
+html.dark .filament-resources-sliders .filament-forms-card-component {
+    background: #0f172a !important;
+    border-color: #1e293b !important;
+    box-shadow: none !important;
+}
+
+html.dark .filament-resources-sliders .filament-tables-header-toolbar {
+    background: #0f172a !important;
+    border-bottom-color: #1e293b !important;
+}
+
+html.dark .filament-resources-sliders .filament-tables-search-field input {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f1f5f9 !important;
+}
+
+html.dark .filament-resources-sliders table.filament-tables-table thead th {
+    background: #111c2e !important;
+    border-bottom-color: #1e293b !important;
+    color: #94a3b8 !important;
+}
+
+html.dark .filament-resources-sliders table.filament-tables-table tbody td {
+    border-bottom-color: #1a273b !important;
+    color: #e2e8f0 !important;
+}
+
+html.dark .filament-resources-sliders table.filament-tables-table tbody tr:hover td {
+    background: #152238 !important;
+}
+
+html.dark .filament-resources-sliders table.filament-tables-table tbody td img {
+    border-color: #334155 !important;
+}
+
+html.dark .filament-resources-sliders table.filament-tables-table tbody td:nth-child(5) .filament-tables-text-column,
+html.dark .filament-resources-sliders table.filament-tables-table tbody td:nth-child(5) span {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+    border-color: #334155 !important;
+}
+
+html.dark .filament-resources-sliders .filament-tables-actions-cell a.text-primary-600,
+html.dark .filament-resources-sliders .filament-tables-actions-cell a[href*="edit"] {
+    background: rgba(37, 99, 235, 0.15) !important;
+    color: #60a5fa !important;
+    border-color: rgba(37, 99, 235, 0.3) !important;
+}
+
+html.dark .filament-resources-sliders .filament-tables-actions-cell a.text-primary-600:hover,
+html.dark .filament-resources-sliders .filament-tables-actions-cell a[href*="edit"]:hover {
+    background: #2563eb !important;
+    color: #ffffff !important;
+}
+
+html.dark .filament-resources-sliders .filament-tables-actions-cell button.text-danger-600,
+html.dark .filament-resources-sliders .filament-tables-actions-cell button[wire\:click*="Delete"] {
+    background: rgba(220, 38, 38, 0.15) !important;
+    color: #f87171 !important;
+    border-color: rgba(220, 38, 38, 0.3) !important;
+}
+
+html.dark .filament-resources-sliders .filament-tables-actions-cell button.text-danger-600:hover,
+html.dark .filament-resources-sliders .filament-tables-actions-cell button[wire\:click*="Delete"]:hover {
+    background: #dc2626 !important;
+    color: #ffffff !important;
+}
+
+html.dark .filament-resources-sliders .filament-tables-pagination-container {
+    background: #0f172a !important;
+    border-top-color: #1e293b !important;
+}
+
+html.dark .filament-resources-sliders .filament-forms-field-wrapper-label label {
+    color: #f1f5f9 !important;
+}
+
+html.dark .filament-resources-sliders .filament-forms-field-wrapper-helper-text {
+    background: #0f1d33 !important;
+    border-color: #1e3a8a !important;
+    border-left-color: #3b82f6 !important;
+    color: #93c5fd !important;
+}
+
+html.dark .filament-resources-sliders .filepond--panel-root {
+    background: #111c2e !important;
+    border-color: #3b82f6 !important;
+}
+
+html.dark .filament-resources-sliders .filepond--drop-label label {
+    color: #e2e8f0 !important;
+}
+
+html.dark .filament-resources-sliders .filament-forms-input-wrapper input,
+html.dark .filament-resources-sliders .filament-forms-input input,
+html.dark .filament-resources-sliders input.filament-forms-input {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+}
+
+html.dark .filament-resources-sliders .filament-form-actions {
+    border-top-color: #1e293b !important;
+}
+
+html.dark .filament-resources-sliders .filament-form-actions button:not([type="submit"]):not(.text-gray-700) {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+}
+
+html.dark .filament-resources-sliders .filament-form-actions a,
+html.dark .filament-resources-sliders .filament-form-actions button.text-gray-700 {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #cbd5e1 !important;
+}

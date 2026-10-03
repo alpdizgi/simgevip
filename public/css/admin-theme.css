@@ -1,0 +1,1553 @@
+/* =========================================================
+   SimgeVIP — Yönetim Paneli
+   Vitrin ile aynı palet: siyah, taş grisi, beyaz
+========================================================= */
+
+:root {
+    --sv-navy-950: #09090b;
+    --sv-navy-900: #111113;
+    --sv-navy-800: #18181b;
+    --sv-navy-700: #3f3f46;
+    --sv-accent: #18181b;
+    --sv-accent-hover: #09090b;
+    --sv-bg: #f5f5f4;
+    --sv-surface: #ffffff;
+    --sv-ink: #121212;
+    --sv-ink-soft: #3a3a3a;
+    --sv-muted: #71717a;
+    --sv-line: #e4e4e7;
+    --sv-line-soft: #f4f4f5;
+    --sv-danger: #b91c1c;
+    --sv-success: #15803d;
+    --sv-sidebar-w: 15.75rem;
+    --sv-header-h: 4.25rem;
+    --sv-radius: 12px;
+    --sv-font: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+    --sv-display: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* ---------- TEMEL ---------- */
+html {
+    font-size: 15px !important;
+}
+
+body.filament-body,
+.filament,
+.filament * {
+    font-family: var(--sv-font) !important;
+}
+
+body.filament-body {
+    background: var(--sv-bg) !important;
+    color: var(--sv-ink) !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #a1a1aa; }
+
+/* Filament primary → kurumsal lacivert */
+.bg-primary-500,
+.bg-primary-600,
+.hover\:bg-primary-600:hover,
+.focus\:bg-primary-600:focus,
+button.filament-button.filament-button-size-md.bg-primary-600,
+.filament-button.bg-primary-600,
+.filament-button.bg-primary-500 {
+    background-color: var(--sv-accent) !important;
+}
+
+.hover\:bg-primary-500:hover,
+.filament-button:hover.bg-primary-600,
+.filament-button.bg-primary-600:hover {
+    background-color: var(--sv-accent-hover) !important;
+}
+
+.text-primary-500,
+.text-primary-600,
+.hover\:text-primary-500:hover,
+.focus\:text-primary-500:focus {
+    color: var(--sv-accent) !important;
+}
+
+.ring-primary-500,
+.focus\:ring-primary-500:focus,
+.focus\:border-primary-500:focus {
+    --tw-ring-color: rgba(24, 24, 27, 0.18) !important;
+    border-color: var(--sv-accent) !important;
+}
+
+/* ---------- SIDEBAR ---------- */
+aside.filament-sidebar {
+    width: var(--sv-sidebar-w) !important;
+    max-width: var(--sv-sidebar-w) !important;
+    background: #111113 !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.06) !important;
+    box-shadow: none !important;
+    color: #e4e4e7 !important;
+    transition: none !important;
+}
+
+.filament-sidebar-header {
+    height: var(--sv-header-h) !important;
+    min-height: var(--sv-header-h) !important;
+    padding: 0 1.25rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    justify-content: flex-start !important;
+}
+
+.filament-sidebar-header > div {
+    justify-content: flex-start !important;
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+}
+
+.filament-brand {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.1rem !important;
+    color: #ffffff !important;
+    font-family: var(--sv-display) !important;
+    font-size: 1.45rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: none !important;
+    line-height: 1 !important;
+}
+
+.filament-brand::after {
+    content: 'Yönetim Paneli';
+    font-family: var(--sv-font) !important;
+    font-size: 0.62rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+    color: #a1a1aa !important;
+}
+
+.filament-sidebar-nav {
+    padding: 1rem 0 !important;
+}
+
+.filament-sidebar-nav > ul {
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+    row-gap: 0.25rem !important;
+}
+
+.filament-sidebar-nav > ul > li > div[class*='border-t'] {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    margin: 0.75rem 0 !important;
+}
+
+.filament-sidebar-group-label,
+.filament-sidebar-group button span {
+    color: #71717a !important;
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    padding-left: 0.35rem !important;
+}
+
+.filament-sidebar-item > a {
+    margin: 2px 0 !important;
+    padding: 0.65rem 0.85rem !important;
+    border-radius: 8px !important;
+    border-left: 3px solid transparent !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    color: #d4d4d8 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    transition: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+}
+
+.filament-sidebar-item > a:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: #ffffff !important;
+    transform: none !important;
+}
+
+.filament-sidebar-item-active > a,
+.filament-sidebar-item > a.bg-primary-500 {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+    border-left-color: #ffffff !important;
+    box-shadow: none !important;
+}
+
+.filament-sidebar-item > a svg {
+    width: 1.15rem !important;
+    height: 1.15rem !important;
+    color: #a1a1aa !important;
+    transition: color 0.15s ease !important;
+}
+
+.filament-sidebar-item-active > a svg,
+.filament-sidebar-item > a:hover svg {
+    color: #ffffff !important;
+}
+
+.filament-sidebar-item-active > a *,
+.filament-sidebar-item > a.bg-primary-500 * {
+    color: #ffffff !important;
+}
+
+/* ---------- ÜST BAR ---------- */
+.filament-main {
+    background: var(--sv-bg) !important;
+    gap: 0 !important;
+}
+
+header.filament-main-topbar {
+    height: var(--sv-header-h) !important;
+    min-height: var(--sv-header-h) !important;
+    background: var(--sv-surface) !important;
+    border-bottom: 1px solid var(--sv-line) !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03) !important;
+    backdrop-filter: none !important;
+    padding: 0 0.5rem !important;
+    overflow: visible !important;
+    z-index: 40 !important;
+}
+
+.filament-main-topbar .filament-breadcrumbs,
+.filament-main-topbar nav,
+.filament-main-topbar ol,
+.filament-main-topbar li,
+.filament-main-topbar a,
+.filament-main-topbar span {
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    color: var(--sv-ink-soft) !important;
+}
+
+.filament-main-topbar .filament-breadcrumbs li:last-child,
+.filament-main-topbar .filament-breadcrumbs li:last-child span {
+    color: var(--sv-ink) !important;
+    font-weight: 700 !important;
+}
+
+.filament-user-menu,
+.filament-dropdown-trigger {
+    font-size: 0.875rem !important;
+}
+
+.filament-user-menu button img,
+.filament-user-menu button span.filament-avatar {
+    border-radius: 9999px !important;
+    box-shadow: 0 0 0 2px #e4e4e7 !important;
+    transition: transform 0.15s ease !important;
+}
+
+.filament-user-menu button:hover img,
+.filament-user-menu button:hover span.filament-avatar {
+    transform: scale(1.05) !important;
+}
+
+/* ---------- ANA İÇERİK ---------- */
+.filament-main-content {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 1.15rem 1.25rem 2rem !important;
+}
+
+@media (min-width: 1280px) {
+    .filament-main-content {
+        padding: 1.35rem 1.6rem 2.25rem !important;
+    }
+}
+
+.filament-page > .space-y-6 {
+    gap: 1rem !important;
+}
+
+.filament-dashboard-page .filament-header {
+    display: none !important;
+}
+
+.filament-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 0.15rem !important;
+    padding-bottom: 0.85rem !important;
+    border-bottom: 1px solid var(--sv-line) !important;
+}
+
+.filament-header-heading,
+.filament-header h1 {
+    font-family: var(--sv-display) !important;
+    font-size: 1.85rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.01em !important;
+    color: var(--sv-ink) !important;
+    line-height: 1.1 !important;
+}
+
+.filament-header-heading * {
+    color: var(--sv-ink) !important;
+}
+
+.filament-header-subheading {
+    margin-top: 0.2rem !important;
+    font-size: 0.875rem !important;
+    color: var(--sv-muted) !important;
+}
+
+/* ---------- YÜZEY / KARTLAR ---------- */
+.filament-card,
+.filament-forms-card,
+.filament-tables-container,
+.filament-widgets-container > div,
+.filament-account-widget .filament-card,
+.filament-stats-overview-widget-card,
+.filament-widget > div {
+    background: var(--sv-surface) !important;
+    border: 1px solid var(--sv-line) !important;
+    border-radius: var(--sv-radius) !important;
+    box-shadow: 0 1px 2px rgba(11, 22, 34, 0.04) !important;
+}
+
+.filament-card:hover,
+.filament-widgets-container > div:hover,
+.filament-widget > div:hover {
+    transform: none !important;
+    box-shadow: 0 1px 3px rgba(11, 22, 34, 0.06) !important;
+}
+
+.filament-account-widget .filament-card {
+    padding: 1.1rem 1.25rem !important;
+}
+
+.filament-account-widget h2 {
+    font-size: 1.05rem !important;
+    font-weight: 650 !important;
+    color: var(--sv-ink) !important;
+}
+
+.filament-stats-overview-widget .filament-stats-card,
+.filament-stats-card {
+    padding: 1.1rem 1.2rem !important;
+}
+
+.filament-stats-card-label {
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    color: var(--sv-muted) !important;
+}
+
+.filament-stats-card-value {
+    font-size: 1.55rem !important;
+    font-weight: 700 !important;
+    color: var(--sv-ink) !important;
+}
+
+/* Filament tanıtım ve varsayılan hesap widget'ını gizle (yerine özel hero banner geliyor) */
+.filament-info-widget,
+.filament-account-widget {
+    display: none !important;
+}
+
+/* ---------- TABLOLAR ---------- */
+.filament-tables-container {
+    overflow: visible !important;
+}
+
+.filament-tables-header-container {
+    position: relative;
+    z-index: 30;
+}
+
+.filament-tables-table-container {
+    position: relative;
+    z-index: 1;
+}
+
+.filament-tables-header,
+.filament-tables-header-container,
+.filament-tables-header-toolbar {
+    background: var(--sv-surface) !important;
+    border-bottom: 1px solid var(--sv-line-soft) !important;
+    padding: 0.85rem 1rem !important;
+}
+
+.filament-tables-search-field input,
+.filament-tables-search-input {
+    font-size: 0.875rem !important;
+    border-radius: 4px !important;
+    border-color: var(--sv-line) !important;
+}
+
+table.filament-tables-table {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+
+table.filament-tables-table thead th {
+    background: #fafafa !important;
+    border-bottom: 1px solid var(--sv-line) !important;
+    padding: 0.7rem 1rem !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    color: var(--sv-muted) !important;
+    white-space: nowrap !important;
+}
+
+table.filament-tables-table tbody td {
+    padding: 0.8rem 1rem !important;
+    font-size: 0.9rem !important;
+    color: var(--sv-ink) !important;
+    border-bottom: 1px solid var(--sv-line-soft) !important;
+    vertical-align: middle !important;
+}
+
+table.filament-tables-table tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+table.filament-tables-table tbody tr:hover td {
+    background: #fafafa !important;
+}
+
+.filament-tables-pagination-container {
+    padding: 0.75rem 1rem !important;
+    border-top: 1px solid var(--sv-line-soft) !important;
+    background: #fafbfc !important;
+    font-size: 0.85rem !important;
+}
+
+/* ---------- FORMLAR ---------- */
+.filament-forms-field-wrapper-label,
+.filament-forms-field-wrapper label,
+label.filament-forms-field-wrapper-label {
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+    color: var(--sv-ink-soft) !important;
+    margin-bottom: 0.35rem !important;
+}
+
+.filament-forms-field-wrapper-helper-text,
+.filament-forms-field-wrapper p.text-sm {
+    font-size: 0.75rem !important;
+    color: var(--sv-muted) !important;
+}
+
+.filament-forms-input input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.filament-forms-input select,
+.filament-forms-input textarea,
+.filament-forms-text-input-component input,
+.filament-forms-textarea-component textarea,
+textarea.filament-forms-textarea-component,
+textarea.filament-forms-input,
+.filament-forms-select-component select,
+input.filament-forms-input:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
+    min-height: 2.35rem !important;
+    font-size: 0.9rem !important;
+    color: var(--sv-ink) !important;
+    border: 1px solid var(--sv-line) !important;
+    border-radius: 4px !important;
+    background: #fff !important;
+    box-shadow: none !important;
+}
+
+.filament-forms-textarea-component textarea,
+textarea.filament-forms-textarea-component,
+textarea.filament-forms-input {
+    min-height: 5.5rem !important;
+    height: auto !important;
+}
+
+.filament-forms-input input:focus,
+.filament-forms-text-input-component input:focus,
+.filament-forms-textarea-component textarea:focus,
+textarea.filament-forms-textarea-component:focus,
+textarea.filament-forms-input:focus,
+.filament-forms-select-component select:focus {
+    border-color: var(--sv-accent) !important;
+    box-shadow: 0 0 0 3px rgba(24, 24, 27, 0.1) !important;
+    outline: none !important;
+}
+
+.filament-forms-toggle-component button[aria-checked='true'] {
+    background: var(--sv-accent) !important;
+}
+
+.choices__inner,
+.choices[data-type*='select-one'] .choices__inner {
+    min-height: 2.35rem !important;
+    border-radius: 4px !important;
+    border-color: var(--sv-line) !important;
+    font-size: 0.9rem !important;
+    background: #fff !important;
+}
+
+.choices__list--single {
+    padding: 0.15rem 0 !important;
+}
+
+.choices__button {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    opacity: 0.55 !important;
+}
+
+.choices__button:hover {
+    opacity: 1 !important;
+}
+
+/* Sekmeler — Filament varsayılan düzenine dokunma, sadece renk */
+.filament-forms-tabs-component-button {
+    white-space: nowrap !important;
+    overflow: visible !important;
+}
+
+.filament-forms-tabs-component-button-active {
+    color: var(--sv-accent) !important;
+}
+
+.filament-forms-card,
+.filament-forms-card.rounded-xl {
+    border-radius: var(--sv-radius) !important;
+}
+
+.filament-forms-repeater-component-item {
+    border-radius: var(--sv-radius) !important;
+    box-shadow: none !important;
+}
+
+.filepond--panel-root {
+    background: #f8fafc !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+}
+
+.filepond--panel-top::after,
+.filepond--panel-bottom::before {
+    display: none !important;
+    content: none !important;
+}
+
+/* Chrome/Edge WAI-ARIA Bypass: Make the native input stretch over everything */
+.filepond--root .filepond--browser.filepond--browser {
+    opacity: 0 !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 100 !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+.filepond--drop-label label {
+    font-size: 0.875rem !important;
+    color: var(--sv-muted) !important;
+}
+
+/* ---------- BUTONLAR ---------- */
+.filament-button,
+button.filament-button,
+.filament-page .filament-button {
+    min-height: 2.35rem !important;
+    border-radius: 4px !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.01em !important;
+    box-shadow: none !important;
+    padding-left: 0.95rem !important;
+    padding-right: 0.95rem !important;
+}
+
+.filament-button.filament-button-size-sm {
+    min-height: 2rem !important;
+    font-size: 0.8rem !important;
+}
+
+.bg-primary-400,
+.bg-primary-500,
+.bg-primary-600,
+.bg-primary-700,
+.hover\:bg-primary-500:hover,
+.hover\:bg-primary-700:hover,
+.focus\:bg-primary-700:focus {
+    background-color: var(--sv-accent) !important;
+    border-color: var(--sv-accent) !important;
+}
+
+.filament-button.bg-primary-600:hover,
+.hover\:bg-primary-500:hover {
+    background-color: var(--sv-accent-hover) !important;
+}
+
+.text-primary-400,
+.text-primary-700,
+.hover\:text-primary-600:hover {
+    color: var(--sv-accent) !important;
+}
+
+.border-primary-500,
+.border-primary-600,
+.focus\:border-primary-600:focus {
+    border-color: var(--sv-accent) !important;
+}
+
+.filament-tables-actions .filament-link,
+.filament-tables-actions a,
+.filament-link {
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+}
+
+.filament-modal-window {
+    border-radius: var(--sv-radius) !important;
+    border: 1px solid var(--sv-line) !important;
+    box-shadow: 0 12px 40px rgba(11, 22, 34, 0.18) !important;
+}
+
+/* ---------- FOOTER ---------- */
+.filament-main-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--sv-line);
+    background: var(--sv-surface);
+}
+
+.filament-footer,
+.filament-footer > div {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+html.dark .filament-main-footer {
+    background: #18181b;
+    border-color: #3f3f46;
+}
+
+html.dark .filament-sidebar-open-button {
+    color: #fafafa !important;
+}
+
+.custom-admin-footer {
+    margin-top: 1.75rem;
+    padding: 1rem 0 0.25rem;
+    border-top: 1px solid var(--sv-line);
+    text-align: center;
+}
+
+.custom-admin-footer p {
+    margin: 0;
+    color: var(--sv-muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+}
+
+.custom-admin-footer strong {
+    color: var(--sv-ink);
+    font-weight: 650;
+}
+
+/* ---------- MOBİL ---------- */
+@media (max-width: 1023px) {
+    aside.filament-sidebar {
+        width: min(15.75rem, 88vw) !important;
+        max-width: min(15.75rem, 88vw) !important;
+    }
+
+    .filament-main-content {
+        padding: 1rem !important;
+    }
+
+    .filament-header-heading,
+    .filament-header h1 {
+        font-size: 1.15rem !important;
+    }
+}
+
+/* ---------- TEMA DÜĞMESİ ---------- */
+.sv-theme-toggle {
+    display: inline-flex;
+    align-items: center;
+}
+
+.sv-theme-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.35rem;
+    height: 2.35rem;
+    border: 1px solid var(--sv-line);
+    border-radius: 6px;
+    background: var(--sv-surface);
+    color: var(--sv-ink-soft);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.sv-theme-btn:hover {
+    background: #f1f5f9;
+    color: var(--sv-ink);
+    border-color: #c5d0db;
+}
+
+/* ---------- TOAST BİLDİRİMLER ---------- */
+.filament-notifications {
+    z-index: 80 !important;
+}
+
+.filament-notifications > div,
+.filament-notifications .fi-no-notification,
+div[x-data].filament-notifications-notification,
+.filament-notifications [role='status'] > div {
+    pointer-events: auto !important;
+}
+
+.filament-notifications .shadow-lg,
+.filament-notifications .rounded-xl {
+    border-radius: 8px !important;
+    border: 1px solid var(--sv-line) !important;
+    box-shadow: 0 10px 30px rgba(11, 22, 34, 0.14) !important;
+    font-family: var(--sv-font) !important;
+}
+
+/* ---------- KARANLIK MOD ---------- */
+html.dark {
+    color-scheme: dark;
+}
+
+html.dark body.filament-body {
+    background: #0d1520 !important;
+    color: #e6edf5 !important;
+}
+
+html.dark .filament-main {
+    background: #0d1520 !important;
+}
+
+html.dark header.filament-main-topbar {
+    background: #121c2a !important;
+    border-bottom-color: #243247 !important;
+}
+
+html.dark .filament-main-topbar .filament-breadcrumbs,
+html.dark .filament-main-topbar nav,
+html.dark .filament-main-topbar ol,
+html.dark .filament-main-topbar li,
+html.dark .filament-main-topbar a,
+html.dark .filament-main-topbar span {
+    color: #9fb0c3 !important;
+}
+
+html.dark .filament-main-topbar .filament-breadcrumbs li:last-child,
+html.dark .filament-main-topbar .filament-breadcrumbs li:last-child span {
+    color: #e6edf5 !important;
+}
+
+html.dark .sv-theme-btn {
+    background: #182434 !important;
+    border-color: #2a3d55 !important;
+    color: #c5d3e3 !important;
+}
+
+html.dark .sv-theme-btn:hover {
+    background: #1e2f42 !important;
+    color: #ffffff !important;
+}
+
+html.dark .filament-header {
+    border-bottom-color: #243247 !important;
+}
+
+html.dark .filament-header-heading,
+html.dark .filament-header h1,
+html.dark .filament-header-heading * {
+    color: #eef3f8 !important;
+}
+
+html.dark .filament-header-subheading {
+    color: #8fa1b5 !important;
+}
+
+html.dark .filament-card,
+html.dark .filament-forms-card,
+html.dark .filament-tables-container,
+html.dark .filament-widgets-container > div,
+html.dark .filament-account-widget .filament-card,
+html.dark .filament-widget > div {
+    background: #121c2a !important;
+    border-color: #243247 !important;
+    box-shadow: none !important;
+}
+
+html.dark .filament-account-widget h2 {
+    color: #eef3f8 !important;
+}
+
+html.dark table.filament-tables-table thead th {
+    background: #162233 !important;
+    border-bottom-color: #243247 !important;
+    color: #8fa1b5 !important;
+}
+
+html.dark table.filament-tables-table tbody td {
+    color: #d7e2ee !important;
+    border-bottom-color: #1c2b3d !important;
+}
+
+html.dark table.filament-tables-table tbody tr:hover td {
+    background: #162233 !important;
+}
+
+html.dark .filament-tables-header,
+html.dark .filament-tables-header-container,
+html.dark .filament-tables-header-toolbar,
+html.dark .filament-tables-pagination-container {
+    background: #121c2a !important;
+    border-color: #243247 !important;
+    color: #9fb0c3 !important;
+}
+
+html.dark .filament-forms-field-wrapper-label,
+html.dark .filament-forms-field-wrapper label {
+    color: #b7c6d6 !important;
+}
+
+html.dark .filepond--panel-root {
+    background: #101c2b !important;
+    border: none !important;
+}
+
+html.dark .filepond--drop-label label {
+    color: #9fb3c8 !important;
+}
+
+html.dark .choices__inner,
+html.dark .choices[data-type*='select-one'] .choices__inner {
+    background: #0f1a27 !important;
+    border-color: #2a3d55 !important;
+    color: #e6edf5 !important;
+}
+
+html.dark .choices__list--dropdown,
+html.dark .choices__list[aria-expanded] {
+    background: #152233 !important;
+    border-color: #2a3d55 !important;
+}
+
+html.dark .filament-forms-tabs-component-button-active {
+    color: #fafafa !important;
+}
+
+html.dark .filament-forms-input input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+html.dark .filament-forms-input select,
+html.dark .filament-forms-input textarea,
+html.dark .filament-forms-text-input-component input,
+html.dark .filament-forms-textarea-component textarea,
+html.dark textarea.filament-forms-textarea-component,
+html.dark textarea.filament-forms-input,
+html.dark .filament-forms-select-component select,
+html.dark input.filament-forms-input:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
+    background: #0f1a27 !important;
+    border-color: #2a3d55 !important;
+    color: #e6edf5 !important;
+}
+
+html.dark .custom-admin-footer {
+    border-top-color: #243247;
+}
+
+html.dark .custom-admin-footer p {
+    color: #7f93a8;
+}
+
+html.dark .custom-admin-footer strong {
+    color: #d7e2ee;
+}
+
+html.dark .filament-notifications .shadow-lg,
+html.dark .filament-notifications .rounded-xl {
+    background: #121c2a !important;
+    border-color: #2a3d55 !important;
+    color: #e6edf5 !important;
+}
+
+/* Sidebar karanlıkta da kurumsal lacivert kalır */
+html.dark aside.filament-sidebar {
+    background: #09090b !important;
+    border-right-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Kategori / menü ağacı listesi */
+.cat-tree-cell {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    min-width: 14rem;
+    padding: 0.15rem 0;
+}
+
+.cat-tree-cell.is-root .cat-tree-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #121212;
+}
+
+.cat-tree-cell.is-child {
+    padding-left: 0.25rem;
+}
+
+.cat-tree-guide {
+    flex: 0 0 auto;
+    width: 1.1rem;
+    height: 1.35rem;
+    margin-top: 0.15rem;
+    margin-left: 0.35rem;
+    border-left: 2px solid #c5d3e2;
+    border-bottom: 2px solid #c5d3e2;
+    border-bottom-left-radius: 0.35rem;
+}
+
+.cat-tree-body {
+    min-width: 0;
+}
+
+.cat-tree-title {
+    font-weight: 600;
+    color: #18181b;
+    line-height: 1.3;
+}
+
+.cat-tree-meta {
+    margin-top: 0.15rem;
+    font-size: 0.75rem;
+    color: #6b7f95;
+    line-height: 1.35;
+}
+
+html.dark .cat-tree-cell.is-root .cat-tree-title,
+html.dark .cat-tree-title {
+    color: #e8eef6;
+}
+
+html.dark .cat-tree-meta {
+    color: #8fa1b5;
+}
+
+html.dark .cat-tree-guide {
+    border-color: #3a516b;
+}
+
+/* Create sayfası: mevcut kategori ağacı */
+.category-create-tree__header {
+    margin-bottom: 0.85rem;
+}
+
+.category-create-tree__header h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #121212;
+}
+
+.category-create-tree__header p {
+    margin: 0.35rem 0 0;
+    font-size: 0.85rem;
+    color: #6b7f95;
+}
+
+.category-create-tree__table-wrap {
+    background: #fff;
+    border-color: #d7e2ee !important;
+}
+
+.category-create-tree__table thead {
+    background: #f3f7fb;
+    border-bottom: 1px solid #d7e2ee;
+}
+
+.category-create-tree__table th {
+    padding: 0.7rem 1rem;
+    font-weight: 600;
+    color: #5f738a;
+    white-space: nowrap;
+}
+
+.category-create-tree__table td {
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #e8eef5;
+    color: #18181b;
+}
+
+.category-create-tree__table tr.is-root td {
+    background: #f8fbfd;
+}
+
+.category-create-tree__table tr.is-child td {
+    background: #fff;
+}
+
+.cat-tree-thumb {
+    width: 36px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    background: #e8eef5;
+}
+
+.cat-tree-thumb.is-empty {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #9aa9b8;
+    font-size: 0.8rem;
+}
+
+.cat-level-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.cat-level-badge.is-root {
+    background: #f4f4f5;
+    color: #18181b;
+}
+
+.cat-level-badge.is-child {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.cat-tree-action {
+    margin-left: 0.75rem;
+    color: #18181b;
+    font-weight: 600;
+}
+
+.cat-tree-action:hover {
+    text-decoration: underline;
+}
+
+.cat-tree-action.is-danger {
+    color: #b91c1c;
+}
+
+html.dark .category-create-tree__header h3 {
+    color: #e8eef6;
+}
+
+html.dark .category-create-tree__header p {
+    color: #8fa1b5;
+}
+
+html.dark .category-create-tree__table-wrap {
+    background: #121c2a;
+    border-color: #243247 !important;
+}
+
+html.dark .category-create-tree__table thead {
+    background: #162233;
+    border-bottom-color: #243247;
+}
+
+html.dark .category-create-tree__table th {
+    color: #8fa1b5;
+}
+
+html.dark .category-create-tree__table td {
+    border-bottom-color: #1c2b3d;
+    color: #d7e2ee;
+}
+
+html.dark .category-create-tree__table tr.is-root td {
+    background: #152233;
+}
+
+html.dark .category-create-tree__table tr.is-child td {
+    background: #121c2a;
+}
+
+html.dark .cat-level-badge.is-root {
+    background: #27272a;
+    color: #fafafa;
+}
+
+html.dark .cat-level-badge.is-child {
+    background: #243247;
+    color: #cbd5e1;
+}
+
+html.dark .cat-tree-action {
+    color: #e4e4e7;
+}
+
+html.dark .cat-tree-action.is-danger {
+    color: #fca5a5;
+}
+
+/* Menü yönetimi sayfası */
+.menu-manager {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.menu-manager__card {
+    background: #fff;
+    border: 1px solid #e4e4e7;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.menu-manager__card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1.1rem;
+    background: #fafafa;
+    border-bottom: 1px solid #e4e4e7;
+}
+
+.menu-manager__card-head h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #121212;
+}
+
+.menu-manager__count,
+.menu-manager__hint,
+.menu-manager__meta,
+.menu-manager__url {
+    color: #71717a;
+    font-size: 0.8rem;
+}
+
+.menu-manager__count {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    background: #f4f4f5;
+    font-weight: 650;
+    white-space: nowrap;
+}
+
+.menu-manager__hint {
+    margin: 0;
+    padding: 0.7rem 1.1rem;
+    border-bottom: 1px solid #f4f4f5;
+    background: #fafafa;
+}
+
+.menu-manager__item.is-root {
+    border-bottom: 1px solid #f4f4f5;
+}
+
+.menu-manager__item.is-root:last-child {
+    border-bottom: 0;
+}
+
+.menu-manager__row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+}
+
+.menu-manager__row:hover {
+    background: #fafafa;
+}
+
+.menu-manager__item.is-child .menu-manager__row {
+    padding-left: 0.85rem;
+    background: transparent;
+}
+
+.menu-manager__item.is-child .menu-manager__row:hover {
+    background: #fafafa;
+}
+
+.menu-manager__drag {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: #a1a1aa;
+    cursor: grab;
+}
+
+.menu-manager__drag:active {
+    cursor: grabbing;
+}
+
+.menu-manager__drag:hover {
+    background: #f4f4f5;
+    color: #18181b;
+}
+
+.menu-manager__main {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.menu-manager__title-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.menu-manager__title-line strong {
+    color: #18181b;
+    font-size: 0.9rem;
+    font-weight: 650;
+}
+
+.menu-manager__meta,
+.menu-manager__url {
+    margin-top: 0.2rem;
+}
+
+.menu-manager__url {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.menu-manager__pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.08rem 0.45rem;
+    border-radius: 999px;
+    background: #f4f4f5;
+    color: #3f3f46;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.menu-manager__pill.is-live {
+    background: #f4f4f5;
+    color: #18181b;
+    box-shadow: inset 0 0 0 1px #d4d4d8;
+}
+
+.menu-manager__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-shrink: 0;
+}
+
+.menu-manager__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.15rem;
+    height: 2.15rem;
+    border: 1px solid #e4e4e7;
+    border-radius: 6px;
+    background: #fff;
+    color: #3f3f46;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.menu-manager__icon:hover {
+    background: #fafafa;
+    color: #18181b;
+    border-color: #d4d4d8;
+}
+
+.menu-manager__icon.is-danger:hover {
+    color: #b91c1c;
+    border-color: #fecaca;
+    background: #fff;
+}
+
+.menu-manager__children {
+    margin: 0 1rem 0.65rem 3.1rem;
+    border-left: 1px solid #e4e4e7;
+}
+
+.menu-manager__empty {
+    padding: 1.25rem 1.1rem;
+    color: #71717a;
+    font-size: 0.9rem;
+}
+
+.sortable-ghost {
+    opacity: 0.45;
+    background: #f4f4f5 !important;
+}
+
+html.dark .menu-manager__card {
+    background: #18181b;
+    border-color: #3f3f46;
+}
+
+html.dark .menu-manager__card-head,
+html.dark .menu-manager__hint {
+    background: #111113;
+    border-color: #3f3f46;
+}
+
+html.dark .menu-manager__card-head h3,
+html.dark .menu-manager__title-line strong {
+    color: #fafafa;
+}
+
+html.dark .menu-manager__count,
+html.dark .menu-manager__hint,
+html.dark .menu-manager__meta,
+html.dark .menu-manager__url,
+html.dark .menu-manager__empty {
+    color: #a1a1aa;
+}
+
+html.dark .menu-manager__count,
+html.dark .menu-manager__pill {
+    background: #27272a;
+    color: #e4e4e7;
+}
+
+html.dark .menu-manager__pill.is-live {
+    background: #27272a;
+    color: #fafafa;
+    box-shadow: inset 0 0 0 1px #52525b;
+}
+
+html.dark .menu-manager__item.is-root,
+html.dark .menu-manager__children {
+    border-color: #3f3f46;
+}
+
+html.dark .menu-manager__row:hover,
+html.dark .menu-manager__item.is-child .menu-manager__row:hover,
+html.dark .menu-manager__drag:hover {
+    background: #27272a;
+    color: #fafafa;
+}
+
+html.dark .menu-manager__icon {
+    background: #18181b;
+    border-color: #3f3f46;
+    color: #e4e4e7;
+}
+
+html.dark .menu-manager__icon:hover {
+    background: #27272a;
+    color: #fafafa;
+}
+
+html.dark .menu-manager__icon.is-danger:hover {
+    color: #fca5a5;
+    border-color: #7f1d1d;
+    background: #18181b;
+}
+
+html.dark body.filament-body,
+html.dark .filament-main {
+    background: #09090b !important;
+    color: #f4f4f5 !important;
+}
+
+html.dark header.filament-main-topbar,
+html.dark .filament-card,
+html.dark .filament-forms-card,
+html.dark .filament-tables-container,
+html.dark .filament-widget > div,
+html.dark .filament-tables-header,
+html.dark .filament-tables-pagination-container {
+    background: #18181b !important;
+    border-color: #3f3f46 !important;
+}
+
+html.dark table.filament-tables-table thead th,
+html.dark table.filament-tables-table tbody tr:hover td {
+    background: #111113 !important;
+    color: #a1a1aa !important;
+    border-color: #3f3f46 !important;
+}
+
+html.dark .filament-forms-input input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+html.dark .filament-forms-text-input-component input,
+html.dark .filament-forms-textarea-component textarea,
+html.dark .filament-forms-select-component select,
+html.dark input.filament-forms-input:not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
+    background: #09090b !important;
+    border-color: #3f3f46 !important;
+    color: #fafafa !important;
+}
+
+/* İstatistik kartlarını saran alanı şeffaf yap (kartların bağımsız durması için) */
+body .filament-widgets-container > .filament-stats-overview-widget,
+body .filament-widgets-container > .filament-stats-overview-widget > div,
+body .filament-stats-overview-widget,
+body .filament-stats-overview-widget > div {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+html.dark body .filament-widgets-container > .filament-stats-overview-widget,
+html.dark body .filament-widgets-container > .filament-stats-overview-widget > div,
+html.dark body .filament-stats-overview-widget,
+html.dark body .filament-stats-overview-widget > div {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+html.dark .filament-stats-card,
+html.dark .filament-stats-overview-widget-card {
+    background: #18181b !important;
+    border: 1px solid #3f3f46 !important;
+    color: #fafafa !important;
+    box-shadow: none !important;
+}
+
+html.dark .filament-stats-card .text-3xl,
+html.dark .filament-stats-card-value {
+    color: #fafafa !important;
+}
+
+html.dark .filament-stats-card .text-gray-500,
+html.dark .filament-stats-card .text-gray-400,
+html.dark .filament-stats-card-label {
+    color: #a1a1aa !important;
+}
+
+html.dark .filament-stats-card .text-gray-600,
+html.dark .filament-stats-card .text-primary-500,
+html.dark .filament-stats-card .text-primary-600 {
+    color: #e4e4e7 !important;
+}
+
+html.dark .filament-stats-card .text-success-600,
+html.dark .filament-stats-card .text-success-500 {
+    color: #86efac !important;
+}
+
+html.dark .filament-stats-card .text-warning-600,
+html.dark .filament-stats-card .text-warning-500 {
+    color: #fcd34d !important;
+}
+
+html.dark .filament-stats-card .text-danger-600,
+html.dark .filament-stats-card .text-danger-500 {
+    color: #fca5a5 !important;
+}
+
+html.dark .filament-stats-card svg {
+    color: currentColor;
+}
+
+.filament-stats-card {
+    background: var(--sv-surface) !important;
+    border: 1px solid var(--sv-line) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 1px 2px rgba(11, 22, 34, 0.04) !important;
+}
+
+input.filament-forms-checkbox-component {
+    width: 1rem !important;
+    height: 1rem !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0;
+    accent-color: #18181b;
+}
+
+.filament-tables-filters .filament-dropdown-panel,
+.filament-dropdown-panel {
+    z-index: 80 !important;
+}
+
+.filament-user-menu {
+    position: relative !important;
+}
+
+.filament-user-menu .filament-dropdown-panel {
+    position: absolute !important;
+    top: calc(100% + 0.5rem) !important;
+    right: 0 !important;
+    left: auto !important;
+    bottom: auto !important;
+    width: 15rem !important;
+    min-width: 14rem !important;
+    max-width: 16rem !important;
+    height: auto !important;
+    margin: 0 !important;
+    transform: none !important;
+    z-index: 80 !important;
+}
+
+.filament-tables-filters .filament-dropdown-panel {
+    width: 20rem !important;
+    min-width: 18rem !important;
+    max-width: min(22rem, calc(100vw - 2rem)) !important;
+    background: #ffffff !important;
+    color: var(--sv-ink) !important;
+    border: 1px solid var(--sv-line) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12) !important;
+    overflow: visible !important;
+}
+
+.filament-tables-filters-form .filament-forms-field-wrapper-label,
+.filament-tables-filters-form .filament-forms-field-wrapper-label span {
+    color: var(--sv-ink) !important;
+}
+
+html.dark .filament-tables-filters .filament-dropdown-panel {
+    background: #18181b !important;
+    color: #fafafa !important;
+    border-color: #3f3f46 !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45) !important;
+}
+
+html.dark .filament-tables-filters-form .filament-forms-field-wrapper-label,
+html.dark .filament-tables-filters-form .filament-forms-field-wrapper-label span,
+html.dark .filament-tables-filters-form label {
+    color: #f4f4f5 !important;
+}
+
+html.dark input.filament-forms-checkbox-component {
+    accent-color: #fafafa;
+    background: #09090b !important;
+    border-color: #3f3f46 !important;
+}

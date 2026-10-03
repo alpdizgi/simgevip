@@ -1,0 +1,13 @@
+*
+!.gitignore
+!.htaccess
+!campaigns/
+!campaigns/**
+!categories/
+!categories/**
+!products/
+!products/**
+!sliders/
+!sliders/**
+!settings/
+!settings/**

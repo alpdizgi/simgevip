@@ -1,0 +1,27 @@
+.filament-resources-reservations .filament-stats { gap: 1rem; }
+.filament-resources-reservations .filament-stats-card { padding: 1rem; border: 1px solid var(--sv-line); border-radius: 8px; box-shadow: none; }
+.filament-resources-reservations .filament-stats-card svg { width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
+.filament-resources-reservations .filament-stats-card .text-3xl { font-size: 1.7rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+.filament-resources-reservations .filament-stats-card .text-sm { font-size: .8rem; }
+.filament-resources-reservations .filament-tables-header-container { padding: 0 !important; border-bottom: 0 !important; }
+.filament-resources-reservations .filament-tables-header-toolbar { height: auto; min-height: 4rem; gap: .75rem; flex-wrap: wrap; border-bottom: 0 !important; }
+.filament-resources-reservations .filament-tables-header-toolbar > div:last-child { max-width: none; flex: 1 1 24rem; gap: .75rem; }
+.filament-resources-reservations .filament-tables-search-container { min-width: 0; justify-content: flex-start; }
+.filament-resources-reservations .sv-products-control { display: inline-flex; align-items: center; gap: .4rem; min-height: 2.25rem; padding: .4rem .75rem; border: 1px solid var(--sv-line); border-radius: 6px; background: var(--sv-surface); color: var(--sv-ink); font-size: .8rem; font-weight: 600; }
+.filament-resources-reservations .sv-products-control:focus-visible { outline: 2px solid var(--sv-accent); outline-offset: 2px; }
+.filament-resources-reservations .sv-products-control svg { width: 1rem; height: 1rem; }
+.filament-resources-reservations .filament-tables-table-container { overflow-x: auto; }
+.filament-resources-reservations table.filament-tables-table { min-width: 950px; }
+.filament-resources-reservations table.filament-tables-table tbody td { padding: .75rem .85rem !important; font-size: .85rem !important; }
+.filament-resources-reservations td .filament-tables-text-column,
+.filament-resources-reservations td .filament-tables-badge-column { padding: 0; }
+.filament-resources-reservations .filament-tables-actions-container { white-space: nowrap; }
+.sv-reservation-summary { padding: 1rem; border: 1px solid var(--sv-line, #e2e8f0); border-radius: 8px; color: var(--sv-ink, #1f2937); font-size: .875rem; line-height: 1.5; overflow-wrap: anywhere; }
+.sv-reservation-summary p { margin-top: .25rem; color: var(--sv-muted, #64748b); }
+.sv-reservation-heading { display: flex; align-items: center; gap: .5rem; }
+.sv-reservation-heading svg { width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
+.sv-reservation-product { display: flex; align-items: center; gap: .75rem; margin-top: 1rem; }
+.sv-reservation-product img { width: 56px; height: 74px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
+.sv-reservation-product a { color: var(--sv-accent, #2563eb); text-decoration: underline; }
+.sv-reservation-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+.sv-reservation-tags span { margin-top: .75rem; padding: .2rem .5rem; border: 1px solid var(--sv-line, #e2e8f0); border-radius: 5px; font-size: .75rem; }
