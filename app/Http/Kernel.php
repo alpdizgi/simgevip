@@ -40,6 +40,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\SetStoreLocale::class,
             \App\Http\Middleware\EnsureCustomerSessionFresh::class,
             \App\Http\Middleware\SecurityHeaders::class,
+            \App\Http\Middleware\CheckMaintenanceMode::class,
         ],
 
         'api' => [

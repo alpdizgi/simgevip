@@ -164,6 +164,32 @@ class SettingResource extends Resource
                             ->createItemButtonLabel('Yeni Sosyal Medya Hesabı Ekle')
                             ->columnSpan('full'),
                     ]),
+
+                Forms\Components\Section::make('Yapım Aşaması (Maintenance Mode)')
+                    ->description('Siteyi bakım moduna alır. Ziyaretçilere bakım sayfası gösterilir, admin panel erişimi devam eder.')
+                    ->schema([
+                        Forms\Components\Toggle::make('maintenance_mode')
+                            ->label('Yapım aşamasına al')
+                            ->helperText('Açık olduğunda site ziyaretçilere bakım sayfası gösterilir. Admin panel erişimi etkilenmez.')
+                            ->onIcon('heroicon-o-lock-closed')
+                            ->offIcon('heroicon-o-lock-open')
+                            ->reactive()
+                            ->afterStateUpdated(function ($state, callable $set) {
+                                if ($state) {
+                                    $set('maintenance_message', 'Site şu anda bakım aşamasında. Kısa süre içinde tekrar hizmet vermeye başlayacağız.');
+                                }
+                            }),
+
+                        Forms\Components\Textarea::make('maintenance_message')
+                            ->label('Bakım Mesajı')
+                            ->placeholder('Site şu anda bakım aşamasında. Kısa süre içinde tekrar hizmet vermeye başlayacağız.')
+                            ->helperText('Ziyaretçilere gösterilecek bakım mesajı.')
+                            ->rows(3)
+                            ->maxLength(500)
+                            ->visible(fn (callable $get) => $get('maintenance_mode')),
+                    ])
+                    ->collapsible()
+                    ->columnSpan('full'),
             ]);
     }
 

@@ -17,10 +17,13 @@ class Setting extends Model
         'og_image_path',
         'contact_info',
         'social_media',
+        'maintenance_mode',
+        'maintenance_message',
     ];
 
     protected $casts = [
         'contact_info' => 'array',
         'social_media' => 'array',
+        'maintenance_mode' => 'boolean',
     ];
 }

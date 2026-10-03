@@ -364,6 +364,8 @@ CREATE TABLE `settings` (
   `og_image_path` varchar(255) DEFAULT NULL,
   `contact_info` text DEFAULT NULL,
   `social_media` text DEFAULT NULL,
+  `maintenance_mode` tinyint(1) NOT NULL DEFAULT 0,
+  `maintenance_message` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -376,7 +378,7 @@ CREATE TABLE `settings` (
 
 LOCK TABLES `settings` WRITE;
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
-INSERT INTO `settings` VALUES (1,'Simge Vip Giyim',NULL,NULL,NULL,NULL,'[{\"branch_name\":\"Merkez\",\"phone\":\"05321552158\",\"email\":\"deneme@deneme.com\",\"address\":\"Konya\",\"map_embed\":null}]','[{\"platform\":\"pinterest\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"instagram\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"facebook\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"whatsapp\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"youtube\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"twitter\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"}]','2026-10-01 05:45:45','2026-10-03 03:16:10');
+INSERT INTO `settings` VALUES (1,'Simge Vip Giyim',NULL,NULL,NULL,NULL,'[{\"branch_name\":\"Merkez\",\"phone\":\"05321552158\",\"email\":\"deneme@deneme.com\",\"address\":\"Konya\",\"map_embed\":null}]','[{\"platform\":\"pinterest\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"instagram\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"facebook\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"whatsapp\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"youtube\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"twitter\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"}]',0,NULL,'2026-10-01 05:45:45','2026-10-03 03:16:10');
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -419,5 +421,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-10-03 22:48:05
+-- Dump completed on 2026-10-03 22:58:26
 SET FOREIGN_KEY_CHECKS=1;
