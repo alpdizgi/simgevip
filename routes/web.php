@@ -17,6 +17,11 @@ Route::get('/link-storage', function () {
     return 'Resim bağlantıları (symlink) başarıyla oluşturuldu! Ana sayfaya dönebilirsiniz.';
 });
 
+Route::get('/run-migrations', function () {
+    \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+    return 'Veritabanı güncellemeleri başarıyla tamamlandı!';
+});
+
 Route::post('/admin/github-gonder', [GithubDeployController::class, 'store'])
     ->middleware(\Filament\Http\Middleware\Authenticate::class)
     ->name('admin.github.deploy');
