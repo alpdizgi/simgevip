@@ -12,6 +12,11 @@ use App\Http\Controllers\SeoController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/link-storage', function () {
+    \Illuminate\Support\Facades\Artisan::call('storage:link');
+    return 'Resim bağlantıları (symlink) başarıyla oluşturuldu! Ana sayfaya dönebilirsiniz.';
+});
+
 Route::post('/admin/github-gonder', [GithubDeployController::class, 'store'])
     ->middleware(\Filament\Http\Middleware\Authenticate::class)
     ->name('admin.github.deploy');
