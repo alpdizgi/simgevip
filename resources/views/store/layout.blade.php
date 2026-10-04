@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     @php
         $seoTitleRaw = trim($__env->yieldContent('title'));
         $seoTitle = $seoTitleRaw !== '' ? $seoTitleRaw : $siteName;

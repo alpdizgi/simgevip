@@ -63,6 +63,7 @@ return [
         'storage/framework/views/.gitignore',
         'storage/logs/.gitignore',
         '.github',
+        '.htaccess',
         '.gitignore',
         '.env.example',
         'artisan',

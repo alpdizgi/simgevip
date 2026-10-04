@@ -5,6 +5,12 @@
 
     RewriteEngine On
 
+    # Redirect the live domain to HTTPS before routing into public.
+    RewriteCond %{HTTP_HOST} ^(www\.)?simgegiyim\.com\.tr$ [NC]
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !^https$ [NC]
+    RewriteRule ^ https://simgegiyim.com.tr%{REQUEST_URI} [R=301,L]
+
     # Document root proje klasörü olursa istekler yalnızca public içinden cevaplanır.
     RewriteRule ^$ public/ [L]
     RewriteRule ^(?!public/)(.*)$ public/$1 [L]

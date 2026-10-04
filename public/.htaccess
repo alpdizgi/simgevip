@@ -5,6 +5,12 @@
 
     RewriteEngine On
 
+    # Enforce HTTPS when public is used as the document root.
+    RewriteCond %{HTTP_HOST} ^(www\.)?simgegiyim\.com\.tr$ [NC]
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !^https$ [NC]
+    RewriteRule ^ https://simgegiyim.com.tr%{REQUEST_URI} [R=301,L]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

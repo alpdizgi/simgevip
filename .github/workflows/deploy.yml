@@ -21,6 +21,13 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         server-dir: public_html/
         exclude: |
+          **/.env
+          **/.env.*
+          bootstrap/cache/**
+          storage/logs/**
+          storage/framework/cache/**
+          storage/framework/sessions/**
+          storage/framework/views/**
           **/.git*
           **/.git*/**
           **/node_modules/**

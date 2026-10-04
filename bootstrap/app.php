@@ -26,6 +26,11 @@ $app = new Illuminate\Foundation\Application(
 |
 */
 
+// Local environment files are private and excluded from deployment.
+if (is_file($app->basePath('.env.local'))) {
+    $app->loadEnvironmentFrom('.env.local');
+    $_ENV['APP_CONFIG_CACHE'] = $_SERVER['APP_CONFIG_CACHE'] = 'bootstrap/cache/config.local.php';
+}
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
     App\Http\Kernel::class
