@@ -473,6 +473,14 @@ function initProductDetail() {
         const entries = Object.entries(sizes || {});
         if (!entries.length) {
             sizeWrap.innerHTML = '<span class="size-pill is-out">Beden yok</span>';
+            const stockIndicator = root.querySelector('[data-stock-indicator]');
+            const stockDot = root.querySelector('.stock-pulse-dot');
+            const stockText = root.querySelector('[data-stock-text]');
+            if (stockIndicator && stockDot && stockText) {
+                stockIndicator.classList.add('product-detail__stock-indicator--out');
+                stockDot.classList.add('stock-pulse-dot--out');
+                stockText.textContent = 'Stokta Yok';
+            }
             return;
         }
 
@@ -482,6 +490,22 @@ function initProductDetail() {
                 return `<button type="button" class="size-pill ${out ? 'is-out' : ''}" data-size="${size}" title="Stok: ${stock}" ${out ? 'disabled' : ''}>${size}</button>`;
             })
             .join('');
+
+        const totalStock = Object.values(sizes || {}).reduce((sum, stock) => sum + Number(stock), 0);
+        const stockIndicator = root.querySelector('[data-stock-indicator]');
+        const stockDot = root.querySelector('.stock-pulse-dot');
+        const stockText = root.querySelector('[data-stock-text]');
+        if (stockIndicator && stockDot && stockText) {
+            if (totalStock <= 0) {
+                stockIndicator.classList.add('product-detail__stock-indicator--out');
+                stockDot.classList.add('stock-pulse-dot--out');
+                stockText.textContent = 'Stokta Yok';
+            } else {
+                stockIndicator.classList.remove('product-detail__stock-indicator--out');
+                stockDot.classList.remove('stock-pulse-dot--out');
+                stockText.textContent = 'Stokta Mevcut · Hızlı Kargo';
+            }
+        }
     };
 
     const activeColorLabel = root.querySelector('[data-active-color-name]');

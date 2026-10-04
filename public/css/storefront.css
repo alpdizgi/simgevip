@@ -3017,6 +3017,10 @@ body.nav-open {
     margin-top: 0.15rem;
 }
 
+.product-detail__stock-indicator--out {
+    color: #991b1b;
+}
+
 .stock-pulse-dot {
     width: 7px;
     height: 7px;
@@ -3025,6 +3029,12 @@ body.nav-open {
     box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
     display: inline-block;
     animation: pulseDot 2s infinite ease-in-out;
+}
+
+.stock-pulse-dot--out {
+    background: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+    animation: none;
 }
 
 @keyframes pulseDot {

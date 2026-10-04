@@ -231,9 +231,9 @@
                     </div>
                 @endif
 
-                <div class="product-detail__stock-indicator">
-                    <span class="stock-pulse-dot"></span>
-                    <span>Stokta Mevcut · Hızlı Kargo</span>
+                <div class="product-detail__stock-indicator {{ $product->total_stock <= 0 ? 'product-detail__stock-indicator--out' : '' }}" data-stock-indicator>
+                    <span class="stock-pulse-dot {{ $product->total_stock <= 0 ? 'stock-pulse-dot--out' : '' }}"></span>
+                    <span data-stock-text>{{ $product->total_stock <= 0 ? 'Stokta Yok' : 'Stokta Mevcut · Hızlı Kargo' }}</span>
                 </div>
             </div>
 
