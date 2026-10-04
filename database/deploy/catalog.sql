@@ -368,6 +368,7 @@ CREATE TABLE `settings` (
   `maintenance_message` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `mail_settings` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`mail_settings`)),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -378,7 +379,7 @@ CREATE TABLE `settings` (
 
 LOCK TABLES `settings` WRITE;
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
-INSERT INTO `settings` VALUES (1,'Simge Vip Giyim',NULL,NULL,NULL,NULL,'[{\"branch_name\":\"Merkez\",\"phone\":\"05321552158\",\"email\":\"deneme@deneme.com\",\"address\":\"Konya\",\"map_embed\":null}]','[{\"platform\":\"pinterest\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"instagram\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"facebook\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"whatsapp\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"youtube\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"twitter\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"}]',0,'Site şu anda bakım aşamasında. Kısa süre içinde tekrar hizmet vermeye başlayacağız.','2026-10-01 05:45:45','2026-10-03 17:13:39');
+INSERT INTO `settings` VALUES (1,'Simge Vip Giyim',NULL,NULL,NULL,NULL,'[{\"branch_name\":\"Merkez\",\"phone\":\"05321552158\",\"email\":\"deneme@deneme.com\",\"address\":\"Konya\",\"map_embed\":null}]','[{\"platform\":\"pinterest\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"instagram\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"facebook\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"whatsapp\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"youtube\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"},{\"platform\":\"twitter\",\"url\":\"http:\\/\\/localhost\\/simgevip\\/public\\/\"}]',0,'Site şu anda bakım aşamasında. Kısa süre içinde tekrar hizmet vermeye başlayacağız.','2026-10-01 05:45:45','2026-10-03 17:13:39',NULL);
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -421,5 +422,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-10-04  9:54:13
+-- Dump completed on 2026-10-04 10:46:24
 SET FOREIGN_KEY_CHECKS=1;

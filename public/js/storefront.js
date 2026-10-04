@@ -38,6 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', syncHeaderHeight, { passive: true });
+    window.addEventListener('load', syncHeaderHeight, { passive: true });
+
+    if (window.ResizeObserver && header) {
+        new ResizeObserver(() => syncHeaderHeight()).observe(header);
+    }
 
     const openNavDrawer = () => {
         if (!nav) return;

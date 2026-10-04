@@ -3477,12 +3477,14 @@ body.nav-open {
 }
 
 .spec-list dt {
-    color: var(--muted);
+    color: var(--text);
+    font-weight: 600;
 }
 
 .spec-list dd {
     margin: 0;
-    font-weight: 550;
+    font-weight: 400;
+    color: var(--muted);
 }
 
 .product-detail__cta {

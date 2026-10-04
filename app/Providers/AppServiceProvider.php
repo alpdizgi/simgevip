@@ -44,6 +44,27 @@ class AppServiceProvider extends ServiceProvider
             URL::forceRootUrl(rtrim($root, '/'));
         }
 
+        try {
+            if (Schema::hasTable('settings')) {
+                $settings = Setting::query()->first();
+                if ($settings && !empty($settings->mail_settings)) {
+                    $mailSettings = $settings->mail_settings;
+                    
+                    config([
+                        'mail.mailers.smtp.host' => $mailSettings['host'] ?? config('mail.mailers.smtp.host'),
+                        'mail.mailers.smtp.port' => $mailSettings['port'] ?? config('mail.mailers.smtp.port'),
+                        'mail.mailers.smtp.encryption' => $mailSettings['encryption'] ?? config('mail.mailers.smtp.encryption'),
+                        'mail.mailers.smtp.username' => $mailSettings['username'] ?? config('mail.mailers.smtp.username'),
+                        'mail.mailers.smtp.password' => $mailSettings['password'] ?? config('mail.mailers.smtp.password'),
+                        'mail.from.address' => $mailSettings['from_address'] ?? config('mail.from.address'),
+                        'mail.from.name' => $mailSettings['from_name'] ?? config('mail.from.name'),
+                    ]);
+                }
+            }
+        } catch (\Throwable $e) {
+            // Veritabanı hazır değilse yoksay (örneğin migration aşamasında)
+        }
+
         \Filament\Facades\Filament::serving(function () {
             // Admin paneli Türkçe; site (locale) İngilizce kalır
             app()->setLocale('tr');

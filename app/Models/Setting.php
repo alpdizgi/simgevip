@@ -19,11 +19,13 @@ class Setting extends Model
         'social_media',
         'maintenance_mode',
         'maintenance_message',
+        'mail_settings',
     ];
 
     protected $casts = [
         'contact_info' => 'array',
         'social_media' => 'array',
+        'mail_settings' => 'array',
         'maintenance_mode' => 'boolean',
     ];
 }
