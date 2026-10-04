@@ -29,7 +29,10 @@
                     <input id="password" type="password" name="password" autocomplete="current-password" required placeholder="Şifreniz">
                     @error('password') <small class="customer-auth__error">{{ $message }}</small> @enderror
                 </div>
-                <label class="customer-auth__remember"><input type="checkbox" name="remember" value="1" {{ old('remember') ? 'checked' : '' }}> Beni hatırla</label>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.5rem;">
+                    <label class="customer-auth__remember" style="margin-bottom:0;"><input type="checkbox" name="remember" value="1" {{ old('remember') ? 'checked' : '' }}> Beni hatırla</label>
+                    <a href="{{ route('customer.password.request') }}" style="font-size:0.85rem; color:var(--sv-ink); text-decoration:underline;">Şifremi unuttum</a>
+                </div>
                 <button class="customer-auth__submit" type="submit">Giriş Yap <span aria-hidden="true">→</span></button>
             </form>
             <p class="customer-auth__switch">Hesabınız yok mu? <a href="{{ route('customer.register', array_filter(['next' => request('next')])) }}">Üye olun</a></p>

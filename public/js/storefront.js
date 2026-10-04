@@ -1103,21 +1103,32 @@ function requireCustomer() {
     return false;
 }
 
-function showToast(message, isError) {
+function showToast(message, type = 'success') {
     const toast = document.querySelector('[data-store-toast]');
     if (!toast) {
         window.alert(message);
         return;
     }
     if (!message) return;
+    
+    // Geriye dönük uyumluluk (önceki true/false kullanımı)
+    if (type === true) type = 'error';
+    if (type === false) type = 'success';
+    
     clearTimeout(showToast.hideTimer);
     clearTimeout(showToast.finishTimer);
-    toast.classList.remove('is-visible');
+    toast.classList.remove('is-visible', 'is-success', 'is-error', 'is-warning');
     toast.hidden = false;
-    toast.classList.toggle('is-error', !!isError);
-    toast.setAttribute('role', isError ? 'alert' : 'status');
-    toast.setAttribute('aria-live', isError ? 'assertive' : 'polite');
-    toast.querySelector('[data-toast-symbol]').textContent = isError ? '!' : '✓';
+    
+    toast.classList.add(`is-${type}`);
+    toast.setAttribute('role', type === 'error' ? 'alert' : 'status');
+    toast.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
+    
+    let symbol = '✓';
+    if (type === 'error') symbol = '✖';
+    if (type === 'warning') symbol = '!';
+    toast.querySelector('[data-toast-symbol]').textContent = symbol;
+    
     toast.querySelector('[data-toast-message]').textContent = message;
     void toast.offsetWidth;
     requestAnimationFrame(() => toast.classList.add('is-visible'));
@@ -1138,7 +1149,7 @@ function initStoreToast() {
     if (!toast) return;
     toast.querySelector('[data-toast-close]')?.addEventListener('click', hideToast);
     if (toast.dataset.initialMessage) {
-        showToast(toast.dataset.initialMessage, toast.dataset.initialType === 'error');
+        showToast(toast.dataset.initialMessage, toast.dataset.initialType || 'success');
     }
 }
 

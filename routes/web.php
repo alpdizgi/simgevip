@@ -36,6 +36,12 @@ Route::middleware('guest:customer')->group(function () {
     Route::post('/giris', [CustomerAuthController::class, 'login'])->name('customer.login.submit');
     Route::get('/uye-ol', [CustomerAuthController::class, 'showRegister'])->name('customer.register');
     Route::post('/uye-ol', [CustomerAuthController::class, 'register'])->name('customer.register.submit');
+    
+    // Şifremi Unuttum
+    Route::get('/sifremi-unuttum', [CustomerAuthController::class, 'showForgotPassword'])->name('customer.password.request');
+    Route::post('/sifremi-unuttum', [CustomerAuthController::class, 'sendResetLinkEmail'])->name('customer.password.email');
+    Route::get('/sifre-sifirla/{token}', [CustomerAuthController::class, 'showResetPassword'])->name('password.reset');
+    Route::post('/sifre-sifirla', [CustomerAuthController::class, 'resetPassword'])->name('customer.password.update_from_reset');
 });
 Route::middleware('auth:customer')->group(function () {
     Route::get('/hesabim', [CustomerAccountController::class, 'index'])->name('customer.account');

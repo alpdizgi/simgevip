@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="350" height="40" viewBox="0 0 350 40">
+  <g fill="#fff" stroke="#dfe5eb">
+    <rect x=".5" y=".5" width="60" height="39" rx="7"/>
+    <rect x="66.5" y=".5" width="68" height="39" rx="7"/>
+    <rect x="140.5" y=".5" width="56" height="39" rx="7"/>
+    <rect x="202.5" y=".5" width="82" height="39" rx="7"/>
+    <rect x="290.5" y=".5" width="59" height="39" rx="7"/>
+  </g>
+  <text x="30" y="25" fill="#1434cb" font-family="Arial, sans-serif" font-size="16" font-style="italic" font-weight="700" letter-spacing="-1" text-anchor="middle">VISA</text>
+  <circle cx="96" cy="20" r="9" fill="#eb001b"/>
+  <circle cx="107" cy="20" r="9" fill="#f79e1b"/>
+  <path d="M101.5 12.9a9 9 0 0 1 0 14.2 9 9 0 0 1 0-14.2Z" fill="#ff5f00"/>
+  <text x="168.5" y="24.5" fill="#183b56" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing=".4" text-anchor="middle">TROY</text>
+  <circle cx="179" cy="10" r="1.5" fill="#00a8e1"/>
+  <circle cx="183" cy="10" r="1.5" fill="#f79c13"/>
+  <g fill="none" stroke="#415264" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+    <path d="m210 16 9-5 9 5h-18Zm2 2v7m4-7v7m6-7v7m4-7v7m-16 2h20"/>
+  </g>
+  <text x="257" y="23.5" fill="#354454" font-family="Arial, sans-serif" font-size="8.5" font-weight="700" letter-spacing=".35" text-anchor="middle">HAVALE/EFT</text>
+  <g fill="none" stroke="#354454" stroke-width="1.5">
+    <path d="M297 8h8v8h-8zM299.5 10.5h3v3h-3zM313 8h8v8h-8zM315.5 10.5h3v3h-3zM297 22h8v8h-8zM299.5 24.5h3v3h-3z"/>
+  </g>
+  <path d="M309 22h3v3h-3zm5 0h3v3h-3zm-5 5h3v3h-3zm5 0h3v3h-3zm5-5h3v3h-3z" fill="#354454"/>
+  <text x="335" y="24" fill="#354454" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle">QR</text>
+</svg>

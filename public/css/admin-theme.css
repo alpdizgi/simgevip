@@ -26,6 +26,34 @@
     --sv-display: 'Cormorant Garamond', Georgia, serif;
 }
 
+/* ---------- FILAMENT NOTIFICATIONS (TOASTS) ---------- */
+.filament-notifications-notification:has(.text-success-400) {
+    background-color: #10b981 !important;
+    border-color: #059669 !important;
+    color: #ffffff !important;
+}
+.filament-notifications-notification:has(.text-success-400) * {
+    color: #ffffff !important;
+}
+
+.filament-notifications-notification:has(.text-danger-400) {
+    background-color: #ef4444 !important;
+    border-color: #dc2626 !important;
+    color: #ffffff !important;
+}
+.filament-notifications-notification:has(.text-danger-400) * {
+    color: #ffffff !important;
+}
+
+.filament-notifications-notification:has(.text-warning-400) {
+    background-color: #f97316 !important;
+    border-color: #ea580c !important;
+    color: #ffffff !important;
+}
+.filament-notifications-notification:has(.text-warning-400) * {
+    color: #ffffff !important;
+}
+
 /* ---------- TEMEL ---------- */
 html {
     font-size: 15px !important;

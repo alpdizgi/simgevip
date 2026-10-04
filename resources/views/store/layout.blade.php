@@ -109,8 +109,8 @@
     @include('store.partials.cart-drawer')
 
     @php
-        $initialToast = session('success') ?: (session('error') ?: ($errors->any() ? $errors->first() : null));
-        $initialToastType = session('success') ? 'success' : 'error';
+        $initialToast = session('success') ?: (session('warning') ?: (session('error') ?: ($errors->any() ? $errors->first() : null)));
+        $initialToastType = session('success') ? 'success' : (session('warning') ? 'warning' : 'error');
     @endphp
     <div class="store-toast" data-store-toast data-initial-message="{{ $initialToast }}" data-initial-type="{{ $initialToastType }}" role="status" aria-live="polite" aria-atomic="true" hidden>
         <span class="store-toast__symbol" data-toast-symbol aria-hidden="true">✓</span>

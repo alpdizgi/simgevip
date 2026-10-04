@@ -3889,6 +3889,28 @@ a.contact-channel:hover .contact-channel__value {
     color: rgba(255, 255, 255, 0.5);
 }
 
+.footer-payment-methods {
+    flex: 0 1 220px;
+    max-width: 100%;
+}
+
+.footer-payment-methods img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.footer-trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+}
+
+.footer-trust-badge strong {
+    font-size: inherit;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
 
@@ -4654,9 +4676,14 @@ body.cart-open {
 .store-toast__message { min-width: 0; overflow-wrap: anywhere; }
 .store-toast__close { display: grid; place-items: center; width: 1.4rem; height: 1.4rem; padding: 0; border: 0; background: transparent; color: inherit; font-size: 1.3rem; line-height: 1; opacity: 0.65; cursor: pointer; }
 .store-toast__close:hover, .store-toast__close:focus-visible { opacity: 1; }
-.store-toast.is-error { border-color: #f1c9c5; background: #fff3f2; color: #8f241d; }
-.store-toast.is-error .store-toast__symbol { background: #fbe0dd; }
+.store-toast.is-success { border-color: #10b981; background: #059669; color: #ffffff; }
+.store-toast.is-success .store-toast__symbol { background: #10b981; color: white; }
 
+.store-toast.is-error { border-color: #ef4444; background: #dc2626; color: #ffffff; }
+.store-toast.is-error .store-toast__symbol { background: #ef4444; color: white; }
+
+.store-toast.is-warning { border-color: #f97316; background: #ea580c; color: #ffffff; }
+.store-toast.is-warning .store-toast__symbol { background: #f97316; color: white; }
 @media (max-width: 600px) {
     .store-toast {
         top: calc(env(safe-area-inset-top, 0px) + 0.7rem);
