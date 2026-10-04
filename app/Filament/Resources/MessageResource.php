@@ -154,11 +154,11 @@ class MessageResource extends Resource
                     ->iconButton()
                     ->tooltip('Mesajı Oku')
                     ->modalHeading('İletişim Mesajı')
-                    ->modalCloseButton(false)
                     ->form([
                         Forms\Components\Grid::make(2)->schema([
                             Forms\Components\Placeholder::make('sender_name')
                                 ->label('Gönderen Kişi')
+                                ->extraAttributes(['autofocus' => true, 'tabindex' => '-1'])
                                 ->content(fn (Message $record) => $record->sender_name),
 
                             Forms\Components\Placeholder::make('email')
