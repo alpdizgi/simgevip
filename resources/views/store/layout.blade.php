@@ -123,6 +123,69 @@
         <x-store-icon name="chevron-up" size="20" />
     </button>
 
+    <!-- Floating WhatsApp Button -->
+    <style>
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 26px;
+            left: 26px;
+            z-index: 1000;
+            width: 52px;
+            height: 52px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .floating-whatsapp:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.5);
+            color: white;
+        }
+        .floating-whatsapp svg {
+            width: 30px;
+            height: 30px;
+            fill: currentColor;
+        }
+        @media (max-width: 767px) {
+            .floating-whatsapp {
+                bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+                left: 18px;
+                width: 46px;
+                height: 46px;
+            }
+            .floating-whatsapp svg {
+                width: 26px;
+                height: 26px;
+            }
+            body:has(.product-detail__mobile-bar) .floating-whatsapp {
+                bottom: calc(5rem + 18px + env(safe-area-inset-bottom, 0px));
+            }
+        }
+    </style>
+    @php
+        $waUrl = "https://wa.me/905550000000";
+        if (isset($siteSettings) && !empty($siteSettings->contact_info[0]['whatsapp'])) {
+            $waUrl = $siteSettings->contact_info[0]['whatsapp'];
+        } elseif (isset($siteSettings) && is_array($siteSettings->social_media)) {
+            foreach ($siteSettings->social_media as $sm) {
+                if (strtolower($sm['platform'] ?? '') === 'whatsapp' && !empty($sm['url'])) {
+                    $waUrl = $sm['url'];
+                    break;
+                }
+            }
+        }
+    @endphp
+    <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="floating-whatsapp" aria-label="WhatsApp İletişim">
+        <x-store-icon name="whatsapp" size="30" />
+    </a>
+
     <script id="simge-store-data" type="application/json">
         {!! json_encode([
             'csrf' => csrf_token(),
@@ -136,7 +199,7 @@
                 'storeHold' => route('store.hold'),
                 'customerOrderRequest' => Auth::guard('customer')->check() ? route('customer.orders.create') : null,
             ],
-            'whatsapp' => $storeWhatsapp ?? '905550000000',
+            'whatsapp' => $waUrl,
             'cartCount' => (int) ($cartCount ?? 0),
         ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
     </script>

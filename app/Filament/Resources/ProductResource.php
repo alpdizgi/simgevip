@@ -209,6 +209,10 @@ class ProductResource extends Resource
                     ->grow(false)
                     ->extraAttributes(['class' => 'sv-product-card-image'])
                     ->extraImgAttributes(['class' => 'sv-product-card-image-element']),
+                Tables\Columns\ViewColumn::make('product_badges')
+                    ->view('filament.resources.product-resource.columns.badges')
+                    ->grow(false)
+                    ->visible(fn (?\App\Models\Product $record): bool => $record === null || $record->is_featured || $record->is_new_season || filled($record->campaign_badge)),
                 Tables\Columns\Layout\Stack::make([
                     Tables\Columns\TextColumn::make('name_grid')
                         ->label('Ürün adı')
@@ -249,9 +253,6 @@ class ProductResource extends Resource
                         ->getStateUsing(fn(\App\Models\Product $record) => $record->total_stock)
                         ->formatStateUsing(fn (\App\Models\Product $record) => 'Stok: ' . $record->total_stock)
                         ->color(fn (\App\Models\Product $record) => $record->total_stock > 0 ? 'success' : 'danger'),
-                    Tables\Columns\ViewColumn::make('product_badges')
-                        ->view('filament.resources.product-resource.columns.badges')
-                        ->visible(fn (?\App\Models\Product $record): bool => $record === null || $record->is_featured || $record->is_new_season || filled($record->campaign_badge)),
                 ])->space(0)->extraAttributes(['class' => 'sv-product-card-details']),
             ])->extraAttributes(['class' => 'sv-product-card-layout']),
         ];

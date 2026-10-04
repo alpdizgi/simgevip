@@ -1,6 +1,7 @@
 <footer class="site-footer">
     <style>
-        .footer-fluid-container { width: 100%; max-width: 100%; padding: 0 4%; }
+        .footer-fluid-container { width: 100%; max-width: 100%; padding: 0 4%; box-sizing: border-box; }
+        .site-footer .footer-title { display: inline-block; }
         .footer-grid-responsive { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4rem; padding-top: 3rem; padding-bottom: 2rem; }
         .footer-bottom-responsive { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; padding-top: 1.5rem; padding-bottom: 1.5rem; font-size: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.05); }
         @media (max-width: 992px) {
@@ -18,16 +19,16 @@
     </style>
     <div class="footer-fluid-container footer-grid-responsive">
         <div class="footer-brand" style="flex: 1.5; min-width: 250px;">
-            <a href="{{ url('/') }}" aria-label="{{ $siteName }} Anasayfa" style="display: block; margin-bottom: 1rem; text-align: center;">
+            <a href="{{ url('/') }}" aria-label="{{ $siteName }} Anasayfa" style="display: block; margin-bottom: 1rem;">
                 @if(!empty($siteSettings?->logo_path))
                     <img src="{{ asset('storage/' . $siteSettings->logo_path) }}" alt="{{ $siteName }}" class="footer-logo" style="max-height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1); display: inline-block;">
                 @else
                     <img src="{{ asset('images/logo.png') }}" alt="{{ $siteName }}" class="footer-logo" style="max-height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1); display: inline-block;">
                 @endif
             </a>
-            <p class="footer-brand__text" style="text-align: center;">Zamansız kesimler, seçilmiş kumaşlar ve sade bir stil dili. Kurumsal görünümle günlük konforu bir araya getiriyoruz.</p>
+            <p class="footer-brand__text" style="opacity: 0.8; line-height: 1.6;">Zamansız kesimler, seçilmiş kumaşlar ve sade bir stil dili. Kurumsal görünümle günlük konforu bir araya getiriyoruz.</p>
             
-            <div class="footer-social" style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;">
+            <div class="footer-social" style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
                 @if (is_array($siteSettings?->social_media) && count($siteSettings->social_media) > 0)
                     @foreach ($siteSettings->social_media as $sm)
                         @if(!empty($sm['url']))
@@ -40,7 +41,20 @@
                 @else
                     <x-store-social-badge platform="instagram" url="#" size="36" />
                     <x-store-social-badge platform="facebook" url="#" size="36" />
-                    <x-store-social-badge platform="whatsapp" url="https://wa.me/905550000000" size="36" />
+                    @php
+                        $waFooterUrl = "https://wa.me/905550000000";
+                        if (isset($siteSettings) && !empty($siteSettings->contact_info[0]['whatsapp'])) {
+                            $waFooterUrl = $siteSettings->contact_info[0]['whatsapp'];
+                        } elseif (isset($siteSettings) && is_array($siteSettings->social_media)) {
+                            foreach ($siteSettings->social_media as $sm) {
+                                if (strtolower($sm['platform'] ?? '') === 'whatsapp' && !empty($sm['url'])) {
+                                    $waFooterUrl = $sm['url'];
+                                    break;
+                                }
+                            }
+                        }
+                    @endphp
+                    <x-store-social-badge platform="whatsapp" url="{{ $waFooterUrl }}" size="36" />
                 @endif
             </div>
         </div>

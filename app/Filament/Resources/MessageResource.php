@@ -149,96 +149,44 @@ class MessageResource extends Resource
                     ]),
             ])
             ->actions([
-                // 1. Detay Göz İkonu (Modal)
-                Tables\Actions\Action::make('view_details')
-                    ->label('Detay')
-                    ->icon('heroicon-o-eye')
+                // 1. Görüntüleme İkonu (Yerleşik Modal)
+                Tables\Actions\ViewAction::make()
                     ->iconButton()
                     ->tooltip('Mesajı Oku')
-                    ->modalHeading(fn (Message $record) => "İletişim Mesajı")
-                    ->modalSubheading(fn (Message $record) => "Gönderen: {$record->sender_name} · " . ($record->created_at ? $record->created_at->format('d.m.Y H:i') : ''))
-                    ->modalWidth('2xl')
-                    ->mountUsing(function (Forms\ComponentContainer $form, Message $record) {
+                    ->modalHeading('İletişim Mesajı')
+                    ->modalCloseButton(false)
+                    ->form([
+                        Forms\Components\Grid::make(2)->schema([
+                            Forms\Components\Placeholder::make('sender_name')
+                                ->label('Gönderen Kişi')
+                                ->content(fn (Message $record) => $record->sender_name),
+
+                            Forms\Components\Placeholder::make('email')
+                                ->label('E-posta Adresi')
+                                ->content(fn (Message $record) => new HtmlString("<a href='mailto:{$record->email}' style='color:var(--primary-500);text-decoration:underline;'>{$record->email}</a>")),
+
+                            Forms\Components\Placeholder::make('subject')
+                                ->label('Konu')
+                                ->content(fn (Message $record) => $record->subject ?? '—'),
+
+                            Forms\Components\Placeholder::make('created_at')
+                                ->label('Tarih')
+                                ->content(fn (Message $record) => $record->created_at ? $record->created_at->format('d.m.Y H:i') : '—'),
+                        ]),
+
+                        Forms\Components\Placeholder::make('message')
+                            ->label('Mesaj İçeriği')
+                            ->content(fn (Message $record) => new HtmlString('<div style="white-space: pre-wrap; padding: 16px; border-radius: 8px; background-color: rgba(150, 150, 150, 0.1); font-size: 14px;">' . nl2br(e($record->message)) . '</div>'))
+                            ->columnSpan('full'),
+                    ])
+                    ->mutateRecordDataUsing(function (array $data, Message $record): array {
                         if (! $record->is_read) {
                             $record->update(['is_read' => true]);
                         }
-                    })
-                    ->modalActions([
-                        Tables\Actions\Modal\Actions\Action::make('reply')
-                            ->label('E-posta ile Yanıtla')
-                            ->url(fn (Message $record) => "mailto:{$record->email}?subject=" . urlencode("Re: " . ($record->subject ?? 'Mesajınız hk.')))
-                            ->openUrlInNewTab()
-                            ->button()
-                            ->color('primary'),
-                        Tables\Actions\Modal\Actions\Action::make('close')
-                            ->label('Kapat')
-                            ->cancel(),
-                    ])
-                    ->form([
-                        Forms\Components\Placeholder::make('message_detail_card')
-                            ->label('')
-                            ->content(function (?Message $record) {
-                                if (! $record) return '';
-
-                                $name = e($record->sender_name);
-                                $email = e($record->email);
-                                $subject = e($record->subject ?? 'Konu Belirtilmemiş');
-                                $message = nl2br(e($record->message));
-                                $date = $record->created_at ? $record->created_at->format('d.m.Y H:i') : '—';
-                                $mailto = "mailto:{$email}?subject=" . urlencode("Re: {$subject}");
-
-                                return new HtmlString("
-                                    <div style='background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 14px;'>
-                                        <div style='display: grid; grid-template-columns: 1fr 1fr; gap: 10px;'>
-                                            <div>
-                                                <span style='font-size: 11px; font-weight: 600; text-transform: uppercase; color: #64748b;'>Gönderen Kişi:</span>
-                                                <div style='font-size: 14px; font-weight: 600; color: #0f172a;'>{$name}</div>
-                                            </div>
-                                            <div>
-                                                <span style='font-size: 11px; font-weight: 600; text-transform: uppercase; color: #64748b;'>E-posta Adresi:</span>
-                                                <div style='font-size: 14px; font-weight: 500; color: #2563eb;'>
-                                                    <a href='{$mailto}' style='text-decoration: underline;'>{$email}</a>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <span style='font-size: 11px; font-weight: 600; text-transform: uppercase; color: #64748b;'>Konu:</span>
-                                                <div style='font-size: 13px; font-weight: 600; color: #334155;'>{$subject}</div>
-                                            </div>
-                                            <div>
-                                                <span style='font-size: 11px; font-weight: 600; text-transform: uppercase; color: #64748b;'>Tarih:</span>
-                                                <div style='font-size: 13px; color: #475569;'>{$date}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div style='background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px;'>
-                                        <div style='font-size: 11px; font-weight: 700; text-transform: uppercase; color: #475569; margin-bottom: 8px;'>Mesaj İçeriği</div>
-                                        <div style='font-size: 14px; line-height: 1.6; color: #1e293b; white-space: pre-wrap;'>{$message}</div>
-                                    </div>
-                                ");
-                            })
-                            ->columnSpan('full'),
-                    ]),
-
-                // 2. Hızlı Okundu / Okunmadı Yap Aksiyonu
-                Tables\Actions\Action::make('toggle_read')
-                    ->icon(fn (Message $record): string => $record->is_read ? 'heroicon-o-mail' : 'heroicon-o-mail-open')
-                    ->iconButton()
-                    ->tooltip(fn (Message $record): string => $record->is_read ? 'Okunmadı Olarak İşaretle' : 'Okundu Olarak İşaretle')
-                    ->action(function (Message $record): void {
-                        $record->update(['is_read' => ! $record->is_read]);
-                        Notification::make()
-                            ->title($record->is_read ? 'Mesaj okundu olarak işaretlendi.' : 'Mesaj okunmadı olarak işaretlendi.')
-                            ->success()
-                            ->send();
+                        return $data;
                     }),
 
-                // 3. Düzenle İkonu (Kalem)
-                Tables\Actions\EditAction::make()
-                    ->iconButton()
-                    ->tooltip('Düzenle'),
-
-                // 4. Silme İkonu (Çöp Kutusu)
+                // 2. Silme İkonu (Çöp Kutusu)
                 Tables\Actions\DeleteAction::make()
                     ->iconButton()
                     ->tooltip('Sil'),
@@ -293,7 +241,6 @@ class MessageResource extends Resource
     {
         return [
             'index' => Pages\ListMessages::route('/'),
-            'edit' => Pages\EditMessage::route('/{record}/edit'),
         ];
     }
 }

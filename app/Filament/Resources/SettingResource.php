@@ -103,6 +103,12 @@ class SettingResource extends Resource
                                             ->placeholder('iletisim@simgevip.com')
                                             ->columnSpan(1),
 
+                                        Forms\Components\TextInput::make('whatsapp')
+                                            ->label('WhatsApp Numarası (Sipariş & İletişim)')
+                                            ->placeholder('Örn: https://wa.me/905550000000')
+                                            ->url()
+                                            ->columnSpan(1),
+
                                         Forms\Components\Textarea::make('address')
                                             ->label('Açık Adres')
                                             ->placeholder('Örn: Harbiye Mah. Abdi İpekçi Cad. No: 15, Şişli / İstanbul')

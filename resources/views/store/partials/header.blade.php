@@ -37,7 +37,20 @@
                     <a href="#" target="_blank" rel="noopener noreferrer" class="topbar-social-link" title="Facebook">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                     </a>
-                    <a href="https://wa.me/905550000000" target="_blank" rel="noopener noreferrer" class="topbar-social-link topbar-social-link--whatsapp" title="WhatsApp">
+                    @php
+                        $waHeaderUrl = "https://wa.me/905550000000";
+                        if (isset($siteSettings) && !empty($siteSettings->contact_info[0]['whatsapp'])) {
+                            $waHeaderUrl = $siteSettings->contact_info[0]['whatsapp'];
+                        } elseif (isset($siteSettings) && is_array($siteSettings->social_media)) {
+                            foreach ($siteSettings->social_media as $sm) {
+                                if (strtolower($sm['platform'] ?? '') === 'whatsapp' && !empty($sm['url'])) {
+                                    $waHeaderUrl = $sm['url'];
+                                    break;
+                                }
+                            }
+                        }
+                    @endphp
+                    <a href="{{ $waHeaderUrl }}" target="_blank" rel="noopener noreferrer" class="topbar-social-link topbar-social-link--whatsapp" title="WhatsApp">
                         <x-store-icon name="whatsapp" size="13" />
                     </a>
                 @endif

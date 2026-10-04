@@ -22,6 +22,15 @@ Route::get('/run-migrations', function () {
     return 'Veritabanı güncellemeleri başarıyla tamamlandı!';
 });
 
+Route::get('/run-migration-whatsapp', function () {
+    try {
+        \Illuminate\Support\Facades\DB::statement('ALTER TABLE settings ADD COLUMN whatsapp_number VARCHAR(255) NULL');
+        return 'Success';
+    } catch (\Exception $e) {
+        return $e->getMessage();
+    }
+});
+
 Route::post('/admin/github-gonder', [GithubDeployController::class, 'store'])
     ->middleware(\Filament\Http\Middleware\Authenticate::class)
     ->name('admin.github.deploy');

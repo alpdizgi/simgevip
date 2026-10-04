@@ -20,6 +20,7 @@ class Setting extends Model
         'maintenance_mode',
         'maintenance_message',
         'mail_settings',
+        'whatsapp_number',
     ];
 
     protected $casts = [
