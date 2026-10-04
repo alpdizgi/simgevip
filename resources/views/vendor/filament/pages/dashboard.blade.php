@@ -354,7 +354,7 @@
                 @if($recentMessages->count() > 0)
                     <div class="sv-msg-list">
                         @foreach($recentMessages as $msg)
-                            <a href="{{ route('filament.resources.messages.edit', ['record' => $msg]) }}" class="sv-msg-row">
+                            <a href="{{ route('filament.resources.messages.index') }}" class="sv-msg-row">
                                 <span class="sv-msg-dot {{ $msg->is_read ? '' : 'is-unread' }}"></span>
                                 <span class="sv-msg-body">
                                     <span class="sv-msg-name">{{ $msg->sender_name ?: 'İsimsiz' }}</span>

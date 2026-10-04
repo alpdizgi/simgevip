@@ -30,6 +30,17 @@
         {{ \Filament\Facades\Filament::renderHook('styles.start') }}
 
         <style>
+            .filament-app-layout {
+                min-height: 100vh;
+            }
+            .filament-main {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+            .filament-main-content {
+                flex-grow: 1;
+            }
             [x-cloak=''],
             [x-cloak='x-cloak'],
             [x-cloak='1'] {
