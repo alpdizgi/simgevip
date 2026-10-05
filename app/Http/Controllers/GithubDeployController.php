@@ -16,8 +16,10 @@ class GithubDeployController extends Controller
         if (! $deploy->isEnabled()) {
             try {
                 $preview = $deploy->preview();
-                $body = 'Altyapı hazır, aktarım henüz kapalı (DEPLOY_ENABLED=false). '
+                $body = 'Paket önizlemesi hazır. Canlıya gönderim kapalı. '
                     . $preview['message'];
+                $body .= ' Gönderimi açmak için ' . app()->environmentFile()
+                    . ' dosyasında DEPLOY_ENABLED=true ayarlayın.';
                 if ($preview['files'] !== []) {
                     $body .= ' Örnek: ' . collect($preview['files'])->take(6)->implode(', ')
                         . (count($preview['files']) > 6 ? ' …' : '');

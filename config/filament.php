@@ -267,7 +267,7 @@ return [
     |
     */
 
-    'favicon' => asset('favicon.ico'),
+    'favicon' => rtrim(env('ASSET_URL', env('APP_URL', '')), '/') . '/favicon.ico',
 
     /*
     |--------------------------------------------------------------------------
