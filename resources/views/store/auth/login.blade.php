@@ -4,18 +4,11 @@
 @section('body_class', 'customer-auth')
 @section('content')
 <section class="customer-auth__section" aria-labelledby="customer-auth-title">
-    <div class="customer-auth__shell container">
-        <aside class="customer-auth__intro">
-            <span class="customer-auth__eyebrow">SİMGEVIP HESABIM</span>
-            <h2>Yeniden hoş geldiniz.</h2>
-            <p>Hesabınıza ulaşmak için e-posta adresinizi veya telefon numaranızı kullanın.</p>
-            <div class="customer-auth__intro-note">Henüz hesabınız yok mu? <a href="{{ route('customer.register', array_filter(['next' => request('next')])) }}">Üye olun <span aria-hidden="true">↗</span></a></div>
-        </aside>
+    <div class="customer-auth__shell customer-auth__shell--single container">
         <div class="customer-auth__panel">
             <div class="customer-auth__heading">
-                <span class="customer-auth__step">01 / GİRİŞ</span>
                 <h1 id="customer-auth-title">Giriş Yap</h1>
-                <p>Bilgilerinizi girerek devam edin.</p>
+                <p>Hesabınıza erişmek için bilgilerinizi girin.</p>
             </div>
             <form class="customer-auth__form" method="POST" action="{{ route('customer.login.submit') }}">
                 @csrf

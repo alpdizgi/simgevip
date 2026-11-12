@@ -24,6 +24,11 @@
 .customer-auth #main { min-height: 70vh; }
 .customer-auth__section { padding: clamp(2.5rem, 5vw, 5rem) 0; }
 .customer-auth__shell { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1fr); max-width: 960px; min-height: 560px; background: #fff; border: 1px solid #e5e0da; box-shadow: 0 22px 65px rgba(30, 24, 18, .07); }
+.customer-auth__shell--single { display: block !important; max-width: 520px !important; min-height: auto !important; margin: 0 auto; border-radius: 8px; box-shadow: 0 16px 45px rgba(30, 24, 18, .07); }
+.customer-auth__shell--single .customer-auth__panel { padding: clamp(1.75rem, 4vw, 2.75rem); }
+.customer-auth__shell--single .customer-auth__heading { margin-bottom: 1.5rem; text-align: center; }
+.customer-auth__shell--single .customer-auth__heading h1 { font-size: clamp(2rem, 3.2vw, 2.6rem); margin-bottom: 0.35rem; }
+.customer-auth__shell--single .customer-auth__switch { text-align: center; margin-top: 1.5rem; }
 .customer-auth__intro { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; padding: clamp(2rem, 5vw, 4.5rem); background: #ece6df; }
 .customer-auth__eyebrow, .customer-auth__step { color: #765b46; font-size: .7rem; font-weight: 800; letter-spacing: .17em; }
 .customer-auth__intro h2 { max-width: 320px; margin: clamp(3.5rem, 8vw, 7rem) 0 1rem; font-family: var(--display); font-size: clamp(2.8rem, 4vw, 4.4rem); font-weight: 600; line-height: .98; letter-spacing: -.025em; }
