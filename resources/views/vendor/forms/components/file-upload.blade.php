@@ -82,6 +82,22 @@
                         )
                     },
                 })"
+        x-init="
+            const checkUploadWatchdog = () => {
+                if (typeof pond !== 'undefined' && pond) {
+                    try {
+                        const files = pond.getFiles();
+                        const isBusy = files.some(f => f.status === 2 || f.status === 3);
+                        if (!isBusy) {
+                            $el.closest('form')?.dispatchEvent(new CustomEvent('file-upload-finished', { composed: true, cancelable: true }));
+                        }
+                    } catch (e) {}
+                }
+            };
+            $el.addEventListener('pointerup', () => setTimeout(checkUploadWatchdog, 600));
+            $el.addEventListener('change', () => setTimeout(checkUploadWatchdog, 1000));
+            setInterval(checkUploadWatchdog, 2500);
+        "
         wire:ignore
         {!! ($id = $getId()) ? "id=\"{$id}\"" : null !!}
         style="
