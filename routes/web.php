@@ -48,6 +48,42 @@ Route::post('/admin/github-gonder', [GithubDeployController::class, 'store'])
     ->middleware(\Filament\Http\Middleware\Authenticate::class)
     ->name('admin.github.deploy');
 
+Route::get('/maintenance-upload-diag', function (\Illuminate\Http\Request $request) {
+    if ($request->get('token') !== 'smg_diag_92837162') {
+        abort(404);
+    }
+
+    if ($request->get('action') === 'clear-cache') {
+        \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+        if (file_exists(app()->getCachedConfigPath())) {
+            @unlink(app()->getCachedConfigPath());
+        }
+        if (file_exists(app()->getCachedRoutesPath())) {
+            @unlink(app()->getCachedRoutesPath());
+        }
+    }
+
+    $signedUrl = \Facades\Livewire\GenerateSignedUploadUrl::forLocal();
+
+    return response()->json([
+        'php_version' => PHP_VERSION,
+        'upload_max_filesize' => ini_get('upload_max_filesize'),
+        'post_max_size' => ini_get('post_max_size'),
+        'memory_limit' => ini_get('memory_limit'),
+        'max_execution_time' => ini_get('max_execution_time'),
+        'temp_dir' => sys_get_temp_dir(),
+        'temp_dir_writable' => is_writable(sys_get_temp_dir()),
+        'livewire_tmp' => storage_path('app/livewire-tmp'),
+        'livewire_tmp_exists' => file_exists(storage_path('app/livewire-tmp')),
+        'livewire_tmp_writable' => is_writable(storage_path('app/livewire-tmp')),
+        'config_cached' => file_exists(app()->getCachedConfigPath()),
+        'cached_config_file' => app()->getCachedConfigPath(),
+        'livewire_rules' => \Livewire\FileUploadConfiguration::rules(),
+        'disk' => \Livewire\FileUploadConfiguration::disk(),
+        'signed_upload_url' => $signedUrl,
+    ]);
+});
+
 Route::get('/robots.txt', [SeoController::class, 'robots'])->name('seo.robots');
 Route::get('/sitemap.xml', [SeoController::class, 'sitemap'])->name('seo.sitemap');
 
