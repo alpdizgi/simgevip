@@ -37,5 +37,11 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
+        $this->renderable(function (\Illuminate\Validation\ValidationException $e, $request) {
+            if ($request->is('livewire/upload-file*')) {
+                \Illuminate\Support\Facades\Log::error('LIVEWIRE_UPLOAD_VALIDATION_ERROR: ' . json_encode($e->errors(), JSON_UNESCAPED_UNICODE));
+            }
+        });
     }
 }

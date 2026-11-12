@@ -61,20 +61,18 @@ class SettingResource extends Resource
                                             Forms\Components\FileUpload::make('logo_path')
                                                 ->label('Site Logosu')
                                                 ->image()
-                                                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml'])
                                                 ->disk('public')
                                                 ->directory('settings')
                                                 ->imagePreviewHeight('120')
-                                                ->maxSize(8192)
+                                                ->maxSize(51200)
                                                 ->convertToWebp(),
                                             Forms\Components\FileUpload::make('og_image_path')
                                                 ->label('Paylaşım görseli (SEO)')
                                                 ->image()
-                                                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                                                 ->disk('public')
                                                 ->directory('settings')
                                                 ->imagePreviewHeight('120')
-                                                ->maxSize(8192)
+                                                ->maxSize(51200)
                                                 ->convertToWebp(85, 1200)
                                                 ->helperText('WhatsApp, Instagram ve Google önizlemesi. Önerilen 1200×630 px. Boşsa logo kullanılır.'),
                                         ])->columnSpan(1),

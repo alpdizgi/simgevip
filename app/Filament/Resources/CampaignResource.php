@@ -145,10 +145,9 @@ class CampaignResource extends Resource
                                 Forms\Components\FileUpload::make('image_path')
                                     ->label('Görsel')
                                     ->image()
-                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                                     ->disk('public')
                                     ->directory('campaigns')
-                                    ->maxSize(15360)
+                                    ->maxSize(51200)
                                     ->convertToWebp()
                                     ->helperText('Kampanya banner veya tanıtım görseli yükleyin. Otomatik WebP olarak optimize edilir.'),
                             ]),

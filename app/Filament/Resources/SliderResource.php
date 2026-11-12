@@ -45,10 +45,9 @@ class SliderResource extends Resource
                                     ->label('Slider Görseli')
                                     ->helperText('Önerilen boyut: 1920×900 px (yatay). Görsel tüm ekranlarda kırpılmadan, kendi oranıyla tam genişlikte gösterilir. Otomatik olarak WebP formatına dönüştürülüp optimize edilir.')
                                     ->image()
-                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                                     ->disk('public')
                                     ->directory('sliders')
-                                    ->maxSize(15360)
+                                    ->maxSize(51200)
                                     ->convertToWebp(85, 2560)
                                     ->required()
                                     ->columnSpan('full'),
