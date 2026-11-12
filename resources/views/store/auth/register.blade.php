@@ -24,12 +24,18 @@
                 <div class="customer-auth__field"><label for="phone">Telefon <span>(isteğe bağlı)</span></label><input id="phone" type="tel" name="phone" value="{{ old('phone') }}" autocomplete="tel" inputmode="tel" placeholder="05xx xxx xx xx">@error('phone') <small class="customer-auth__error">{{ $message }}</small> @enderror</div>
                 <div class="customer-auth__field"><label for="password">Şifre <span>(en az 8 karakter)</span></label><input id="password" type="password" name="password" autocomplete="new-password" required minlength="8" placeholder="Şifrenizi oluşturun">@error('password') <small class="customer-auth__error">{{ $message }}</small> @enderror</div>
                 <div class="customer-auth__field"><label for="password_confirmation">Şifre Tekrarı</label><input id="password_confirmation" type="password" name="password_confirmation" autocomplete="new-password" required minlength="8" placeholder="Şifrenizi tekrar girin"></div>
-                <div class="customer-auth__field" style="display: flex; gap: 0.75rem; align-items: flex-start; margin-top: 1rem; margin-bottom: 1.5rem;">
+                <div class="customer-auth__field" style="display: flex; gap: 0.75rem; align-items: flex-start; margin-top: 1rem; margin-bottom: 0.75rem;">
                     <input type="checkbox" id="terms" name="terms" required style="margin-top: 0.25rem; width: 1.25rem; height: 1.25rem; cursor: pointer; flex-shrink: 0;">
                     <label for="terms" style="font-size: 0.85rem; line-height: 1.5; color: #444; text-transform: none; font-weight: normal; margin: 0; cursor: pointer;">
                         <a href="{{ route('page.show', 'kullanim-kosullari') }}" target="_blank" style="text-decoration: underline; color: #000; font-weight: 500;">Kullanım Koşulları</a>'nı, 
                         <a href="{{ route('page.show', 'gizlilik-politikasi') }}" target="_blank" style="text-decoration: underline; color: #000; font-weight: 500;">Gizlilik Politikası</a>'nı ve 
-                        <a href="{{ route('page.show', 'cerez-politikasi') }}" target="_blank" style="text-decoration: underline; color: #000; font-weight: 500;">Çerez Politikası</a>'nı okudum, anladım ve kabul ediyorum.
+                        <a href="{{ route('page.show', 'kvkk') }}" target="_blank" style="text-decoration: underline; color: #000; font-weight: 500;">KVKK Aydınlatma Metni</a>'ni okudum, kabul ediyorum. <span style="color:#d9534f;">*</span>
+                    </label>
+                </div>
+                <div class="customer-auth__field" style="display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1.5rem;">
+                    <input type="checkbox" id="marketing_consent" name="marketing_consent" style="margin-top: 0.25rem; width: 1.25rem; height: 1.25rem; cursor: pointer; flex-shrink: 0;">
+                    <label for="marketing_consent" style="font-size: 0.85rem; line-height: 1.5; color: #555; text-transform: none; font-weight: normal; margin: 0; cursor: pointer;">
+                        Kampanyalardan, indirimlerden ve yeni koleksiyonlardan haberdar olmak için tarafıma ticari elektronik ileti (SMS ve E-posta) gönderilmesini kabul ediyorum.
                     </label>
                 </div>
                 <button class="customer-auth__submit" type="submit">Üye Ol <span aria-hidden="true">→</span></button>

@@ -102,13 +102,14 @@ class CategoryResource extends Resource
                             ->unique(ignoreRecord: true),
                         Forms\Components\FileUpload::make('image_path')
                             ->label('Anasayfa kart görseli')
-                            ->helperText('Anasayfada dikey kart olarak görünür. Dikey (portre) görsel yükleyin; kartın ortasında kategori adı bir şerit içinde yer alır. Yalnızca JPG, PNG veya WebP.')
+                            ->helperText('Anasayfada dikey kart olarak görünür. Dikey (portre) görsel yükleyin; kartın ortasında kategori adı bir şerit içinde yer alır. Otomatik olarak WebP formatına dönüştürülüp optimize edilir.')
                             ->image()
                             ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                             ->imageCropAspectRatio('9:16')
                             ->disk('public')
                             ->directory('categories')
-                            ->maxSize(4096)
+                            ->maxSize(15360)
+                            ->convertToWebp()
                             ->visible(fn ($get) => $get('menu_level') !== 'child'),
                         Forms\Components\Grid::make(2)
                             ->schema([

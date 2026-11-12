@@ -16,6 +16,11 @@ class ContactController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+        // Anti-Bot Honeypot Koruması: Gizli alan doldurulmuşsa bot olarak değerlendir ve sessizce yanıt dön
+        if ($request->filled('hp_field')) {
+            return back()->with('success', 'Mesajınız alındı. En kısa sürede size dönüş yapacağız.');
+        }
+
         $data = $request->validate([
             'sender_name' => ['required', 'string', 'max:120'],
             'email' => ['required', 'email', 'max:180'],

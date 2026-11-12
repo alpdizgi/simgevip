@@ -148,7 +148,9 @@ class CampaignResource extends Resource
                                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                                     ->disk('public')
                                     ->directory('campaigns')
-                                    ->helperText('Kampanya banner veya tanıtım görseli yükleyin.'),
+                                    ->maxSize(15360)
+                                    ->convertToWebp()
+                                    ->helperText('Kampanya banner veya tanıtım görseli yükleyin. Otomatik WebP olarak optimize edilir.'),
                             ]),
                     ])->columnSpan(1),
                 ]),

@@ -36,6 +36,9 @@ class CustomerAuthController extends Controller
             'email' => ['nullable', 'required_without:phone', 'email', 'max:180'],
             'phone' => ['nullable', 'required_without:email', 'string', 'max:25'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'terms' => ['accepted'],
+        ], [
+            'terms.accepted' => 'Devam etmek için Kullanım Koşulları ve KVKK Aydınlatma Metnini onaylamanız gerekir.',
         ]);
 
         $registerKey = 'customer-register:' . $request->ip();

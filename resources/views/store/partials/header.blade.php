@@ -1,8 +1,26 @@
+@php
+    $announcementsData = $siteSettings?->announcements;
+    $announcementsEnabled = $announcementsData['is_enabled'] ?? true;
+    $speedSetting = $announcementsData['speed'] ?? 'normal';
+    $speedSeconds = match ($speedSetting) {
+        'slow' => '36s',
+        'fast' => '16s',
+        default => '25s',
+    };
+    $announcementItems = collect($announcementsData['items'] ?? [])
+        ->filter(function ($item) {
+            return !empty($item['text']) && ($item['is_active'] ?? true);
+        })
+        ->values();
+    $hasActiveAnnouncements = $announcementsEnabled && $announcementItems->isNotEmpty();
+@endphp
+
 <header class="site-header-wrapper" data-header>
     <!-- 1. En Üst: Premium Topbar (Duyuru & İletişim Çubuğu) -->
-    <div class="site-topbar">
-        <div class="container site-topbar__inner">
-            <div class="site-topbar__left">
+    <div class="site-topbar {{ $hasActiveAnnouncements ? 'has-ticker' : '' }}">
+        <div class="site-topbar__inner">
+            {{-- Sol Alan: Telefon ve E-posta (En Sola Yaslı) --}}
+            <div class="site-topbar__left topbar-contacts">
                 @php
                     $firstBranch = (is_array($siteSettings?->contact_info) && count($siteSettings->contact_info) > 0) 
                         ? $siteSettings->contact_info[0] 
@@ -21,8 +39,47 @@
                 </a>
             </div>
 
-            <div class="site-topbar__right">
-                <div class="topbar-socials">
+            {{-- Orta Alan: Kayan Duyurular (Sağdan Sola Kesintisiz Ticker) --}}
+            @if($hasActiveAnnouncements)
+                <div class="site-topbar__center topbar-ticker" aria-label="Duyurular" style="--ticker-duration: {{ $speedSeconds }};">
+                    <div class="topbar-ticker__track">
+                        <div class="topbar-ticker__content">
+                            @foreach($announcementItems as $item)
+                                <div class="topbar-ticker__item">
+                                    @if(!empty($item['badge']))
+                                        <span class="topbar-ticker__badge">{{ $item['badge'] }}</span>
+                                    @endif
+                                    @if(!empty($item['link']))
+                                        <a href="{{ $item['link'] }}" class="topbar-ticker__link">{{ $item['text'] }}</a>
+                                    @else
+                                        <span class="topbar-ticker__text">{{ $item['text'] }}</span>
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
+                        {{-- Kesintisiz ve pürüzsüz sonsuz döngü için klon --}}
+                        <div class="topbar-ticker__content" aria-hidden="true">
+                            @foreach($announcementItems as $item)
+                                <div class="topbar-ticker__item">
+                                    @if(!empty($item['badge']))
+                                        <span class="topbar-ticker__badge">{{ $item['badge'] }}</span>
+                                    @endif
+                                    @if(!empty($item['link']))
+                                        <a href="{{ $item['link'] }}" class="topbar-ticker__link">{{ $item['text'] }}</a>
+                                    @else
+                                        <span class="topbar-ticker__text">{{ $item['text'] }}</span>
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            @else
+                <div class="site-topbar__center"></div>
+            @endif
+
+            {{-- Sağ Alan: Sosyal Medya İkonları (En Sağa Yaslı) --}}
+            <div class="site-topbar__right topbar-socials">
                 @if (is_array($siteSettings?->social_media) && count($siteSettings->social_media) > 0)
                     @foreach ($siteSettings->social_media as $sm)
                         @if(!empty($sm['url']))
@@ -54,7 +111,6 @@
                         <x-store-icon name="whatsapp" size="13" />
                     </a>
                 @endif
-                </div>
             </div>
         </div>
     </div>

@@ -11,9 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
         headerHeightRaf = requestAnimationFrame(() => {
             const h = header.offsetHeight;
             if (h > 0) {
-                // Eğer is-scrolled ise ve önceki değer varsa ani layout jump yapmamak için koru
-                if (!header.classList.contains('is-scrolled') || !document.documentElement.style.getPropertyValue('--header-h')) {
-                    document.documentElement.style.setProperty('--header-h', `${h}px`);
+                const currentH = parseInt(document.documentElement.style.getPropertyValue('--header-h'), 10) || 0;
+                if (!header.classList.contains('is-scrolled') || !currentH) {
+                    if (Math.abs(h - currentH) > 1) {
+                        document.documentElement.style.setProperty('--header-h', `${h}px`);
+                    }
                 }
             }
             headerHeightRaf = null;

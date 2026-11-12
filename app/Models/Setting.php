@@ -21,12 +21,14 @@ class Setting extends Model
         'maintenance_message',
         'mail_settings',
         'whatsapp_number',
+        'announcements',
     ];
 
     protected $casts = [
         'contact_info' => 'array',
         'social_media' => 'array',
         'mail_settings' => 'array',
+        'announcements' => 'array',
         'maintenance_mode' => 'boolean',
     ];
 }

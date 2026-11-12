@@ -61,11 +61,12 @@ class SettingResource extends Resource
                                             Forms\Components\FileUpload::make('logo_path')
                                                 ->label('Site Logosu')
                                                 ->image()
-                                                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                                                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml'])
                                                 ->disk('public')
                                                 ->directory('settings')
                                                 ->imagePreviewHeight('120')
-                                                ->maxSize(4096),
+                                                ->maxSize(8192)
+                                                ->convertToWebp(),
                                             Forms\Components\FileUpload::make('og_image_path')
                                                 ->label('Paylaşım görseli (SEO)')
                                                 ->image()
@@ -73,10 +74,70 @@ class SettingResource extends Resource
                                                 ->disk('public')
                                                 ->directory('settings')
                                                 ->imagePreviewHeight('120')
-                                                ->maxSize(4096)
+                                                ->maxSize(8192)
+                                                ->convertToWebp(85, 1200)
                                                 ->helperText('WhatsApp, Instagram ve Google önizlemesi. Önerilen 1200×630 px. Boşsa logo kullanılır.'),
                                         ])->columnSpan(1),
                                     ])
+                            ]),
+
+                        Forms\Components\Tabs\Tab::make('Duyurular')
+                            ->schema([
+                                Forms\Components\Section::make('Üst Kayan Duyuru Bandı (Topbar Ticker)')
+                                    ->description('Sitenin en üst çubuğunda (iletişim bilgileri ile sosyal medya ikonları arasında) sağdan sola kesintisiz kayan duyuru ve kampanya metinleri.')
+                                    ->schema([
+                                        Forms\Components\Grid::make(2)
+                                            ->schema([
+                                                Forms\Components\Toggle::make('announcements.is_enabled')
+                                                    ->label('Duyuru Bandını Aktif Et')
+                                                    ->helperText('Açık olduğunda üst barda duyurular sağdan sola doğru kayarak gösterilir.')
+                                                    ->default(true),
+
+                                                Forms\Components\Select::make('announcements.speed')
+                                                    ->label('Kayma Hızı')
+                                                    ->options([
+                                                        'slow' => 'Yavaş (36 saniye)',
+                                                        'normal' => 'Normal (25 saniye)',
+                                                        'fast' => 'Hızlı (16 saniye)',
+                                                    ])
+                                                    ->default('normal')
+                                                    ->helperText('Duyuru metinlerinin ekranı boydan boya geçiş temposu.'),
+                                            ]),
+
+                                        Forms\Components\Repeater::make('announcements.items')
+                                            ->label('Duyuru Listesi')
+                                            ->schema([
+                                                Forms\Components\Grid::make(12)
+                                                    ->schema([
+                                                        Forms\Components\TextInput::make('badge')
+                                                            ->label('Rozet / Etiket (İsteğe Bağlı)')
+                                                            ->placeholder('Örn: KAMPANYA, YENİ, KARGO')
+                                                            ->columnSpan(['default' => 12, 'sm' => 3]),
+
+                                                        Forms\Components\TextInput::make('text')
+                                                            ->label('Duyuru Metni')
+                                                            ->placeholder('Örn: 1500 TL ve Üzeri Siparişlerde Ücretsiz Kargo!')
+                                                            ->required()
+                                                            ->columnSpan(['default' => 12, 'sm' => 6]),
+
+                                                        Forms\Components\TextInput::make('link')
+                                                            ->label('Yönlendirme Linki (İsteğe Bağlı)')
+                                                            ->placeholder('/koleksiyon veya https://...')
+                                                            ->columnSpan(['default' => 12, 'sm' => 3]),
+
+                                                        Forms\Components\Toggle::make('is_active')
+                                                            ->label('Bu Duyuruyu Göster')
+                                                            ->default(true)
+                                                            ->columnSpan(12),
+                                                    ]),
+                                            ])
+                                            ->defaultItems(1)
+                                            ->createItemButtonLabel('Yeni Duyuru Ekle')
+                                            ->collapsible()
+                                            ->itemLabel(fn (array $state): ?string => !empty($state['text']) ? ('📢 ' . (!empty($state['badge']) ? '[' . $state['badge'] . '] ' : '') . $state['text']) : 'Yeni Duyuru')
+                                            ->helperText('Birden fazla duyuru ekleyebilirsiniz. Duyurular kesintisiz olarak sağdan sola kayar; kullanıcı fareyle üzerine geldiğinde kayma duraklar.')
+                                            ->columnSpan('full'),
+                                    ]),
                             ]),
 
                         Forms\Components\Tabs\Tab::make('İletişim & Sosyal Medya')

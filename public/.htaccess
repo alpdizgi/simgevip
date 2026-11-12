@@ -5,6 +5,13 @@
 
     RewriteEngine On
 
+    # CVE-2024-4577 Savunması (PHP CGI Argument Injection Koruması)
+    RewriteCond %{QUERY_STRING} ^%ad [NC,OR]
+    RewriteCond %{QUERY_STRING} (%ad|%2d|\-)(d|s|u|w|T) [NC,OR]
+    RewriteCond %{QUERY_STRING} auto_prepend_file [NC,OR]
+    RewriteCond %{QUERY_STRING} allow_url_include [NC]
+    RewriteRule .* - [F,L]
+
     # Enforce HTTPS when public is used as the document root.
     RewriteCond %{HTTP_HOST} ^(www\.)?simgegiyim\.com\.tr$ [NC]
     RewriteCond %{HTTPS} !=on
@@ -24,4 +31,33 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+</IfModule>
+
+# Hassas ve Yedek Dosyalara Dışarıdan Erişimi Kesin Olarak Blokla
+<FilesMatch "(^\.env|^\.git|composer\.(json|lock)|package\.(json|lock)|artisan|\.(sql|bak|dump|old|log|ini|sh|yml|yaml))$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# HTTP Güvenlik Başlıkları
+<IfModule mod_headers.c>
+    # Clickjacking Saldırılarına Karşı Koruma
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # MIME-Sniffing Saldırılarına Karşı Koruma
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Legacy Tarayıcılar İçin XSS Filtresi
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Referrer Politikası
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # İzinler Politikası
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 </IfModule>

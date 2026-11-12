@@ -152,6 +152,10 @@
 
             <form method="post" action="{{ route('contact.store') }}" class="contact-form">
                 @csrf
+                {{-- Anti-Bot Honeypot Alanı (Kullanıcıya Görünmez) --}}
+                <div style="display:none !important;" aria-hidden="true">
+                    <input type="text" name="hp_field" tabindex="-1" autocomplete="off" value="">
+                </div>
                 <div class="contact-form__head">
                     <h2>Mesaj bırakın</h2>
                     <p>Formu doldurun. Sipariş numaranız varsa konuya eklemeniz yanıtı hızlandırır.</p>

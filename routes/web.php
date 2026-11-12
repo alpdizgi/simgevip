@@ -12,24 +12,37 @@ use App\Http\Controllers\SeoController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/link-storage', function () {
-    \Illuminate\Support\Facades\Artisan::call('storage:link');
-    return 'Resim bağlantıları (symlink) başarıyla oluşturuldu! Ana sayfaya dönebilirsiniz.';
-});
+if (app()->environment('local')) {
+    Route::prefix('dev-tools')->group(function () {
+        Route::get('/link-storage', function () {
+            \Illuminate\Support\Facades\Artisan::call('storage:link');
+            return 'Resim bağlantıları (symlink) başarıyla oluşturuldu! Ana sayfaya dönebilirsiniz.';
+        });
 
-Route::get('/run-migrations', function () {
-    \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
-    return 'Veritabanı güncellemeleri başarıyla tamamlandı!';
-});
+        Route::get('/run-migrations', function () {
+            \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+            return 'Veritabanı güncellemeleri başarıyla tamamlandı!';
+        });
 
-Route::get('/run-migration-whatsapp', function () {
-    try {
-        \Illuminate\Support\Facades\DB::statement('ALTER TABLE settings ADD COLUMN whatsapp_number VARCHAR(255) NULL');
-        return 'Success';
-    } catch (\Exception $e) {
-        return $e->getMessage();
-    }
-});
+        Route::get('/run-migration-whatsapp', function () {
+            try {
+                \Illuminate\Support\Facades\DB::statement('ALTER TABLE settings ADD COLUMN whatsapp_number VARCHAR(255) NULL');
+                return 'Success';
+            } catch (\Exception $e) {
+                return $e->getMessage();
+            }
+        });
+
+        Route::get('/run-migration-announcements', function () {
+            try {
+                \Illuminate\Support\Facades\DB::statement('ALTER TABLE settings ADD COLUMN announcements JSON NULL');
+                return 'Success: announcements column added!';
+            } catch (\Exception $e) {
+                return $e->getMessage();
+            }
+        });
+    });
+}
 
 Route::post('/admin/github-gonder', [GithubDeployController::class, 'store'])
     ->middleware(\Filament\Http\Middleware\Authenticate::class)
@@ -42,15 +55,15 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('guest:customer')->group(function () {
     Route::get('/giris', [CustomerAuthController::class, 'showLogin'])->name('customer.login');
-    Route::post('/giris', [CustomerAuthController::class, 'login'])->name('customer.login.submit');
+    Route::post('/giris', [CustomerAuthController::class, 'login'])->middleware('throttle:5,1')->name('customer.login.submit');
     Route::get('/uye-ol', [CustomerAuthController::class, 'showRegister'])->name('customer.register');
-    Route::post('/uye-ol', [CustomerAuthController::class, 'register'])->name('customer.register.submit');
+    Route::post('/uye-ol', [CustomerAuthController::class, 'register'])->middleware('throttle:3,1')->name('customer.register.submit');
     
     // Şifremi Unuttum
     Route::get('/sifremi-unuttum', [CustomerAuthController::class, 'showForgotPassword'])->name('customer.password.request');
-    Route::post('/sifremi-unuttum', [CustomerAuthController::class, 'sendResetLinkEmail'])->name('customer.password.email');
+    Route::post('/sifremi-unuttum', [CustomerAuthController::class, 'sendResetLinkEmail'])->middleware('throttle:3,1')->name('customer.password.email');
     Route::get('/sifre-sifirla/{token}', [CustomerAuthController::class, 'showResetPassword'])->name('password.reset');
-    Route::post('/sifre-sifirla', [CustomerAuthController::class, 'resetPassword'])->name('customer.password.update_from_reset');
+    Route::post('/sifre-sifirla', [CustomerAuthController::class, 'resetPassword'])->middleware('throttle:5,1')->name('customer.password.update_from_reset');
 });
 Route::middleware('auth:customer')->group(function () {
     Route::get('/hesabim', [CustomerAccountController::class, 'index'])->name('customer.account');
@@ -70,7 +83,7 @@ Route::middleware('auth:customer')->group(function () {
 });
 
 Route::get('/koleksiyon', [ShopController::class, 'index'])->name('shop.index');
-Route::get('/arama/canli', [ShopController::class, 'liveSearch'])->name('search.live');
+Route::get('/arama/canli', [ShopController::class, 'liveSearch'])->middleware('throttle:30,1')->name('search.live');
 Route::get('/kategori/{slug}', [ShopController::class, 'category'])->name('shop.category');
 Route::get('/urun/{slug}', [ProductController::class, 'show'])->name('product.show');
 
@@ -79,7 +92,7 @@ Route::middleware('auth:customer')->group(function () {
     Route::post('/sepet', [\App\Http\Controllers\CartController::class, 'store'])->name('cart.store');
     Route::post('/sepet/guncelle', [\App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
     Route::post('/sepet/kaldir', [\App\Http\Controllers\CartController::class, 'destroy'])->name('cart.destroy');
-    Route::post('/magazada-ayir', [\App\Http\Controllers\StoreHoldController::class, 'store'])->name('store.hold');
+    Route::post('/magazada-ayir', [\App\Http\Controllers\StoreHoldController::class, 'store'])->middleware('throttle:5,1')->name('store.hold');
 });
 
 Route::get('/hakkimizda', [PageController::class, 'about'])->name('about');
@@ -87,4 +100,4 @@ Route::get('/sikca-sorulan-sorular', [\App\Http\Controllers\Store\FaqController:
 Route::get('/sayfa/{slug}', [PageController::class, 'show'])->name('page.show');
 
 Route::get('/iletisim', [ContactController::class, 'show'])->name('contact.show');
-Route::post('/iletisim', [ContactController::class, 'store'])->name('contact.store');
+Route::post('/iletisim', [ContactController::class, 'store'])->middleware('throttle:3,1')->name('contact.store');

@@ -124,14 +124,16 @@ class ProductResource extends Resource
                             ->schema([
                                 Forms\Components\FileUpload::make('images')
                                     ->label('Ürün Görselleri')
-                                    ->helperText('Önerilen: 1080×1920 px (9:16), en fazla 10 görsel. Yalnızca JPG, PNG veya WebP.')
+                                    ->helperText('Önerilen: 1080×1920 px (9:16), en fazla 10 görsel. Yüklenen görseller otomatik olarak WebP formatına dönüştürülüp optimize edilir.')
                                     ->image()
                                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                                     ->multiple()
                                     ->maxFiles(10)
+                                    ->maxSize(15360)
                                     ->disk('public')
                                     ->directory('products')
                                     ->enableReordering()
+                                    ->convertToWebp()
                                     ->columnSpan('full'),
                             ]),
 
@@ -158,14 +160,16 @@ class ProductResource extends Resource
                                             ->required(),
                                         Forms\Components\FileUpload::make('images')
                                             ->label('Bu renge ait görseller')
-                                            ->helperText('Önerilen: 1080×1920 px (9:16), en fazla 5 görsel. Yalnızca JPG, PNG veya WebP.')
+                                            ->helperText('Önerilen: 1080×1920 px (9:16), en fazla 5 görsel. Yüklenen görseller otomatik olarak WebP formatına dönüştürülüp optimize edilir.')
                                             ->image()
                                             ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                                             ->multiple()
                                             ->maxFiles(5)
+                                            ->maxSize(15360)
                                             ->disk('public')
                                             ->directory('products/variants')
                                             ->enableReordering()
+                                            ->convertToWebp()
                                             ->columnSpan('full'),
                                         Forms\Components\Group::make()
                                             ->schema([

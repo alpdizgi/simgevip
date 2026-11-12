@@ -43,12 +43,13 @@ class SliderResource extends Resource
                             ->schema([
                                 Forms\Components\FileUpload::make('image_path')
                                     ->label('Slider Görseli')
-                                    ->helperText('Önerilen boyut: 1920×900 px (yatay). Görsel tüm ekranlarda kırpılmadan, kendi oranıyla tam genişlikte gösterilir. Yalnızca JPG, PNG veya WebP.')
+                                    ->helperText('Önerilen boyut: 1920×900 px (yatay). Görsel tüm ekranlarda kırpılmadan, kendi oranıyla tam genişlikte gösterilir. Otomatik olarak WebP formatına dönüştürülüp optimize edilir.')
                                     ->image()
                                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                                     ->disk('public')
                                     ->directory('sliders')
-                                    ->maxSize(5120)
+                                    ->maxSize(15360)
+                                    ->convertToWebp(85, 2560)
                                     ->required()
                                     ->columnSpan('full'),
 

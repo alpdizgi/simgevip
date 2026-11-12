@@ -152,13 +152,18 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 2rem;
+    box-sizing: border-box;
 }
 
 .site-topbar__left {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    flex-shrink: 0;
 }
 
 .site-topbar__center {
@@ -169,10 +174,93 @@ p {
     white-space: nowrap;
 }
 
+.site-topbar__center.topbar-ticker {
+    flex: 1 1 0%;
+    min-width: 0;
+    overflow: hidden;
+    position: relative;
+    margin: 0 1.5rem;
+    justify-content: flex-start;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 24px, black calc(100% - 24px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 24px, black calc(100% - 24px), transparent 100%);
+}
+
 .site-topbar__right {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+.topbar-ticker__track {
+    display: flex;
+    width: max-content;
+    animation: topbarTicker var(--ticker-duration, 25s) linear infinite;
+    will-change: transform;
+}
+
+.topbar-ticker:hover .topbar-ticker__track {
+    animation-play-state: paused;
+}
+
+.topbar-ticker__content {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding-right: 2.5rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.topbar-ticker__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 0.02em;
+}
+
+.topbar-ticker__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.12rem 0.5rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #ffffff;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.topbar-ticker__text {
+    color: #ffffff;
+}
+
+.topbar-ticker__link {
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(255, 255, 255, 0.4);
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.topbar-ticker__link:hover {
+    color: #fdf497;
+    text-decoration-color: #fdf497;
+}
+
+@keyframes topbarTicker {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
 }
 
 .topbar-badge {
@@ -256,11 +344,35 @@ p {
 
 @media (max-width: 991px) {
     .site-topbar__inner {
-        display: flex;
+        padding: 0 0.75rem;
         justify-content: center;
     }
     .hidden-mobile {
         display: none !important;
+    }
+    /* Mobilde yalnızca kayan duyuru alanı gösterilir */
+    .site-topbar.has-ticker .site-topbar__left,
+    .site-topbar.has-ticker .site-topbar__right,
+    .site-topbar:has(.topbar-ticker) .site-topbar__left,
+    .site-topbar:has(.topbar-ticker) .site-topbar__right {
+        display: none !important;
+    }
+    .site-topbar.has-ticker .site-topbar__center.topbar-ticker,
+    .site-topbar:has(.topbar-ticker) .site-topbar__center.topbar-ticker {
+        display: flex !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+        justify-content: flex-start !important;
+    }
+    .topbar-ticker__content {
+        gap: 2rem;
+        padding-right: 2rem;
+    }
+    .topbar-ticker__item {
+        font-size: 0.7rem;
     }
 }
 
@@ -4881,10 +4993,43 @@ body.cart-open {
         --header-h: 58px;
     }
 
-    .site-topbar,
-    .has-hero .site-header-wrapper:not(.is-scrolled) .site-topbar,
-    .has-hero .site-header-wrapper.is-scrolled .site-topbar {
+    .site-topbar:not(.has-ticker),
+    .has-hero .site-header-wrapper:not(.is-scrolled) .site-topbar:not(.has-ticker),
+    .has-hero .site-header-wrapper.is-scrolled .site-topbar:not(.has-ticker) {
         display: none !important;
+    }
+
+    .site-topbar.has-ticker,
+    .has-hero .site-header-wrapper:not(.is-scrolled) .site-topbar.has-ticker,
+    .site-header-wrapper .site-topbar.has-ticker {
+        display: block !important;
+        height: 36px !important;
+        max-height: 36px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        padding: 0 !important;
+        background-color: #0f0f11 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        overflow: hidden !important;
+    }
+
+    .site-topbar.has-ticker .site-topbar__inner {
+        height: 36px !important;
+        padding: 0 0.75rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .site-header-wrapper.is-scrolled .site-topbar.has-ticker {
+        height: 0 !important;
+        max-height: 0 !important;
+        opacity: 0 !important;
+        padding: 0 !important;
+        border-bottom: none !important;
+        pointer-events: none !important;
+        overflow: hidden !important;
     }
 
     .container {
@@ -4912,7 +5057,7 @@ body.cart-open {
         width: 100% !important;
         max-width: 100% !important;
         height: auto !important;
-        min-height: var(--header-h, 58px);
+        min-height: 58px;
         z-index: 1000;
         background: transparent !important;
         -webkit-backdrop-filter: none !important;
@@ -4932,7 +5077,7 @@ body.cart-open {
     .site-main-header {
         position: relative;
         width: 100%;
-        height: var(--header-h, 58px);
+        height: 58px !important;
         padding: 0 !important;
         background: rgba(255, 255, 255, 0.98) !important;
         -webkit-backdrop-filter: none !important;
@@ -5069,7 +5214,7 @@ body.cart-open {
     body,
     body.has-hero,
     body.page-home {
-        padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
+        padding-top: calc(var(--header-h, 58px) + env(safe-area-inset-top, 0px));
     }
 
     .page-home .hero,

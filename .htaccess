@@ -5,6 +5,13 @@
 
     RewriteEngine On
 
+    # CVE-2024-4577 Savunması (PHP CGI Argument Injection Koruması)
+    RewriteCond %{QUERY_STRING} ^%ad [NC,OR]
+    RewriteCond %{QUERY_STRING} (%ad|%2d|\-)(d|s|u|w|T) [NC,OR]
+    RewriteCond %{QUERY_STRING} auto_prepend_file [NC,OR]
+    RewriteCond %{QUERY_STRING} allow_url_include [NC]
+    RewriteRule .* - [F,L]
+
     # Redirect the live domain to HTTPS before routing into public.
     RewriteCond %{HTTP_HOST} ^(www\.)?simgegiyim\.com\.tr$ [NC]
     RewriteCond %{HTTPS} !=on
@@ -16,6 +23,12 @@
     RewriteRule ^(?!public/)(.*)$ public/$1 [L]
 </IfModule>
 
-<FilesMatch "(^\.env|composer\.(json|lock|phar)|artisan|fix_columns\.php|server\.php)$">
-    Require all denied
+<FilesMatch "(^\.env|^\.git|composer\.(json|lock|phar)|package\.(json|lock)|artisan|server\.php|\.(sql|bak|dump|old|log|ini|sh|yml|yaml))$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
 </FilesMatch>

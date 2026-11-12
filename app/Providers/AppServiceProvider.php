@@ -65,6 +65,21 @@ class AppServiceProvider extends ServiceProvider
             // Veritabanı hazır değilse yoksay (örneğin migration aşamasında)
         }
 
+        \Filament\Forms\Components\FileUpload::macro('convertToWebp', function (int $quality = 82, ?int $maxDimension = 1920) {
+            /** @var \Filament\Forms\Components\FileUpload $this */
+            $component = $this;
+
+            return $this->saveUploadedFileUsing(function ($file) use ($component, $quality, $maxDimension) {
+                return app(\App\Services\WebpConverterService::class)->convertAndStore(
+                    $file,
+                    $component->getDiskName(),
+                    $component->getDirectory(),
+                    $quality,
+                    $maxDimension
+                );
+            });
+        });
+
         \Filament\Facades\Filament::serving(function () {
             // Admin paneli Türkçe; site (locale) İngilizce kalır
             app()->setLocale('tr');
