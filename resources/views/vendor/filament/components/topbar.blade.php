@@ -60,7 +60,20 @@
 
                 @livewire('filament.core.notifications')
 
-                @if(app()->environment('local'))
+                @php
+                    $requestHost = request()->getHost();
+                    $isLocalEnvironment = app()->environment('local')
+                        && ! app()->environment('production')
+                        && (
+                            in_array($requestHost, ['localhost', '127.0.0.1', '::1'])
+                            || str_ends_with($requestHost, '.local')
+                            || str_ends_with($requestHost, '.test')
+                            || str_ends_with($requestHost, '.localhost')
+                        )
+                        && ! str_contains($requestHost, 'simgegiyim');
+                @endphp
+
+                @if($isLocalEnvironment)
                     @php($deployEnabled = (bool) config('deploy.enabled'))
                     <form method="POST" action="{{ route('admin.github.deploy') }}" onsubmit="@if($deployEnabled) if(!confirm('Yalnızca canlı için gerekli değişmiş dosyalar (kod, stil, görseller ve katalog içeriği) GitHub üzerinden canlıya yazılacak. Müşteri, sipariş ve destek kayıtları canlıda kalır. Devam edilsin mi?')) return false; var button=this.querySelector('button'); button.disabled=true; button.querySelector('span').textContent='Gönderiliyor...'; @else if(!confirm('Aktarım henüz kapalı. Yalnızca canlı paket listesindeki değişmiş dosyalar önizlenecek, GitHub\'a gönderilmeyecek. Devam edilsin mi?')) return false; var button=this.querySelector('button'); button.disabled=true; button.querySelector('span').textContent='Önizleniyor...'; @endif">
                         @csrf

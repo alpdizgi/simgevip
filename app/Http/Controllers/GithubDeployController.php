@@ -11,7 +11,19 @@ class GithubDeployController extends Controller
 {
     public function store(GithubDeployService $deploy): RedirectResponse
     {
-        abort_unless(app()->environment('local'), 404);
+        $host = request()->getHost();
+        $isLocalHost = in_array($host, ['localhost', '127.0.0.1', '::1'])
+            || str_ends_with($host, '.local')
+            || str_ends_with($host, '.test')
+            || str_ends_with($host, '.localhost');
+
+        abort_unless(
+            app()->environment('local')
+            && ! app()->environment('production')
+            && $isLocalHost
+            && ! str_contains($host, 'simgegiyim'),
+            404
+        );
 
         if (! $deploy->isEnabled()) {
             try {

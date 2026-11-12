@@ -121,7 +121,13 @@ class GithubDeployService
 
     private function assertLocal(): void
     {
-        if (! app()->environment('local')) {
+        $host = app()->runningInConsole() ? 'localhost' : request()->getHost();
+        $isLocalHost = in_array($host, ['localhost', '127.0.0.1', '::1'])
+            || str_ends_with($host, '.local')
+            || str_ends_with($host, '.test')
+            || str_ends_with($host, '.localhost');
+
+        if (! app()->environment('local') || app()->environment('production') || (! app()->runningInConsole() && (! $isLocalHost || str_contains($host, 'simgegiyim')))) {
             throw new RuntimeException('Bu düğme yalnızca yerel yönetim panelinde çalışır.');
         }
     }
