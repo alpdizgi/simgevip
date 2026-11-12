@@ -121,8 +121,12 @@ class AppServiceProvider extends ServiceProvider
                 \Carbon\Carbon::setLocale('tr');
             }
 
-            // Kullanıcı avatar açılır menüsüne "Siteyi Görüntüle" ekliyoruz
+            // Kullanıcı avatar açılır menüsüne Profil Ayarları ve Siteyi Görüntüle ekliyoruz
             \Filament\Facades\Filament::registerUserMenuItems([
+                'profile' => \Filament\Navigation\UserMenuItem::make()
+                    ->label('Profil Ayarları')
+                    ->url(route('filament.pages.profil'))
+                    ->icon('heroicon-s-cog'),
                 'view-site' => \Filament\Navigation\UserMenuItem::make()
                     ->label('Siteyi Görüntüle')
                     ->url(url('/'))
