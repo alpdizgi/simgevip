@@ -42,17 +42,7 @@
                     <x-store-social-badge platform="instagram" url="#" size="36" />
                     <x-store-social-badge platform="facebook" url="#" size="36" />
                     @php
-                        $waFooterUrl = "https://wa.me/905550000000";
-                        if (isset($siteSettings) && !empty($siteSettings->contact_info[0]['whatsapp'])) {
-                            $waFooterUrl = $siteSettings->contact_info[0]['whatsapp'];
-                        } elseif (isset($siteSettings) && is_array($siteSettings->social_media)) {
-                            foreach ($siteSettings->social_media as $sm) {
-                                if (strtolower($sm['platform'] ?? '') === 'whatsapp' && !empty($sm['url'])) {
-                                    $waFooterUrl = $sm['url'];
-                                    break;
-                                }
-                            }
-                        }
+                        $waFooterUrl = isset($siteSettings) ? $siteSettings->whatsapp_url : "https://wa.me/905550000000";
                     @endphp
                     <x-store-social-badge platform="whatsapp" url="{{ $waFooterUrl }}" size="36" />
                 @endif

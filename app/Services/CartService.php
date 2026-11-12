@@ -397,7 +397,8 @@ class CartService
 
     public function whatsappUrl(string $message): string
     {
-        $phone = preg_replace('/\D+/', '', (string) config('store.whatsapp', '905550000000'));
+        $settings = \App\Models\Setting::first();
+        $phone = $settings ? $settings->whatsapp_digits : preg_replace('/\D+/', '', (string) config('store.whatsapp', '905550000000'));
 
         return 'https://wa.me/' . $phone . '?text=' . rawurlencode($message);
     }

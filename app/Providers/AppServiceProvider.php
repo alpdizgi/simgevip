@@ -222,7 +222,7 @@ class AppServiceProvider extends ServiceProvider
                 'siteName' => $settings->site_name ?? config('app.name', 'SimgeVIP'),
                 'cartCount' => $cartCount,
                 'favoriteProductIds' => $request->attributes->get('storeFavoriteProductIds', []),
-                'storeWhatsapp' => preg_replace('/\D+/', '', (string) config('store.whatsapp', '905550000000')),
+                'storeWhatsapp' => isset($settings) ? $settings->whatsapp_digits : preg_replace('/\D+/', '', (string) config('store.whatsapp', '905550000000')),
             ]);
         });
     }

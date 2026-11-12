@@ -164,8 +164,9 @@ class SettingResource extends Resource
 
                                         Forms\Components\TextInput::make('whatsapp')
                                             ->label('WhatsApp Numarası (Sipariş & İletişim)')
-                                            ->placeholder('Örn: https://wa.me/905550000000')
-                                            ->url()
+                                            ->tel()
+                                            ->placeholder('Örn: 0534 595 27 06 veya 905345952706')
+                                            ->helperText('Telefon numarası yazabilirsiniz (örn: 0534 595 27 06). Dilerseniz wa.me linki olarak da girebilirsiniz.')
                                             ->columnSpan(1),
 
                                         Forms\Components\Textarea::make('address')

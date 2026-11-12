@@ -170,17 +170,7 @@
         }
     </style>
     @php
-        $waUrl = "https://wa.me/905550000000";
-        if (isset($siteSettings) && !empty($siteSettings->contact_info[0]['whatsapp'])) {
-            $waUrl = $siteSettings->contact_info[0]['whatsapp'];
-        } elseif (isset($siteSettings) && is_array($siteSettings->social_media)) {
-            foreach ($siteSettings->social_media as $sm) {
-                if (strtolower($sm['platform'] ?? '') === 'whatsapp' && !empty($sm['url'])) {
-                    $waUrl = $sm['url'];
-                    break;
-                }
-            }
-        }
+        $waUrl = isset($siteSettings) ? $siteSettings->whatsapp_url : "https://wa.me/905550000000";
     @endphp
     <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="floating-whatsapp" aria-label="WhatsApp İletişim">
         <x-store-icon name="whatsapp" size="30" />
