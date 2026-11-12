@@ -44,6 +44,32 @@ if (app()->environment('local')) {
     });
 }
 
+Route::get('/test-webp-convert', function () {
+    $img = imagecreatetruecolor(200, 200);
+    $bg = imagecolorallocate($img, 255, 0, 0);
+    imagefilledrectangle($img, 0, 0, 200, 200, $bg);
+    $tmp = tempnam(sys_get_temp_dir(), 'test_') . '.png';
+    imagepng($img, $tmp);
+    imagedestroy($img);
+
+    $service = app(\App\Services\WebpConverterService::class);
+    $savedPath = $service->convertAndStore($tmp, 'public', 'test_convert', 85, 1920);
+    @unlink($tmp);
+
+    $exists = \Illuminate\Support\Facades\Storage::disk('public')->exists($savedPath);
+    $size = $exists ? \Illuminate\Support\Facades\Storage::disk('public')->size($savedPath) : 0;
+
+    if ($savedPath) {
+        \Illuminate\Support\Facades\Storage::disk('public')->delete($savedPath);
+    }
+
+    return response()->json([
+        'saved_path' => $savedPath,
+        'exists' => $exists,
+        'size' => $size,
+    ]);
+});
+
 Route::post('/test-upload', function (\Illuminate\Http\Request $request) {
     return response()->json([
         'has_file' => $request->hasFile('file'),
