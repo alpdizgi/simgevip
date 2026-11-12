@@ -9,7 +9,7 @@
     --sv-navy-800: #18181b;
     --sv-navy-700: #3f3f46;
     --sv-accent: #18181b;
-    --sv-accent-hover: #09090b;
+    --sv-accent-hover: #27272a;
     --sv-bg: #f5f5f4;
     --sv-surface: #ffffff;
     --sv-ink: #121212;
@@ -76,27 +76,29 @@ body.filament-body {
 ::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #a1a1aa; }
 
-/* Filament primary → kurumsal lacivert */
+/* Filament primary → kurumsal siyah / grafit */
 .bg-primary-500,
 .bg-primary-600,
-.hover\:bg-primary-600:hover,
-.focus\:bg-primary-600:focus,
 button.filament-button.filament-button-size-md.bg-primary-600,
 .filament-button.bg-primary-600,
-.filament-button.bg-primary-500 {
+.filament-button.bg-primary-500,
+.filament-button-color-primary {
     background-color: var(--sv-accent) !important;
+    border-color: var(--sv-accent) !important;
+    color: #ffffff !important;
 }
 
-.hover\:bg-primary-500:hover,
 .filament-button:hover.bg-primary-600,
-.filament-button.bg-primary-600:hover {
+.filament-button.bg-primary-600:hover,
+.filament-button.bg-primary-500:hover,
+.filament-button-color-primary:hover {
     background-color: var(--sv-accent-hover) !important;
+    border-color: var(--sv-accent-hover) !important;
+    color: #ffffff !important;
 }
 
 .text-primary-500,
-.text-primary-600,
-.hover\:text-primary-500:hover,
-.focus\:text-primary-500:focus {
+.text-primary-600 {
     color: var(--sv-accent) !important;
 }
 
@@ -599,53 +601,202 @@ textarea.filament-forms-input:focus,
 button.filament-button,
 .filament-page .filament-button {
     min-height: 2.35rem !important;
-    border-radius: 4px !important;
+    border-radius: 6px !important;
     font-size: 0.875rem !important;
     font-weight: 600 !important;
     letter-spacing: 0.01em !important;
     box-shadow: none !important;
-    padding-left: 0.95rem !important;
-    padding-right: 0.95rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.35rem !important;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
 }
 
 .filament-button.filament-button-size-sm {
     min-height: 2rem !important;
     font-size: 0.8rem !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
 }
 
-.bg-primary-400,
-.bg-primary-500,
-.bg-primary-600,
-.bg-primary-700,
-.hover\:bg-primary-500:hover,
-.hover\:bg-primary-700:hover,
-.focus\:bg-primary-700:focus {
-    background-color: var(--sv-accent) !important;
-    border-color: var(--sv-accent) !important;
+/* 1. Primary Butonlar (Kaydet, Oluştur, Gönder vb.) */
+.filament-button.bg-primary-600,
+.filament-button.bg-primary-500,
+.filament-button.filament-button-color-primary,
+button.filament-button[type="submit"],
+.filament-page-button-action {
+    background-color: #18181b !important;
+    border: 1px solid #18181b !important;
+    color: #ffffff !important;
+}
+
+.filament-button.bg-primary-600 *,
+.filament-button.bg-primary-500 *,
+.filament-button.filament-button-color-primary *,
+button.filament-button[type="submit"] *,
+.filament-page-button-action * {
+    color: #ffffff !important;
 }
 
 .filament-button.bg-primary-600:hover,
-.hover\:bg-primary-500:hover {
-    background-color: var(--sv-accent-hover) !important;
+.filament-button.bg-primary-500:hover,
+.filament-button.filament-button-color-primary:hover,
+button.filament-button[type="submit"]:hover,
+.filament-page-button-action:hover {
+    background-color: #27272a !important;
+    border-color: #27272a !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
 }
 
-.text-primary-400,
-.text-primary-700,
-.hover\:text-primary-600:hover {
-    color: var(--sv-accent) !important;
+.filament-button.bg-primary-600:hover *,
+.filament-button.bg-primary-500:hover *,
+.filament-button.filament-button-color-primary:hover *,
+button.filament-button[type="submit"]:hover *,
+.filament-page-button-action:hover * {
+    color: #ffffff !important;
 }
 
-.border-primary-500,
-.border-primary-600,
-.focus\:border-primary-600:focus {
-    border-color: var(--sv-accent) !important;
+/* 2. Secondary Butonlar (İptal, Geri, Filtre, Beyaz Butonlar) */
+.filament-button.bg-white,
+.filament-button.border-gray-300,
+.filament-button.text-gray-700,
+.filament-button.text-gray-800,
+.filament-button.filament-button-color-secondary,
+.filament-modal-close-button {
+    background-color: #ffffff !important;
+    border: 1px solid #d4d4d8 !important;
+    color: #27272a !important;
 }
 
+.filament-button.bg-white *,
+.filament-button.border-gray-300 *,
+.filament-button.text-gray-700 *,
+.filament-button.text-gray-800 *,
+.filament-button.filament-button-color-secondary *,
+.filament-modal-close-button * {
+    color: #27272a !important;
+}
+
+.filament-button.bg-white:hover,
+.filament-button.border-gray-300:hover,
+.filament-button.text-gray-700:hover,
+.filament-button.text-gray-800:hover,
+.filament-button.filament-button-color-secondary:hover,
+.filament-modal-close-button:hover {
+    background-color: #f4f4f5 !important;
+    border-color: #a1a1aa !important;
+    color: #09090b !important;
+}
+
+.filament-button.bg-white:hover *,
+.filament-button.border-gray-300:hover *,
+.filament-button.text-gray-700:hover *,
+.filament-button.text-gray-800:hover *,
+.filament-button.filament-button-color-secondary:hover *,
+.filament-modal-close-button:hover * {
+    color: #09090b !important;
+}
+
+/* 3. Danger Butonlar (Sil, Kaldır vb.) */
+.filament-button.bg-danger-600,
+.filament-button.filament-button-color-danger {
+    background-color: #dc2626 !important;
+    border: 1px solid #dc2626 !important;
+    color: #ffffff !important;
+}
+
+.filament-button.bg-danger-600 *,
+.filament-button.filament-button-color-danger * {
+    color: #ffffff !important;
+}
+
+.filament-button.bg-danger-600:hover,
+.filament-button.filament-button-color-danger:hover {
+    background-color: #b91c1c !important;
+    border-color: #b91c1c !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25) !important;
+}
+
+.filament-button.bg-danger-600:hover *,
+.filament-button.filament-button-color-danger:hover * {
+    color: #ffffff !important;
+}
+
+/* 4. Tablo Aksiyon Linkleri / Butonları (Düzenle, Sil, Görüntüle vb.) */
 .filament-tables-actions .filament-link,
 .filament-tables-actions a,
-.filament-link {
+.filament-link,
+.filament-tables-link-action {
     font-size: 0.85rem !important;
     font-weight: 600 !important;
+    color: #18181b !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    transition: color 0.15s ease !important;
+}
+
+.filament-tables-actions .filament-link:hover,
+.filament-tables-actions a:hover,
+.filament-link:hover,
+.filament-tables-link-action:hover {
+    color: #3f3f46 !important;
+    text-decoration: underline !important;
+    background: transparent !important;
+}
+
+.filament-tables-actions .filament-link.text-danger-600,
+.filament-link.text-danger-600 {
+    color: #dc2626 !important;
+}
+
+.filament-tables-actions .filament-link.text-danger-600:hover,
+.filament-link.text-danger-600:hover {
+    color: #991b1b !important;
+    text-decoration: underline !important;
+}
+
+/* 5. İkon Butonları */
+.filament-icon-button {
+    color: #52525b !important;
+    transition: background-color 0.15s ease, color 0.15s ease !important;
+}
+
+.filament-icon-button:hover {
+    background-color: #f4f4f5 !important;
+    color: #18181b !important;
+}
+
+.filament-icon-button.text-danger-600:hover {
+    background-color: #fef2f2 !important;
+    color: #dc2626 !important;
+}
+
+/* 6. Tablo Sayfalama Butonları */
+.filament-tables-pagination button {
+    border: 1px solid #e4e4e7 !important;
+    background: #ffffff !important;
+    color: #3f3f46 !important;
+    border-radius: 6px !important;
+    transition: all 0.15s ease !important;
+}
+
+.filament-tables-pagination button:hover {
+    background: #f4f4f5 !important;
+    color: #18181b !important;
+    border-color: #d4d4d8 !important;
+}
+
+.filament-tables-pagination button[aria-current="page"] {
+    background: #18181b !important;
+    color: #ffffff !important;
+    border-color: #18181b !important;
 }
 
 .filament-modal-window {
@@ -884,6 +1035,126 @@ html.dark .choices__list[aria-expanded] {
 
 html.dark .filament-forms-tabs-component-button-active {
     color: #fafafa !important;
+}
+
+/* Dark Mode Butonlar */
+html.dark .filament-button.bg-primary-600,
+html.dark .filament-button.bg-primary-500,
+html.dark .filament-button.filament-button-color-primary,
+html.dark button.filament-button[type="submit"],
+html.dark .filament-page-button-action {
+    background-color: #ffffff !important;
+    border-color: #ffffff !important;
+    color: #18181b !important;
+}
+
+html.dark .filament-button.bg-primary-600 *,
+html.dark .filament-button.bg-primary-500 *,
+html.dark .filament-button.filament-button-color-primary *,
+html.dark button.filament-button[type="submit"] *,
+html.dark .filament-page-button-action * {
+    color: #18181b !important;
+}
+
+html.dark .filament-button.bg-primary-600:hover,
+html.dark .filament-button.bg-primary-500:hover,
+html.dark .filament-button.filament-button-color-primary:hover,
+html.dark button.filament-button[type="submit"]:hover,
+html.dark .filament-page-button-action:hover {
+    background-color: #e4e4e7 !important;
+    border-color: #e4e4e7 !important;
+    color: #09090b !important;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15) !important;
+}
+
+html.dark .filament-button.bg-primary-600:hover *,
+html.dark .filament-button.bg-primary-500:hover *,
+html.dark .filament-button.filament-button-color-primary:hover *,
+html.dark button.filament-button[type="submit"]:hover *,
+html.dark .filament-page-button-action:hover * {
+    color: #09090b !important;
+}
+
+html.dark .filament-button.bg-white,
+html.dark .filament-button.border-gray-300,
+html.dark .filament-button.text-gray-700,
+html.dark .filament-button.text-gray-800,
+html.dark .filament-button.filament-button-color-secondary,
+html.dark .filament-modal-close-button {
+    background-color: #27272a !important;
+    color: #f4f4f5 !important;
+    border-color: #3f3f46 !important;
+}
+
+html.dark .filament-button.bg-white *,
+html.dark .filament-button.border-gray-300 *,
+html.dark .filament-button.text-gray-700 *,
+html.dark .filament-button.text-gray-800 *,
+html.dark .filament-button.filament-button-color-secondary *,
+html.dark .filament-modal-close-button * {
+    color: #f4f4f5 !important;
+}
+
+html.dark .filament-button.bg-white:hover,
+html.dark .filament-button.border-gray-300:hover,
+html.dark .filament-button.text-gray-700:hover,
+html.dark .filament-button.text-gray-800:hover,
+html.dark .filament-button.filament-button-color-secondary:hover,
+html.dark .filament-modal-close-button:hover {
+    background-color: #3f3f46 !important;
+    border-color: #52525b !important;
+    color: #ffffff !important;
+}
+
+html.dark .filament-button.bg-white:hover *,
+html.dark .filament-button.border-gray-300:hover *,
+html.dark .filament-button.text-gray-700:hover *,
+html.dark .filament-button.text-gray-800:hover *,
+html.dark .filament-button.filament-button-color-secondary:hover *,
+html.dark .filament-modal-close-button:hover * {
+    color: #ffffff !important;
+}
+
+html.dark .filament-tables-actions .filament-link,
+html.dark .filament-tables-actions a,
+html.dark .filament-link,
+html.dark .filament-tables-link-action {
+    color: #e4e4e7 !important;
+}
+
+html.dark .filament-tables-actions .filament-link:hover,
+html.dark .filament-tables-actions a:hover,
+html.dark .filament-link:hover,
+html.dark .filament-tables-link-action:hover {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+}
+
+html.dark .filament-icon-button {
+    color: #a1a1aa !important;
+}
+
+html.dark .filament-icon-button:hover {
+    background-color: #27272a !important;
+    color: #ffffff !important;
+}
+
+html.dark .filament-tables-pagination button {
+    border-color: #3f3f46 !important;
+    background: #18181b !important;
+    color: #a1a1aa !important;
+}
+
+html.dark .filament-tables-pagination button:hover {
+    background: #27272a !important;
+    color: #ffffff !important;
+    border-color: #52525b !important;
+}
+
+html.dark .filament-tables-pagination button[aria-current="page"] {
+    background: #ffffff !important;
+    color: #18181b !important;
+    border-color: #ffffff !important;
 }
 
 html.dark .filament-forms-input input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),

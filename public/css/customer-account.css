@@ -51,8 +51,9 @@
 .customer-auth__error { display: block; color: #a4241c; font-size: .77rem; line-height: 1.4; }
 .customer-auth__remember { display: inline-flex; align-items: center; gap: .55rem; width: fit-content; margin: .1rem 0; font-size: .82rem; cursor: pointer; }
 .customer-auth__remember input { width: 16px; height: 16px; accent-color: #28231f; }
-.customer-auth__submit { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 50px; padding: .8rem 1.1rem; border: 1px solid #26211d; border-radius: 2px; background: #26211d; color: #fff; font: inherit; font-size: .88rem; font-weight: 800; cursor: pointer; transition: background .15s, border-color .15s; }
-.customer-auth__submit:hover, .customer-auth__submit:focus-visible { background: #5a4637; border-color: #5a4637; }
+.customer-auth__submit { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 50px; padding: .8rem 1.1rem; border: 1px solid #18181b; border-radius: 6px; background: #18181b; color: #fff !important; font: inherit; font-size: .88rem; font-weight: 800; cursor: pointer; transition: background .15s, border-color .15s, transform .15s; }
+.customer-auth__submit:hover, .customer-auth__submit:focus-visible { background: #27272a !important; border-color: #27272a !important; color: #fff !important; transform: translateY(-1px); }
+.customer-auth__submit *, .customer-auth__submit:hover * { color: #fff !important; }
 .customer-auth__submit span { font-size: 1.3rem; font-weight: 400; line-height: 1; }
 .customer-auth__switch { margin-top: 1.65rem; color: #6b6661; font-size: .83rem; }
 
@@ -62,8 +63,9 @@
 .account-card h1 { font-family: var(--display); font-size: 2.8rem; font-weight: 600; }
 .account-card p { margin-top: .5rem; color: #666; }
 .account-card form { margin-top: 1.5rem; }
-.account-submit { width: 100%; min-height: 48px; border: 0; background: #26211d; color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
-.account-submit:hover { background: #5a4637; }
+.account-submit { width: 100%; min-height: 48px; border: 1px solid #18181b; border-radius: 6px; background: #18181b; color: #fff !important; font: inherit; font-weight: 700; cursor: pointer; transition: background .15s, border-color .15s, transform .15s; }
+.account-submit:hover, .account-submit:focus-visible { background: #27272a !important; border-color: #27272a !important; color: #fff !important; transform: translateY(-1px); }
+.account-submit *, .account-submit:hover * { color: #fff !important; }
 .account-details { display: grid; grid-template-columns: 90px 1fr; gap: .65rem; margin: 1.5rem 0; }
 .account-details dt { font-weight: 700; }
 .account-details dd { margin: 0; overflow-wrap: anywhere; }
