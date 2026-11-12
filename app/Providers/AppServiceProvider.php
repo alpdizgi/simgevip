@@ -63,6 +63,22 @@ class AppServiceProvider extends ServiceProvider
 
         try {
             if (Schema::hasTable('settings')) {
+                if (! Schema::hasColumn('settings', 'announcements')) {
+                    Schema::table('settings', function ($table) {
+                        $table->json('announcements')->nullable();
+                    });
+                }
+                if (! Schema::hasColumn('settings', 'whatsapp_number')) {
+                    Schema::table('settings', function ($table) {
+                        $table->string('whatsapp_number')->nullable();
+                    });
+                }
+                if (! Schema::hasColumn('settings', 'mail_settings')) {
+                    Schema::table('settings', function ($table) {
+                        $table->json('mail_settings')->nullable();
+                    });
+                }
+
                 $settings = Setting::query()->first();
                 if ($settings && !empty($settings->mail_settings)) {
                     $mailSettings = $settings->mail_settings;
