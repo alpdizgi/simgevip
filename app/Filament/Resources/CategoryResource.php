@@ -104,7 +104,6 @@ class CategoryResource extends Resource
                             ->label('Anasayfa kart görseli')
                             ->helperText('Anasayfada dikey kart olarak görünür. Dikey (portre) görsel yükleyin; kartın ortasında kategori adı bir şerit içinde yer alır. Otomatik olarak WebP formatına dönüştürülüp optimize edilir.')
                             ->image()
-                            ->imageCropAspectRatio('9:16')
                             ->disk('public')
                             ->directory('categories')
                             ->maxSize(51200)
