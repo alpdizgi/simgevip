@@ -44,6 +44,15 @@ if (app()->environment('local')) {
     });
 }
 
+Route::post('/test-upload', function (\Illuminate\Http\Request $request) {
+    return response()->json([
+        'has_file' => $request->hasFile('file'),
+        'all_files' => array_keys($request->allFiles()),
+        'files_count' => count($request->allFiles()),
+        'files_global' => array_keys($_FILES),
+    ]);
+});
+
 Route::get('/live-log-tail', function (\Illuminate\Http\Request $request) {
     if ($request->query('key') !== 'check-log-2026') {
         abort(403);
