@@ -44,6 +44,20 @@ if (app()->environment('local')) {
     });
 }
 
+Route::get('/upload-diagnostics', function () {
+    return response()->json([
+        'gd_installed' => extension_loaded('gd'),
+        'imagewebp_supported' => function_exists('imagewebp'),
+        'upload_max_filesize' => ini_get('upload_max_filesize'),
+        'post_max_size' => ini_get('post_max_size'),
+        'memory_limit' => ini_get('memory_limit'),
+        'livewire_tmp_exists' => file_exists(storage_path('app/livewire-tmp')),
+        'livewire_tmp_writable' => is_writable(storage_path('app/livewire-tmp')),
+        'public_products_exists' => file_exists(storage_path('app/public/products')),
+        'public_products_writable' => is_writable(storage_path('app/public/products')),
+    ]);
+});
+
 Route::post('/admin/github-gonder', [GithubDeployController::class, 'store'])
     ->middleware(\Filament\Http\Middleware\Authenticate::class)
     ->name('admin.github.deploy');

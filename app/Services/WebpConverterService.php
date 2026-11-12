@@ -96,6 +96,13 @@ class WebpConverterService
                 $origHeight
             );
 
+            // WebP desteği kontrolü
+            if (! function_exists('imagewebp')) {
+                $this->freeImage($sourceImage);
+                $this->freeImage($targetImage);
+                return $this->fallbackStore($file, $sourcePath, $disk, $directory);
+            }
+
             // Geçici WebP dosyasına yaz
             $tempWebpPath = tempnam(sys_get_temp_dir(), 'webp_') . '.webp';
             $success = imagewebp($targetImage, $tempWebpPath, $quality);

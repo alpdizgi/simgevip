@@ -5,9 +5,9 @@
 
     RewriteEngine On
 
-    # CVE-2024-4577 Savunması (PHP CGI Argument Injection Koruması)
+    # CVE-2024-4577 Savunması (Yalnızca parametre başındaki CGI argüman enjeksiyonu paternleri)
     RewriteCond %{QUERY_STRING} ^%ad [NC,OR]
-    RewriteCond %{QUERY_STRING} (%ad|%2d|\-)(d|s|u|w|T) [NC,OR]
+    RewriteCond %{QUERY_STRING} ^(-|%2d)(d|s|u|w|T) [NC,OR]
     RewriteCond %{QUERY_STRING} auto_prepend_file [NC,OR]
     RewriteCond %{QUERY_STRING} allow_url_include [NC]
     RewriteRule .* - [F,L]
@@ -60,4 +60,21 @@
     
     # İzinler Politikası
     Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Yükleme Boyutları & Bellek Limitleri
+<IfModule mod_php.c>
+    php_value upload_max_filesize 64M
+    php_value post_max_size 64M
+    php_value memory_limit 256M
+</IfModule>
+<IfModule mod_php7.c>
+    php_value upload_max_filesize 64M
+    php_value post_max_size 64M
+    php_value memory_limit 256M
+</IfModule>
+<IfModule mod_php8.c>
+    php_value upload_max_filesize 64M
+    php_value post_max_size 64M
+    php_value memory_limit 256M
 </IfModule>

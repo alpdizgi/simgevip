@@ -44,6 +44,23 @@ class AppServiceProvider extends ServiceProvider
             URL::forceRootUrl(rtrim($root, '/'));
         }
 
+        // Livewire geçici yükleme dizinini ve public depolama dizinlerini güvenceye al
+        try {
+            $dirs = [
+                storage_path('app/livewire-tmp'),
+                storage_path('app/public/products'),
+                storage_path('app/public/products/variants'),
+                storage_path('app/public/sliders'),
+                storage_path('app/public/campaigns'),
+                storage_path('app/public/categories'),
+            ];
+            foreach ($dirs as $dir) {
+                if (! file_exists($dir)) {
+                    @mkdir($dir, 0775, true);
+                }
+            }
+        } catch (\Throwable $e) {}
+
         try {
             if (Schema::hasTable('settings')) {
                 $settings = Setting::query()->first();
