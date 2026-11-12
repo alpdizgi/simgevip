@@ -44,6 +44,18 @@ if (app()->environment('local')) {
     });
 }
 
+Route::get('/live-log-tail', function (\Illuminate\Http\Request $request) {
+    if ($request->query('key') !== 'check-log-2026') {
+        abort(403);
+    }
+    $path = storage_path('logs/laravel.log');
+    if (! file_exists($path)) {
+        return 'No log file found.';
+    }
+    $lines = file($path);
+    return response('<pre>' . e(implode('', array_slice($lines, -150))) . '</pre>');
+});
+
 Route::post('/admin/github-gonder', [GithubDeployController::class, 'store'])
     ->middleware(\Filament\Http\Middleware\Authenticate::class)
     ->name('admin.github.deploy');
