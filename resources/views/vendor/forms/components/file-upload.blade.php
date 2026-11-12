@@ -83,20 +83,25 @@
                     },
                 })"
         x-init="
-            const checkUploadWatchdog = () => {
-                if (typeof pond !== 'undefined' && pond) {
-                    try {
-                        const files = pond.getFiles();
-                        const isBusy = files.some(f => f.status === 2 || f.status === 3);
-                        if (!isBusy) {
-                            $el.closest('form')?.dispatchEvent(new CustomEvent('file-upload-finished', { composed: true, cancelable: true }));
-                        }
-                    } catch (e) {}
-                }
-            };
-            $el.addEventListener('pointerup', () => setTimeout(checkUploadWatchdog, 600));
-            $el.addEventListener('change', () => setTimeout(checkUploadWatchdog, 1000));
-            setInterval(checkUploadWatchdog, 2500);
+            (function(rootEl) {
+                var checkUploadWatchdog = function() {
+                    if (typeof pond !== 'undefined' && pond) {
+                        try {
+                            var files = pond.getFiles();
+                            var isBusy = files.some(function(f) { return f.status === 2 || f.status === 3; });
+                            if (!isBusy) {
+                                var form = rootEl.closest('form');
+                                if (form) {
+                                    form.dispatchEvent(new CustomEvent('file-upload-finished', { composed: true, cancelable: true }));
+                                }
+                            }
+                        } catch (e) {}
+                    }
+                };
+                rootEl.addEventListener('pointerup', function() { setTimeout(checkUploadWatchdog, 500); });
+                rootEl.addEventListener('change', function() { setTimeout(checkUploadWatchdog, 800); });
+                setInterval(checkUploadWatchdog, 1500);
+            })($el)
         "
         wire:ignore
         {!! ($id = $getId()) ? "id=\"{$id}\"" : null !!}
